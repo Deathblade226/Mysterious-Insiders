@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 /// <summary>
 /// The necessary data to make a module. Each ModularSheet will have a collection
@@ -112,4 +114,70 @@ public class ModuleData
     {
         this.ModuleType = ModuleType;
     }
+
+    /// <summary>
+    /// Converts one or more CHECK ModuleData objects into a logic string for a CHECK ModuleData.
+    /// These are the objects whose modules should be unchecked if the one that holds this logic
+    /// string is checked.
+    /// </summary>
+    /// <param name="list">The ModuleData objects to serialize into a logic string.</param>
+    /// <returns>The logic string</returns>
+    /// <exception cref="ArgumentException">One of the ModuleData objects isn't a CHECK module.</exception>
+    public static string SerializeLogicCHECK(params ModuleData[] list)
+    {
+        if (list == null || list.Length == 0) return "";
+        else
+        {
+            foreach (ModuleData module in list)
+            {
+                if (module.ModuleType != moduleType.CHECK) throw new ArgumentException("Only CHECK ModuleDatas can be serialized into CHECK ModuleData logic.");
+            }
+            string logic = "";
+            logic += list[0].Id;
+            for (int i = 1; i < list.Length; i++)
+            {
+                logic += "," + list[i].Id;
+            }
+            return logic;
+        }
+    }
+
+    /// <summary>
+    /// Converts one or more CHECK ModuleData objects into a logic string for a CHECK ModuleData.
+    /// These are the objects whose modules should be unchecked if the one that holds this logic
+    /// string is checked.
+    /// </summary>
+    /// <param name="list">The ModuleData objects to serialize into a logic string.</param>
+    /// <returns>The logic string</returns>
+    /// <exception cref="ArgumentException">One of the ModuleData objects isn't a CHECK module.</exception>
+    public static string SerializeLogicCHECK(ICollection<ModuleData> list)
+    {
+        return SerializeLogicCHECK(list.ToArray());
+    }
+
+
+
+    /*
+    /// <summary>
+    /// Fix this later, once there's an actual CheckModule class.
+    /// </summary>
+    /// <param name="logic"></param>
+    /// <param name="allModules"></param>
+    /// <returns></returns>
+    public static ModuleData[] DeserializeLogicCHECK(string logic, ModuleData[] allModules)
+    {
+        if (logic.Length == 0) return new ModuleData[0];
+        else
+        {
+            List<ModuleData> foundModules = new List<ModuleData>();
+            string[] ids = logic.Split(',');
+            foreach(string id in ids)
+            {
+                ModuleData foundModule = allModules.Where(m => m.Id == id && m.ModuleType == moduleType.CHECK).First();
+                if (foundModule != null) foundModules.Add(foundModule);
+            }
+            return foundModules.ToArray();
+        }
+    }
+    */
 }
