@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Mysterious_Insiders.Logic;
 using Mysterious_Insiders.Models;
 
 namespace Mysterious_Insiders.Controllers
@@ -21,6 +22,10 @@ namespace Mysterious_Insiders.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult DiceRoll(int total = 1, int sides = 20, int mod = 0, bool allRolls = true) { 
+        return View(Dice.RollDice(total, sides, mod, allRolls));
         }
 
         public IActionResult Privacy()

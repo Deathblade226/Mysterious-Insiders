@@ -22,7 +22,7 @@ public class ModuleData
     public int Width { get; set; }
     public int Height { get; set; }
     public int BgImageIndex { get; set; }
-    public Color TextColor { get; set; }
+    //public Color TextColor { get; set; }
 
     protected ModuleData(moduleType ModuleType)
     {

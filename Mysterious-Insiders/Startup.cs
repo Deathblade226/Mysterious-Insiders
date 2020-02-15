@@ -9,49 +9,43 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Mysterious_Insiders
-{
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+namespace Mysterious_Insiders {
+public class Startup {
+public Startup(IConfiguration configuration) {
+    Configuration = configuration;
+}
 
-        public IConfiguration Configuration { get; }
+public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllersWithViews();
-        }
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services) { services.AddMvc(option => option.EnableEndpointRouting = false); }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
 
-            app.UseRouting();
+    app.UseDeveloperExceptionPage();
+    app.UseStatusCodePages();
+    app.UseStaticFiles();
+    
+    
+    app.UseMvc(routes => {
 
-            app.UseAuthorization();
+    routes.MapRoute( //Default Page
+    name: "default",
+    template: "",
+    defaults: new { controller = "Home", action = "Index"}
+    );
+    
+    routes.MapRoute(
+    name: "namedCows",
+    template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
+    defaults: new {controller = "Home", action = "DiceRoll"}
+    );
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
-        }
-    }
+    });
+
+}
+
+}
+
 }
