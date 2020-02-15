@@ -47,7 +47,7 @@ namespace Mysterious_Insiders.Controllers
             return CreatedAtRoute("GetSheet", new { id = sheet.DatabaseId.ToString() }, sheet);
         }
 
-        [HttpPut("{id:length(24}")]
+        [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, DummySheet sheetIn)
         {
             var sheet = sheetService.Get(id);
@@ -62,7 +62,7 @@ namespace Mysterious_Insiders.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id:length(24}")]
+        [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
             var sheet = sheetService.Get(id);
