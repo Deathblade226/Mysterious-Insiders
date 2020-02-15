@@ -27,7 +27,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
     app.UseStatusCodePages();
     app.UseStaticFiles();
     
-    
+
     app.UseMvc(routes => {
 
     routes.MapRoute( //Default Page

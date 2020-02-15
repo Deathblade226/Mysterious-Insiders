@@ -24,6 +24,14 @@ namespace Mysterious_Insiders.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This is a demo method to show that my rolling logic works. Im using routing to take in the data.
+        /// </summary>
+        /// <param name="total">Number of dice</param>
+        /// <param name="sides">Number of sides</param>
+        /// <param name="mod">Mod on rolls</param>
+        /// <param name="allRolls">Is the mod added to all rolls</param>
+        /// <returns></returns>
         public IActionResult DiceRoll(int total = 1, int sides = 20, int mod = 0, bool allRolls = true) { 
         return View(Dice.RollDice(total, sides, mod, allRolls));
         }
