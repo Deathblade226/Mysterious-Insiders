@@ -26,6 +26,7 @@ namespace Mysterious_Insiders
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(option => option.EnableEndpointRouting = false);
             services.Configure<SheetDatabaseSettings>(Configuration.GetSection(nameof(SheetDatabaseSettings)));
 
             services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
@@ -44,22 +45,24 @@ namespace Mysterious_Insiders
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-    
-    
-            app.UseMvc(routes => {
 
-            routes.MapRoute( //Default Page
-            name: "default",
-            template: "",
-            defaults: new { controller = "Home", action = "Index"}
-            );
-    
-            routes.MapRoute(
-            name: "namedCows",
-            template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
-            defaults: new {controller = "Home", action = "DiceRoll"}
-            );
+
+            app.UseMvc(routes =>
+            {
+
+                routes.MapRoute( //Default Page
+                name: "default",
+                template: "",
+                defaults: new { controller = "Home", action = "Index" }
+                );
+
+                routes.MapRoute(
+                name: "diceRoll",
+                template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
+                defaults: new { controller = "Home", action = "DiceRoll" }
+                );
 
             });
         }
     }
+}
