@@ -1,0 +1,33 @@
+﻿@model List<int>
+@{
+    ViewData["Title"] = "DiceRoll";
+    string rolls = "";
+}
+
+<style>
+
+#rollPopup{
+    display: none;
+    background: #c4c4c4;
+    border: 1px solid black;
+    width: 50%;
+    height: 200px;
+    overflow: scroll;
+}
+
+</style>
+
+<button onclick="document.getElementById('rollPopup').style.display = 'block'">See Rolls</button>
+<div id="rollPopup">
+    
+@for(int i = 0; i < Model.Count(); i++) {
+
+    if (i == Model.Count()-1) { rolls += $"{Model.ElementAt(i)} = {Model.Sum()}";
+    } else { rolls += $"{Model.ElementAt(i)} + "; }
+
+}
+
+
+<h5>@rolls</h5>
+</div>
+
