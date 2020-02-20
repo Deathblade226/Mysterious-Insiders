@@ -1,0 +1,50 @@
+@import 'reset';
+@import 'fonts_colours';
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: $mainFont;
+	font-size: $baseFntSize;
+	height: 100%;
+	position: relative;
+
+}
+
+h1, h2, h3 {
+	font-family: $headingFont;
+}
+
+h1 {
+	font-size:$headFntSize + 10;
+}
+
+h2 {
+	font-size: $headFntSize + 5;
+}
+
+h3 {
+	font-size: $headFntSize;
+}
+
+h4, h5, h6 {
+	font-family: $mainFont;
+}
+
+h4 {
+	font-size: $baseFntSize + 9;
+}
+
+h5 {
+	font-size: $baseFntSize + 4;
+}
+
+h6 {
+	font-size: $baseFntSize + 2;
+}
+
+p {
+	margin: 10px 0px;
+}
