@@ -16,36 +16,22 @@ namespace Mysterious_Insiders
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
+        public Startup(IConfiguration configuration) { Configuration = configuration; }
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.Configure<SheetDatabaseSettings>(Configuration.GetSection(nameof(SheetDatabaseSettings)));
-
             services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
-
             services.AddSingleton<SheetService>();
-
             services.AddControllersWithViews();
-
             //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
-
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-
 
             app.UseMvc(routes =>
             {
@@ -53,16 +39,16 @@ namespace Mysterious_Insiders
                 routes.MapRoute( //Default Page
                 name: "default",
                 template: "",
-                defaults: new { controller = "Home", action = "Index" }
-                );
+                defaults: new { controller = "Home", action = "Index" });
 
                 routes.MapRoute(
                 name: "diceRoll",
                 template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
-                defaults: new { controller = "Home", action = "DiceRoll" }
-                );
+                defaults: new { controller = "Home", action = "DiceRoll" });
 
             });
         }
+
     }
+
 }

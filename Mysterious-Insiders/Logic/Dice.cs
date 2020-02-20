@@ -18,7 +18,7 @@ public static List<int> RollDice(int number = 1, int sides = 20, int mod = 0, bo
     Random rng = new Random();
     List<int> rolls = new List<int>();
     if (ModOnAllRolls) for (int i = 0; i < number; i++) { rolls.Add(rng.Next(1, sides + 1) + mod); }
-    else for (int i = 0; i < number; i++) { rolls.Add(rng.Next(1, sides + 1)); }
+    else { for (int i = 0; i < number; i++) { rolls.Add(rng.Next(1, sides + 1)); } rolls.Add(mod); }
 return rolls;}
 
 }
