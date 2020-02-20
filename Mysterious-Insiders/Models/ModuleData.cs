@@ -87,8 +87,9 @@ public class ModuleData
     /// <summary>
     /// Each sheet should have an indexed collection of images that are used for modules
     /// that the sheet contains. This is the index to use to look up this module's image.
+    /// If the module doesn't have an image, this should be -1.
     /// </summary>
-    public int BgImageIndex { get; set; }
+    public int BgImageIndex { get; set; } = -1;
 
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
