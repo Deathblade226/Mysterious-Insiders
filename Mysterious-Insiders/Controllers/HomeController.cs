@@ -42,22 +42,26 @@ namespace Mysterious_Insiders.Controllers
         return ChatTest();
         }
 
-        public IActionResult ChatTest() {
-            ViewBag.Name = "User";
+        public IActionResult ChatTest(string name = "") {
+            if (name == "" || name == null) name = "User";
+            ViewBag.Name = name;
             return View(LibraryDB.GetMessages());
         }
         [HttpPost]
         public IActionResult ChatTest(string name, string msg) {
+            if (name == "" || name == null) name = "User";
+            ViewBag.Name = name;
 
-            if (msg != null || msg != "") msg = ChatCommands.CheckForCommand(msg);
+        if (msg != null) { 
+                
+            msg = ChatCommands.CheckForCommand(msg);
 
             UserMessage message = new UserMessage() { Name = name, Message = msg };
 
             LibraryDB.AddMessage(message);
 
-            if (name == "" || name == null) name = "User";
-            ViewBag.Name = name;
-            return View(LibraryDB.GetMessages());
+            } 
+            return RedirectToAction(actionName:"ChatTest", routeValues:name);
         }
 
         public IActionResult Privacy()

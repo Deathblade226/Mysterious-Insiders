@@ -36,7 +36,7 @@
 
 </div>
 
-<form method="post">
+<form method="post" >
     <input type="text" name="msg" /> <br />
     <input type="text" value="@ViewBag.name" name="name" placeholder=@ViewBag.name />
     <input type="submit" value="Add Message" />
@@ -45,15 +45,15 @@
 <button onclick="document.getElementById('rollPopup').style.display = 'block'">Roll Menu [WIP]</button>
 <button onclick="document.getElementById('rollPopup').style.display = 'none'">Hide Menu [WIP]</button>
 
-<div id="rollPopup">
+@*<div id="rollPopup">
 
 <form action="DiceRoll" method="put">
-<input type="number" min="1" max="99999" name="total" placeholder="Number of Dice"/> <br/>
-<input type="number" min="4" max="99999" name="sides" placeholder="Number of Sides"/> <br/>
+<input type="number" min="1" max="9999" name="total" placeholder="Number of Dice"/> <br/>
+<input type="number" min="4" max="9999" name="sides" placeholder="Number of Sides"/> <br/>
 <input type="number" name="mod" value="0" placeholder="Mod on rolls"/> <br/>
 <input type="range" min="0" max="1" name="allRolls"/> <br/>
 <input type="submit" value="Roll" />
 </form>
 
-</div>
+</div>*@
 
