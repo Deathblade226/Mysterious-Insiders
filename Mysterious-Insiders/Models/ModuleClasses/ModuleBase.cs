@@ -18,7 +18,6 @@ namespace Mysterious_Insiders.Models
         protected ModuleData mdata;
         private ModularCharacter character;
         private string imageUrl;
-        private string text;
         private string id;
 
         /// <summary>
@@ -61,7 +60,7 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The text to display in this module.
         /// </summary>
-        public string Text { get => text; }
+        public virtual string Text { get; set; }
 
         /// <summary>
         /// The color to display this module's text and numbers, if it has either of those.
@@ -89,7 +88,7 @@ namespace Mysterious_Insiders.Models
             this.character = character;
             id = data.Id;
             imageUrl = character.Sheet.ImageUrls[data.BgImageIndex];
-            this.text = text;
+            Text = text;
         }
 
         /// <summary>
