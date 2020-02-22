@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Lemonada|Nunito&display=swap");
+/* Provide sufficient contrast against white background */
+.topContainer {
+  padding-top: 100px; }
+
+.navBar {
+  position: fixed;
+  background-color: #454545;
+  top: 0;
+  width: 100%;
+  padding: 500px, 50px, 75px, 50px; }
+
+.navItem {
+  color: #D0C8B0;
+  text-decoration: none;
+  margin: 20px;
+  font-size: 20px; }
+
+.navItem:link {
+  color: #D0C8B0; }
+
+.navItem:visited {
+  /*color: $subGrey;*/ }
+
+.navItem:hover {
+  color: #bdb290; }
+
+.navItem:active {
+  /*color: darken($vanilla, 30%);*/
+  color: #565E85; }
+
+.navItemDiv {
+  padding-left: 10px;
+  padding-top: 25px;
+  margin-bottom: 25px; }
+
+.navIcon {
+  max-width: 50px;
+  max-height: 50px; }
+
+/*# sourceMappingURL=nav_btns.css.map */

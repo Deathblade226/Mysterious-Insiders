@@ -1,0 +1,49 @@
+@import 'fonts_colours';
+/* Provide sufficient contrast against white background */
+
+.topContainer {
+	padding-top: 100px;
+}
+
+.navBar {
+	position: fixed;
+	background-color: $mainGrey;	
+  top: 0;
+  width: 100%;
+	padding: 500px, 50px, 75px, 50px;
+}
+
+.navItem {
+    color: $vanilla;
+    text-decoration: none;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.navItem:link {
+	color: $vanilla;
+}
+
+.navItem:visited {
+  /*color: $subGrey;*/
+}
+
+.navItem:hover {
+  color: darken($vanilla, 10%);
+}
+
+.navItem:active {
+	/*color: darken($vanilla, 30%);*/
+    color: $subGrey;
+}
+
+.navItemDiv {
+	padding-left: 10px;
+    padding-top: 25px;
+    margin-bottom: 25px;
+}
+
+.navIcon {
+    max-width: 50px;
+    max-height: 50px;
+}
