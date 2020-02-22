@@ -21,7 +21,8 @@ private static List<Command> Commands = new List<Command>() {
     new Command() {Format = "/roll (xdx)-x", Method = 2},
     new Command() {Format = "/help", Method = 0},
     new Command() {Format = "/rollstats", Method = 3},
-    new Command() {Format = "/basestats", Method = 4} 
+    new Command() {Format = "/basestats", Method = 4},
+    new Command() {Format = "/clear", Method = 5} 
 };
 
 private static string output = $" : ";
@@ -43,6 +44,7 @@ private static bool checkCommands(string message) {
     case 2: RollDiceCommandNegMod(message); break; 
     case 3: RollStats(); break;
     case 4: BaseStats(); break;
+    case 5: ClearChat(); break;
     }
 
 return (method != -1);}
@@ -57,6 +59,7 @@ private static void HelpCommand() {
     ChatWindow.Messages.Add(new UserMessage() { Name = "/roll (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls."});
     ChatWindow.Messages.Add(new UserMessage() { Name = "/rollstats", Message = "Rolls 6 sets of 4d6 an gives you the sum of the 3 highes rolls from each set."});
     ChatWindow.Messages.Add(new UserMessage() { Name = "/basestats", Message = "Returns the default set of stats."});
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/clear", Message = "Clears the chat window."});
 }
 
 private static void RollDiceCommand(string command) { 
@@ -119,6 +122,8 @@ private static void RollStats() {
             }
 
 }
+
+private static void ClearChat() { output = " : [Chat Cleared]"; ChatWindow.Messages.Clear(); }
 
 }
 
