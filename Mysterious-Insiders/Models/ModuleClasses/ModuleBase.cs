@@ -16,6 +16,7 @@ namespace Mysterious_Insiders.Models
     public class ModuleBase
     {
         protected ModuleData mdata;
+        private ModularCharacter character;
         private string imageUrl;
         private string text;
         private string id;
@@ -73,37 +74,44 @@ namespace Mysterious_Insiders.Models
         public string BgImageUrl { get => imageUrl; }
 
         /// <summary>
+        /// The character that this is a module for.
+        /// </summary>
+        public ModularCharacter Character { get => character; }
+
+        /// <summary>
         /// For internal use only, to allow subclasses to bypass the error check.
         /// </summary>
-        protected ModuleBase(ModuleData data, ModularSheet sheet, string text)
+        protected ModuleBase(ModuleData data, ModularCharacter character, string text)
         {
             if (data == null) throw new ArgumentNullException("Cannot create a ModuleBase object with null ModuleData.");
-            if (sheet == null) throw new ArgumentNullException("Cannot create a ModuleBase object with a null ModularSheet.");
+            if (character == null) throw new ArgumentNullException("Cannot create a ModuleBase object with a null ModularCharacter.");
             mdata = data;
+            this.character = character;
             id = data.Id;
-            imageUrl = sheet.ImageUrls[data.BgImageIndex];
+            imageUrl = character.Sheet.ImageUrls[data.BgImageIndex];
             this.text = text;
         }
 
         /// <summary>
-        /// Creates a new ModuleBase using a ModuleData and the ModularSheet that it's from.
+        /// Creates a new module using a ModuleData and the ModularCharacter that it's for.
         /// </summary>
-        /// <param name="data">The ModuleData to use to make this ModuleBase.</param>
-        /// <param name="sheet">The ModularSheet that the ModuleData is from.</param>
-        /// <exception cref="ArgumentNullException">data or sheet is null.</exception>
+        /// <param name="data">The ModuleData to use to make this module.</param>
+        /// <param name="character">The ModularCharacter that this module is for.</param>
+        /// <exception cref="ArgumentNullException">data or character is null.</exception>
         /// <exception cref="ArgumentException">data's type property isn't NONE.</exception>
-        public ModuleBase(ModuleData data, ModularSheet sheet) : this(data, sheet, data.SerializedLogic)
+        public ModuleBase(ModuleData data, ModularCharacter character) : this(data, character, data.SerializedLogic)
         {
             if (data.ModuleType != ModuleData.moduleType.NONE) throw new ArgumentException("Cannot create a base-class ModuleBase object with ModuleData that has a type other than NONE. Use a subclass.");
         }
 
         /// <summary>
-        /// Creates a new ModuleBase using an id and the ModularSheet to look it up in.
+        /// Creates a new module using an id and the ModularCharacter that it's for. Looks
+        /// up the corresponding ModuleData from the ModularCharacter's Sheet.
         /// </summary>
-        /// <param name="id">The id of the ModuleData to use to make this ModuleBase.</param>
-        /// <param name="sheet">The ModularSheet to look up the id in.</param>
-        /// <exception cref="ArgumentNullException">id doesn't map to ModuleData, or sheet is null.</exception>
+        /// <param name="id">The id of the ModuleData to use to make this module.</param>
+        /// <param name="character">The ModularCharacter to look up the id in.</param>
+        /// <exception cref="ArgumentNullException">id doesn't map to ModuleData, or character is null.</exception>
         /// <exception cref="ArgumentException">The ModuleData's type property isn't NONE.</exception>
-        public ModuleBase(string id, ModularSheet sheet) : this(sheet.Modules[id], sheet) {}
+        public ModuleBase(string id, ModularCharacter character) : this(character.Sheet.Modules[id], character) {}
     }
 }
