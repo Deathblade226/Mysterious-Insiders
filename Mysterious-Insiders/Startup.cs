@@ -22,6 +22,7 @@ public void ConfigureServices(IServiceCollection services) {
     services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
     services.AddSingleton<SheetService>();
     services.AddControllersWithViews();
+    services.AddTransient(typeof(IMessageDAL), typeof(ChatWindow));
     //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
 }
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
@@ -40,6 +41,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
     name: "diceRoll",
     template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
     defaults: new { controller = "Home", action = "DiceRoll" });
+
+    routes.MapRoute(
+    name: "messages",
+    template: "msg",
+    defaults: new {controller = "home", action = "ChatTest"});
 
     });
 }

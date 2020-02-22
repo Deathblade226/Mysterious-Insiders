@@ -13,10 +13,12 @@ namespace Mysterious_Insiders.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IMessageDAL LibraryDB;
 
-        public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IMessageDAL input) : base()
         {
             _logger = logger;
+            LibraryDB = input;
         }
 
         public IActionResult Index()
@@ -34,6 +36,24 @@ namespace Mysterious_Insiders.Controllers
         /// <returns></returns>
         public IActionResult DiceRoll(int total = 1, int sides = 20, int mod = 0, bool allRolls = true) { 
         return View(Dice.RollDice(total, sides, mod, allRolls));
+        }
+
+        public IActionResult ChatTest() {
+            ViewBag.Name = "User";
+            return View(LibraryDB.GetMessages());
+        }
+        [HttpPost]
+        public IActionResult ChatTest(string name, string msg) {
+
+            if (msg != null || msg != "") msg = ChatCommands.CheckForCommand(msg);
+
+            UserMessage message = new UserMessage() { Name = name, Message = msg };
+
+            LibraryDB.AddMessage(message);
+
+            if (name == "" || name == null) name = "User";
+            ViewBag.Name = name;
+            return View(LibraryDB.GetMessages());
         }
 
         public IActionResult Privacy()
