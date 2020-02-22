@@ -38,11 +38,6 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
     defaults: new { controller = "Home", action = "Index" });
 
     routes.MapRoute(
-    name: "diceRoll",
-    template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
-    defaults: new { controller = "Home", action = "DiceRoll" });
-
-    routes.MapRoute(
     name: "messages",
     template: "msg",
     defaults: new {controller = "home", action = "ChatTest"});
