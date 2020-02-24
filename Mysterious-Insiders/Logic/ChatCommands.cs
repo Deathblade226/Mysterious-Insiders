@@ -8,21 +8,25 @@ using System.Threading.Tasks;
 namespace Mysterious_Insiders.Logic {
 public class ChatCommands {
 
-private static List<Command> Commands = new List<Command>() {
-    new Command() {Format = "/r xdx", Method = 1},
-    new Command() {Format = "/r xdx+x", Method = 1},
-    new Command() {Format = "/r xdx-x", Method = 2},
-    new Command() {Format = "/r (xdx)+x", Method = 1},
-    new Command() {Format = "/r (xdx)-x", Method = 2},
-    new Command() {Format = "/roll xdx", Method = 1},
-    new Command() {Format = "/roll xdx+x", Method = 1},
-    new Command() {Format = "/roll xdx-x", Method = 2},
-    new Command() {Format = "/roll (xdx)+x", Method = 1},
-    new Command() {Format = "/roll (xdx)-x", Method = 2},
-    new Command() {Format = "/help", Method = 0},
-    new Command() {Format = "/rollstats", Method = 3},
-    new Command() {Format = "/basestats", Method = 4},
-    new Command() {Format = "/clear", Method = 5} 
+//To add a command, Create a new command and set its format to how you want the command to be entered. Numbers will be changed into one x. Ex, 123 = x.
+//The method is an int that is passed through a switch to do the logic for the command. This makes it so the command is modular and we dont need an item for each method.
+private static List<Command> Commands = new List<Command>() { 
+    new Command() {Format = "/help",            Method = 0},
+    new Command() {Format = "/?",               Method = 0},
+    new Command() {Format = "/r xdx",           Method = 1},
+    new Command() {Format = "/r xdx+x",         Method = 1},
+    new Command() {Format = "/r (xdx)+x",       Method = 1},
+    new Command() {Format = "/roll xdx",        Method = 1},
+    new Command() {Format = "/roll xdx+x",      Method = 1},
+    new Command() {Format = "/roll (xdx)+x",    Method = 1},
+    new Command() {Format = "/r xdx-x",         Method = 2},
+    new Command() {Format = "/r (xdx)-x",       Method = 2},
+    new Command() {Format = "/roll xdx-x",      Method = 2},
+    new Command() {Format = "/roll (xdx)-x",    Method = 2},
+    new Command() {Format = "/rollstats",       Method = 3},
+    new Command() {Format = "/basestats",       Method = 4},
+    new Command() {Format = "/clear",           Method = 5}, 
+    new Command() {Format = "/cake",            Method = 6}
 };
 
 private static string output = $" : ";
@@ -33,7 +37,7 @@ public static string CheckForCommand(string message) {
 return (checkCommands(message.ToLower()) ? $"{message}{output}" : message);}
 
 private static bool checkCommands(string message) { 
-    string altered = Regex.Replace(message, "[0-9]{1,4}", "x");
+    string altered = Regex.Replace(message, "[0-9]{1,6}", "x");
 
     int method = -1;
     foreach(Command command in Commands) { if (altered == command.Format) { method = command.Method; break; } }
@@ -45,6 +49,7 @@ private static bool checkCommands(string message) {
     case 3: RollStats(); break;
     case 4: BaseStats(); break;
     case 5: ClearChat(); break;
+    case 6: Cake(); break;
     }
 
 return (method != -1);}
@@ -124,6 +129,7 @@ private static void RollStats() {
 }
 
 private static void ClearChat() { output = " : [Chat Cleared]"; ChatWindow.Messages.Clear(); }
+private static void Cake() { output = " : It's a lie."; }
 
 }
 
