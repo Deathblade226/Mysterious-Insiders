@@ -94,14 +94,14 @@ namespace Mysterious_Insiders.Controllers
         //}
 
 
-        //[HttpGet("createdatabase")]
-        //public IActionResult createdatabase()
-        //{
-        //    //_dbc.Database.EnsureDeleted();
-        //    _dbc.Database.EnsureCreated();
+        [HttpGet("createdatabase")]
+        public IActionResult createdatabase()
+        {
+            //_dbc.Database.EnsureDeleted();
+            accountService.CreateDatabase();
 
-        //    return Ok(new { status = "db created" });
-        //}
+            return Ok(new { status = "db created" });
+        }
 
 
         //[HttpPost("createuseraccount")]
