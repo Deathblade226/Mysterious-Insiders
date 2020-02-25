@@ -11,37 +11,35 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Mysterious_Insiders.Models;
 using Mysterious_Insiders.Services;
+using Microsoft.EntityFrameworkCore;
 
-namespace Mysterious_Insiders {
-public class Startup {
-public Startup(IConfiguration configuration) { Configuration = configuration; }
-public IConfiguration Configuration { get; }
-public void ConfigureServices(IServiceCollection services) {
-    services.AddMvc(option => option.EnableEndpointRouting = false);
-    services.Configure<SheetDatabaseSettings>(Configuration.GetSection(nameof(SheetDatabaseSettings)));
-    services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
-    services.AddSingleton<SheetService>();
-    services.AddControllersWithViews();
-    //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
-}
-public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-    app.UseDeveloperExceptionPage();
-    app.UseStatusCodePages();
-    app.UseStaticFiles();
-    
-    app.UseMvc(routes => {
-    
-    routes.MapRoute( //Default Page
-    name: "default",
-    template: "",
-    defaults: new { controller = "Home", action = "Index" });
 
-    routes.MapRoute(
-    name: "diceRoll",
-    template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
-    defaults: new { controller = "Home", action = "DiceRoll" });
+namespace Mysterious_Insiders
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration) { Configuration = configuration; }
+        public IConfiguration Configuration { get; }
+        public void ConfigureServices(IServiceCollection services)
+        {
+			services.AddDbContext<UserAccountDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.Configure<SheetDatabaseSettings>(Configuration.GetSection(nameof(SheetDatabaseSettings)));
+            services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
+            services.AddSingleton<SheetService>();
+            services.AddTransient<UserAccountService>();
+            services.AddControllersWithViews();
+            services.AddTransient(typeof(IMessageDAL), typeof(ChatWindow)); //The chat data holder
+            //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
+        }
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages();
+            app.UseStaticFiles();
 
-    });
+            app.UseMvcWithDefaultRoute();
+
 }
 
 }

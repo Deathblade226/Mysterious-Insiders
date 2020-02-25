@@ -5,11 +5,19 @@
 
 <h1>Login to Mysterious Insiders!</h1>
 
-<form>
-    <input type="text" name="username"/>
-    <input type="text" name="password"/>
-    <div class="">
-        <button class="primBtn">Login</button>
-        <button class="primBtn">Sign Up</button>
-    </div>
-</form>
+@if (TempData["username"] == null || TempData["username"].ToString().Length == 0)
+{
+    <form asp-action="Login" method="post">
+        <input type="text" name="username" />
+        <input type="text" name="password" />
+        <div class="">
+            <button type="submit"class="primBtn">Login</button>
+            <button type="submit" class="primBtn">Sign Up</button>
+        </div>
+    </form>
+}
+else
+{
+    <p>Welcome, @TempData["username"]</p>
+}
+

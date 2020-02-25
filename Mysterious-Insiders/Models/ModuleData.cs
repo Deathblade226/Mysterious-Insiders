@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mysterious_Insiders.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -87,8 +88,9 @@ public class ModuleData
     /// <summary>
     /// Each sheet should have an indexed collection of images that are used for modules
     /// that the sheet contains. This is the index to use to look up this module's image.
+    /// If the module doesn't have an image, this should be -1.
     /// </summary>
-    public int BgImageIndex { get; set; }
+    public int BgImageIndex { get; set; } = -1;
 
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
@@ -155,6 +157,65 @@ public class ModuleData
         return SerializeLogicCHECK(list.ToArray());
     }
 
+    /// <summary>
+    /// Creates a TEXT ModuleData's logic string, which can have a maximum length and a number of lines.
+    /// It must have a maximum length set in order to set the number of lines.
+    /// </summary>
+    /// <param name="maximumLength">The maximum length, in terms of number of characters.</param>
+    /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
+    /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
+    /// <returns></returns>
+    public static string SerializeLogicTEXT(int maximumLength = int.MaxValue, int numberOfLines = 1)
+    {
+        if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
+        if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
+        return maximumLength + "," + numberOfLines;
+    }
+
+    /// <summary>
+    /// Creates a TEXT ModuleData's logic string, which can have a maximum length and a number of lines.
+    /// It must have a maximum length set in order to set the number of lines.
+    /// </summary>
+    /// <param name="maximumLength">The maximum length, in terms of number of characters.</param>
+    /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
+    /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
+    /// <returns>The logic string</returns>
+    public static string SerializeLogicTEXT(uint maximumLength = uint.MaxValue, uint numberOfLines = 1)
+    {
+        if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
+        if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
+        if (maximumLength > int.MaxValue) throw new ArgumentException("The maximum length in TEXT ModuleData logic cannot be greater than 2147483647.");
+        if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic cannot be greater than 2147483647.");
+        return maximumLength + "," + numberOfLines;
+    }
+
+    /// <summary>
+    /// Creates a NUMERIC ModuleData's logic string, which has a kind of number and can have a minimum
+    /// and a maximum.
+    /// </summary>
+    /// <param name="kind">The kind of number that the module will contain (INTEGER, PERCENT, or DECIMAL.)</param>
+    /// <param name="min">The number's minimum.</param>
+    /// <param name="max">The number's maximum.</param>
+    /// <returns>The logic string</returns>
+    public static string SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber kind, double min = double.MinValue, double max = double.MaxValue)
+    {
+        string logic;
+        switch (kind)
+        {
+            case ModuleNumeric.KindOfNumber.INTEGER:
+                logic = "I";
+                break;
+            case ModuleNumeric.KindOfNumber.PERCENT:
+                logic = "P";
+                break;
+            default:
+                logic = "D";
+                break;
+        }
+        if (min > double.MinValue) logic += "," + min;
+        if (max < double.MaxValue) logic += "," + max;
+        return logic;
+    }
 
 
     /*

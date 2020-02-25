@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Mysterious_Insiders.Logic;
 using Mysterious_Insiders.Models;
+using Mysterious_Insiders.Services;
 
 namespace Mysterious_Insiders.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private UserAccountService _service;
+        private readonly IMessageDAL LibraryDB;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, UserAccountService service, IMessageDAL input)
         {
             _logger = logger;
+            _service = service;
+            LibraryDB = input;
         }
 
         public IActionResult Index()
@@ -32,8 +37,37 @@ namespace Mysterious_Insiders.Controllers
         /// <param name="mod">Mod on rolls</param>
         /// <param name="allRolls">Is the mod added to all rolls</param>
         /// <returns></returns>
+        [HttpPost]
+        public IActionResult DiceRoll(int total, int sides, int mod, int allRolls) {
+        string roll = (allRolls == 1) ? $"/r ({total}d{sides})+{mod}" : $"/r {total}d{sides}+{mod}";
+        roll = ChatCommands.CheckForCommand(roll);
+        UserMessage message = new UserMessage() { Name = "Command", Message = roll };
+        LibraryDB.AddMessage(message);
+        return ChatTest();
         public IActionResult DiceRoll(int total = 1, int sides = 20, int mod = 0, bool allRolls = true) {
             return View(Dice.RollDice(total, sides, mod, allRolls));
+        }
+        [Route("/Chattest")]
+        public IActionResult ChatTest(string name = "") {
+            if (name == "" || name == null) name = "User";
+            ViewBag.Name = name;
+            return View(LibraryDB.GetMessages());
+        }
+        [HttpPost][Route("/Chattest")]
+        public IActionResult ChatTest(string name, string msg) {
+            if (name == "" || name == null) name = "User";
+            ViewBag.Name = name;
+
+        if (msg != null) { 
+                
+            msg = ChatCommands.CheckForCommand(msg);
+
+            UserMessage message = new UserMessage() { Name = name, Message = msg };
+
+            LibraryDB.AddMessage(message);
+
+            } 
+            return RedirectToAction(actionName:"ChatTest", routeValues:name);
         }
 
         public IActionResult Privacy()
@@ -50,6 +84,20 @@ namespace Mysterious_Insiders.Controllers
         public IActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            //UserAccount ua = new UserAccount(username, password);
+            UserAccount ua = new UserAccount();
+            ua.UserName = username;
+            ua.Password = password;
+            //var redirect = RedirectToAction("Create", "UserAccount", ua);
+            _service.Create(ua);
+            TempData["username"] = username;
+            return View();
+
         }
 
         public IActionResult SignUp()
