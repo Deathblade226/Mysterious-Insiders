@@ -49,7 +49,7 @@ namespace Mysterious_Insiders.Models
         /// in this list is relevant for the sheet's ModuleData objects, it can't be modified directly.
         /// Use the AddImageUrl and RemoveImageUrl methods instead.
         /// </summary>
-        public IReadOnlyCollection<string> ImageUrls { get => imageUrls; }
+        public IReadOnlyList<string> ImageUrls { get => imageUrls; }
 
         /// <summary>
         /// Creates a ModularSheet with an empty Dictionary of ModuleData and an empty List of ImageUrls.

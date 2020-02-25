@@ -156,6 +156,37 @@ public class ModuleData
         return SerializeLogicCHECK(list.ToArray());
     }
 
+    /// <summary>
+    /// Creates a TEXT ModuleData's logic string, which can have a maximum length and a number of lines.
+    /// It must have a maximum length set in order to set the number of lines.
+    /// </summary>
+    /// <param name="maximumLength">The maximum length, in terms of number of characters.</param>
+    /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
+    /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
+    /// <returns></returns>
+    public static string SerializeLogicTEXT(int maximumLength = int.MaxValue, int numberOfLines = 1)
+    {
+        if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
+        if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
+        return maximumLength + "," + numberOfLines;
+    }
+
+    /// <summary>
+    /// Creates a TEXT ModuleData's logic string, which can have a maximum length and a number of lines.
+    /// It must have a maximum length set in order to set the number of lines.
+    /// </summary>
+    /// <param name="maximumLength">The maximum length, in terms of number of characters.</param>
+    /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
+    /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
+    /// <returns></returns>
+    public static string SerializeLogicTEXT(uint maximumLength = uint.MaxValue, uint numberOfLines = 1)
+    {
+        if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
+        if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
+        if (maximumLength > int.MaxValue) throw new ArgumentException("The maximum length in TEXT ModuleData logic cannot be greater than 2147483647.");
+        if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic cannot be greater than 2147483647.");
+        return maximumLength + "," + numberOfLines;
+    }
 
 
     /*
