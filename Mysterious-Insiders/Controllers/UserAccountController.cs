@@ -40,12 +40,12 @@ namespace Mysterious_Insiders.Controllers
             return ua;
         }
 
-        [HttpPost]
-        public ActionResult<UserAccount> Create(UserAccount sheet)
+        //[HttpPost]
+        public ActionResult<UserAccount> Create(UserAccount account)
         {
-            accountService.Create(sheet);
+            accountService.Create(account);
 
-            return CreatedAtRoute("GetAccount", new { id = sheet.UserAccountID.ToString() }, sheet);
+            return CreatedAtRoute("GetAccount", new { id = account.UserAccountID.ToString() }, account);
         }
 
         [HttpPut("{id:length(24)}")]

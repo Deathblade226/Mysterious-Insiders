@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Mysterious_Insiders.Logic;
 using Mysterious_Insiders.Models;
+using Mysterious_Insiders.Services;
 
 namespace Mysterious_Insiders.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private UserAccountService _service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, UserAccountService service)
         {
             _logger = logger;
+            _service = service;
         }
 
         public IActionResult Index()
@@ -50,6 +53,20 @@ namespace Mysterious_Insiders.Controllers
         public IActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            //UserAccount ua = new UserAccount(username, password);
+            UserAccount ua = new UserAccount();
+            ua.UserName = username;
+            ua.Password = password;
+            //var redirect = RedirectToAction("Create", "UserAccount", ua);
+            _service.Create(ua);
+            TempData["username"] = username;
+            return View();
+
         }
 
         public IActionResult SignUp()

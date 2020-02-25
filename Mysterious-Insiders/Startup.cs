@@ -27,7 +27,7 @@ namespace Mysterious_Insiders
             services.Configure<SheetDatabaseSettings>(Configuration.GetSection(nameof(SheetDatabaseSettings)));
             services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
             services.AddSingleton<SheetService>();
-            services.AddSingleton<UserAccountService>();
+            services.AddTransient<UserAccountService>();
             services.AddControllersWithViews();
             //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
         }
@@ -37,21 +37,8 @@ namespace Mysterious_Insiders
             app.UseStatusCodePages();
             app.UseStaticFiles();
 
-    
-    app.UseMvc(routes => {
-    
-    routes.MapRoute( //Default Page
-    name: "default",
-    template: "",
-    defaults: new { controller = "Home", action = "Index" });
+            app.UseMvcWithDefaultRoute();
 
-
-    routes.MapRoute(
-    name: "diceRoll",
-    template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
-    defaults: new { controller = "Home", action = "DiceRoll" });
-
-    });
 }
 
 }
