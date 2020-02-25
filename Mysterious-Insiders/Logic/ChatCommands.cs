@@ -25,8 +25,8 @@ private static List<Command> Commands = new List<Command>() {
     new Command() {Format = "/roll (xdx)-x",    Method = 2},
     new Command() {Format = "/rollstats",       Method = 3},
     new Command() {Format = "/basestats",       Method = 4},
-    new Command() {Format = "/clear",           Method = 5}, 
-    new Command() {Format = "/cake",            Method = 6}
+    //new Command() {Format = "/clear",           Method = 5}, 
+    new Command() {Format = "cake!",            Method = 6}
 };
 
 private static string output = $" : ";
@@ -56,15 +56,15 @@ return (method != -1);}
 
 private static void HelpCommand() { 
     output = " - This command shows all other commands.";
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/r xdx", Message = "This rolls x number of dice with x number of sides."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll xdx", Message = "This rolls x number of dice with x number of sides."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/r xdx+x", Message = "This rolls x number of dice with x number of sides and adds x to the sum of all the rolls."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll xdx+x", Message = "This rolls x number of dice with x number of sides and adds x to the sum of all the rolls."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/r (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls."});
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/r xdx", Message = "This rolls x number of dice with x number of sides. (Max:999999)" });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll xdx", Message = "This rolls x number of dice with x number of sides. (Max:999999)"});
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/r xdx+x", Message = "This rolls x number of dice with x number of sides and adds x to the sum of all the rolls. (Max:999999)" });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll xdx+x", Message = "This rolls x number of dice with x number of sides and adds x to the sum of all the rolls. (Max:999999)" });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/r (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls. (Max:999999)" });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls. (Max:999999)" });
     ChatWindow.Messages.Add(new UserMessage() { Name = "/rollstats", Message = "Rolls 6 sets of 4d6 an gives you the sum of the 3 highes rolls from each set."});
     ChatWindow.Messages.Add(new UserMessage() { Name = "/basestats", Message = "Returns the default set of stats."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/clear", Message = "Clears the chat window."});
+    //ChatWindow.Messages.Add(new UserMessage() { Name = "/clear", Message = "Clears the chat window."});
 }
 
 private static void RollDiceCommand(string command) { 
@@ -129,7 +129,7 @@ private static void RollStats() {
 }
 
 private static void ClearChat() { output = " : [Chat Cleared]"; ChatWindow.Messages.Clear(); }
-private static void Cake() { output = " : It's a lie."; }
+private static void Cake() { output = " : It's a lie!"; }
 
 }
 
