@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mysterious_Insiders.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -178,7 +179,7 @@ public class ModuleData
     /// <param name="maximumLength">The maximum length, in terms of number of characters.</param>
     /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
     /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
-    /// <returns></returns>
+    /// <returns>The logic string</returns>
     public static string SerializeLogicTEXT(uint maximumLength = uint.MaxValue, uint numberOfLines = 1)
     {
         if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
@@ -186,6 +187,34 @@ public class ModuleData
         if (maximumLength > int.MaxValue) throw new ArgumentException("The maximum length in TEXT ModuleData logic cannot be greater than 2147483647.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic cannot be greater than 2147483647.");
         return maximumLength + "," + numberOfLines;
+    }
+
+    /// <summary>
+    /// Creates a NUMERIC ModuleData's logic string, which has a kind of number and can have a minimum
+    /// and a maximum.
+    /// </summary>
+    /// <param name="kind">The kind of number that the module will contain (INTEGER, PERCENT, or DECIMAL.)</param>
+    /// <param name="min">The number's minimum.</param>
+    /// <param name="max">The number's maximum.</param>
+    /// <returns>The logic string</returns>
+    public static string SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber kind, double min = double.MinValue, double max = double.MaxValue)
+    {
+        string logic;
+        switch (kind)
+        {
+            case ModuleNumeric.KindOfNumber.INTEGER:
+                logic = "I";
+                break;
+            case ModuleNumeric.KindOfNumber.PERCENT:
+                logic = "P";
+                break;
+            default:
+                logic = "D";
+                break;
+        }
+        if (min > double.MinValue) logic += "," + min;
+        if (max < double.MaxValue) logic += "," + max;
+        return logic;
     }
 
 

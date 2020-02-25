@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-sanitize.min.js"></script>
-    <link rel='stylesheet' href='/css/style.css'/>
-    <title>CharacterCreators</title>
-  </head>
-  <body ng-app='characterApp'>
-    <div>
-      Hewwo~! Welcome to the site!
-      <h1>I'm an h1 onii-chan!</h1>
-      <h4>I'm a h4 onii-chan!</h4>
-      <div class="centre" ng-view>
-      </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mysterious_Insiders</title>
+    <link rel="stylesheet" href="C:\Users\Tyler\Documents\Neumont\Winter2020\WebBasedProjects\Mysterious-Insiders\Mysterious-Insiders\wwwroot\css\style.css" />
+</head>
+<body>
+    <header>
+        <nav class="">
+            <div class="">
+                <a class="" asp-area="" asp-controller="Home" asp-action="Index">Mysterious_Insiders</a>
+                <!-- <button class="" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""></span>
+                </button> -->
+                <div class="nav">
+                    <ul class="">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="">
+            <!-- @RenderBody() -->
+        </main>
     </div>
-    <script src="/src/script.js"></script>
-  </body>
+
+    <footer class="footer">
+        <div class="">
+            &copy; 2020 - Mysterious_Insiders - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- @RenderSection("Scripts", required: false) -->
+</body>
 </html>
