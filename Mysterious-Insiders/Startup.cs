@@ -22,7 +22,7 @@ public void ConfigureServices(IServiceCollection services) {
     services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
     services.AddSingleton<SheetService>();
     services.AddControllersWithViews();
-    services.AddTransient(typeof(IMessageDAL), typeof(ChatWindow));
+    services.AddTransient(typeof(IMessageDAL), typeof(ChatWindow)); //The chat data holder
     //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
 }
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
