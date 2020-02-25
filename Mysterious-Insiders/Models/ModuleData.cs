@@ -134,8 +134,7 @@ public class ModuleData
             {
                 if (module.ModuleType != moduleType.CHECK) throw new ArgumentException("Only CHECK ModuleDatas can be serialized into CHECK ModuleData logic.");
             }
-            string logic = "";
-            logic += list[0].Id;
+            string logic = list[0].Id;
             for (int i = 1; i < list.Length; i++)
             {
                 logic += "," + list[i].Id;
@@ -217,6 +216,22 @@ public class ModuleData
         return logic;
     }
 
+    /// <summary>
+    /// Creates a MENU ModuleData's logic string from at least 2 menu option strings.
+    /// </summary>
+    /// <param name="options">The menu options.</param>
+    /// <returns>The logic string</returns>
+    /// <exception cref="ArgumentException">The number of options is less than 2.</exception>
+    public static string SerializeLogicMenu(params string[] options)
+    {
+        if (options.Length < 2) throw new ArgumentException("MENU ModuleData logic must contain at least 2 menu options.");
+        string logic = options[0];
+        for (int i = 1; i < options.Length; i++)
+        {
+            logic += "," + options[i];
+        }
+        return logic;
+    }
 
     /*
     /// <summary>

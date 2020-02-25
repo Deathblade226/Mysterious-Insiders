@@ -52,6 +52,7 @@ namespace Mysterious_Insiders.Models
         {
             if (data.ModuleType != ModuleData.moduleType.TEXT) throw new ArgumentException("Cannot create a ModuleCheck object with ModuleData that has a type other than TEXT.");
             string[] logic = data.SerializedLogic.Split(',');
+            if (logic.Length != 2) throw new ArgumentException("Cannot create a ModuleText object with an invalid logic string.");
             int.TryParse(logic[0], out maximumLength);
             int.TryParse(logic[1], out numberOfLines);
         }
