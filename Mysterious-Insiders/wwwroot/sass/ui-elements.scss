@@ -1,0 +1,95 @@
+@mixin transition($duration) {
+  -webkit-transition: $duration;
+  -moz-transition: $duration;
+  -ms-transition: $duration;
+  -o-transition: $duration;
+  transition: $duration;
+}
+
+@mixin left($amount) {
+  -webkit-left: $amount;
+  -moz-left: $amount;
+  -ms-left: $amount;
+  -o-left: $amount;
+  left: $amount;
+}
+
+@mixin right($amount) {
+  -webkit-right: $amount;
+  -moz-right: $amount;
+  -ms-right: $amount;
+  -o-right: $amount;
+  right: $amount;
+}
+
+%visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+.indented {
+  text-indent: 2em;
+}
+
+.primBtn {
+	background: $vanilla;
+	border: 1px solid $vanilla;
+}
+
+.primBtn:hover {
+  background: darken($vanilla, 10%);
+  border: 1px solid darken($vanilla, 10%);
+}
+
+.primBtn:active {
+	background: $vanilla;
+	border: 1px solid $vanilla;
+}
+
+.secBtn {
+  background: $subGrey;
+  border: 1px solid $subGrey;
+}
+
+.secBtn:hover {
+  background: darken($subGrey, 20%);
+  border: 1px solid darken($subGrey, 20%);
+}
+
+.secBtn:active {
+  background: $subGrey;
+  border: 1px solid $subGrey;
+}
+
+.terBtn {
+  background: $mainGrey;
+  border: 1px solid $mainGrey;
+}
+
+.terBtn:hover {
+  background: darken($mainGrey, 10%);
+  border: 1px solid darken($mainGrey, 10%);
+}
+
+.terBtn:active {
+  background: $mainGrey;
+  border: 1px solid $mainGrey;
+}
+
+.warningBorder {
+  border: 1px dashed $red;
+}
+
+.border {
+  border: 1px solid $vanilla;
+}
+
+.thickBorder {
+  border: 3px solid $vanilla;
+}

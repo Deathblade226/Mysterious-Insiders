@@ -13,6 +13,7 @@ using Mysterious_Insiders.Models;
 using Mysterious_Insiders.Services;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Mysterious_Insiders
 {
     public class Startup
@@ -36,22 +37,23 @@ namespace Mysterious_Insiders
             app.UseStatusCodePages();
             app.UseStaticFiles();
 
-            app.UseMvc(routes =>
-            {
+    
+    app.UseMvc(routes => {
+    
+    routes.MapRoute( //Default Page
+    name: "default",
+    template: "",
+    defaults: new { controller = "Home", action = "Index" });
 
-                routes.MapRoute( //Default Page
-                name: "default",
-                template: "",
-                defaults: new { controller = "Home", action = "Index" });
 
-                routes.MapRoute(
-                name: "diceRoll",
-                template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
-                defaults: new { controller = "Home", action = "DiceRoll" });
+    routes.MapRoute(
+    name: "diceRoll",
+    template: "{total:int?}/{sides:int?}/{mod:int?}/{allRolls:bool?}",
+    defaults: new { controller = "Home", action = "DiceRoll" });
 
-            });
-        }
+    });
+}
 
-    }
+}
 
 }
