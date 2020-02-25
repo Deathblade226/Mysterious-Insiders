@@ -37,7 +37,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
     template: "",
     defaults: new { controller = "Home", action = "Index" });
 
-    routes.MapRoute(
+    routes.MapRoute(//Chat testing
     name: "messages",
     template: "msg",
     defaults: new {controller = "home", action = "ChatTest"});
