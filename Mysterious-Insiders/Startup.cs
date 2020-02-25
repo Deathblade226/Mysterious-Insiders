@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Mysterious_Insiders.Models;
 using Mysterious_Insiders.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mysterious_Insiders
 {
@@ -20,10 +21,12 @@ namespace Mysterious_Insiders
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+			services.AddDbContext<UserAccountDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.Configure<SheetDatabaseSettings>(Configuration.GetSection(nameof(SheetDatabaseSettings)));
             services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
             services.AddSingleton<SheetService>();
+            services.AddSingleton<UserAccountService>();
             services.AddControllersWithViews();
             //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
         }
