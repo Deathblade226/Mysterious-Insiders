@@ -32,8 +32,8 @@ namespace Mysterious_Insiders.Controllers
         /// <param name="mod">Mod on rolls</param>
         /// <param name="allRolls">Is the mod added to all rolls</param>
         /// <returns></returns>
-        public IActionResult DiceRoll(int total = 1, int sides = 20, int mod = 0, bool allRolls = true) { 
-        return View(Dice.RollDice(total, sides, mod, allRolls));
+        public IActionResult DiceRoll(int total = 1, int sides = 20, int mod = 0, bool allRolls = true) {
+            return View(Dice.RollDice(total, sides, mod, allRolls));
         }
 
         public IActionResult Privacy()
@@ -53,6 +53,11 @@ namespace Mysterious_Insiders.Controllers
         }
 
         public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        public IActionResult CharacterCreator()
         {
             return View();
         }

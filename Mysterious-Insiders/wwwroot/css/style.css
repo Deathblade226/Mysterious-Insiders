@@ -143,6 +143,19 @@ table {
 .thickBorder {
   border: 3px solid #D0C8B0; }
 
+.selectWrapper {
+  border-radius: 5px;
+  display: inline-block;
+  overflow: hidden;
+  background: #cccccc;
+  border: 1px solid #cccccc; }
+
+/*.selectBox {
+    width: 140px;
+    height: 40px;
+    border: 0px;
+    outline: none;
+}*/
 .left {
   text-align: left; }
 
