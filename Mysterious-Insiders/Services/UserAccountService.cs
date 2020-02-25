@@ -21,9 +21,10 @@ namespace Mysterious_Insiders.Services
 
 		public UserAccount Create(UserAccount ua)
 		{
-			if(!_dbc.UserAccounts.Contains(ua))
+			if (!_dbc.UserAccounts.Contains(ua))
 			{
 				_dbc.UserAccounts.Add(ua);
+				_dbc.SaveChanges();
 			}
 			return ua;
 		}
@@ -44,6 +45,11 @@ namespace Mysterious_Insiders.Services
 		{
 			UserAccount toRemove = _dbc.UserAccounts.Find(id);
 			_dbc.UserAccounts.Remove(toRemove);
+		}
+
+		public void CreateDatabase()
+		{
+			_dbc.Database.EnsureCreated();
 		}
 
 	}
