@@ -34,6 +34,7 @@ namespace Mysterious_Insiders.Controllers
         /// <param name="mod">Mod on rolls</param>
         /// <param name="allRolls">Is the mod added to all rolls</param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult DiceRoll(int total, int sides, int mod, int allRolls) {
         string roll = (allRolls == 1) ? $"/r ({total}d{sides})+{mod}" : $"/r {total}d{sides}+{mod}";
         roll = ChatCommands.CheckForCommand(roll);
@@ -41,13 +42,13 @@ namespace Mysterious_Insiders.Controllers
         LibraryDB.AddMessage(message);
         return ChatTest();
         }
-
+        [Route("/Chattest")]
         public IActionResult ChatTest(string name = "") {
             if (name == "" || name == null) name = "User";
             ViewBag.Name = name;
             return View(LibraryDB.GetMessages());
         }
-        [HttpPost]
+        [HttpPost][Route("/Chattest")]
         public IActionResult ChatTest(string name, string msg) {
             if (name == "" || name == null) name = "User";
             ViewBag.Name = name;

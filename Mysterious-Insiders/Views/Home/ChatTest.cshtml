@@ -9,19 +9,11 @@
         display: block;
         background: #c4c4c4;
         border: 1px solid black;
-        width: 50%;
+        width: 20%;
         height: 800px;
         overflow: scroll;
     }
 
-    #rollPopup {
-        display: none;
-        background: #c4c4c4;
-        border: 1px solid black;
-        width: 50%;
-        height: 200px;
-        overflow: scroll;
-    }
 </style>
 
 <div id="window">
@@ -30,30 +22,12 @@
     {
         if (Model[i].Name == null || Model[i].Name == "") Model[i].Name = "User";
         <p>@DateTime.Now.ToShortTimeString() : @Model[i].ToString()</p>
-
     }
-
 
 </div>
 
-<form method="post" >
+<form method="post">
     <input type="text" name="msg" /> <br />
     <input type="text" value="@ViewBag.name" name="name" placeholder=@ViewBag.name />
     <input type="submit" value="Add Message" />
 </form>
-
-<button onclick="document.getElementById('rollPopup').style.display = 'block'">Roll Menu [WIP]</button>
-<button onclick="document.getElementById('rollPopup').style.display = 'none'">Hide Menu [WIP]</button>
-
-@*<div id="rollPopup">
-
-<form action="DiceRoll" method="put">
-<input type="number" min="1" max="9999" name="total" placeholder="Number of Dice"/> <br/>
-<input type="number" min="4" max="9999" name="sides" placeholder="Number of Sides"/> <br/>
-<input type="number" name="mod" value="0" placeholder="Mod on rolls"/> <br/>
-<input type="range" min="0" max="1" name="allRolls"/> <br/>
-<input type="submit" value="Roll" />
-</form>
-
-</div>*@
-

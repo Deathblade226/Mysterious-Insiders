@@ -30,19 +30,21 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
     app.UseStatusCodePages();
     app.UseStaticFiles();
     
-    app.UseMvc(routes => {
+    app.UseMvcWithDefaultRoute();
+
+    //app.UseMvc(routes => {
     
-    routes.MapRoute( //Default Page
-    name: "default",
-    template: "",
-    defaults: new { controller = "Home", action = "Index" });
+    //routes.MapRoute( //Default Page
+    //name: "default",
+    //template: "",
+    //defaults: new { controller = "Home", action = "Index" });
 
-    routes.MapRoute(//Chat testing
-    name: "messages",
-    template: "msg",
-    defaults: new {controller = "home", action = "ChatTest"});
+    //routes.MapRoute(//Chat testing
+    //name: "messages",
+    //template: "msg",
+    //defaults: new {controller = "home", action = "ChatTest"});
 
-    });
+    //});
 }
 
 }
