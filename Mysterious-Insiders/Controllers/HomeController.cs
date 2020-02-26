@@ -47,14 +47,16 @@ namespace Mysterious_Insiders.Controllers
         }
         [Route("/Chattest")]
         public IActionResult ChatTest() {
-            string name = TempData["username"].ToString();
+            string name = _service.Get().First().UserName;
+            if (TempData["username"] != null) name = TempData["username"].ToString();
             if (name == "" || name == null) name = "User";
             ViewBag.Name = name;
             return View(LibraryDB.GetMessages());
         }
         [HttpPost][Route("/Chattest")]
         public IActionResult ChatTest(string msg) {
-            string name = TempData["username"].ToString();
+            string name = _service.Get().First().UserName;
+            if (TempData["username"] != null) name = TempData["username"].ToString();
             if (name == "" || name == null) name = "User";
             ViewBag.Name = name;
 
@@ -94,7 +96,7 @@ namespace Mysterious_Insiders.Controllers
             ua.UserName = username;
             ua.Password = password;
             //var redirect = RedirectToAction("Create", "UserAccount", ua);
-            _service.Create(ua);
+            if (_service.Get().Where(u => u.UserName == username).Count() == 0) _service.Create(ua);
             TempData["username"] = username;
             return View();
 
