@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 /// <summary>
 /// The necessary data to make a module. Each ModularSheet will have a collection
@@ -51,12 +53,14 @@ public class ModuleData
     /// <summary>
     /// The type of module that will be created by this ModuleData.
     /// </summary>
+    [BsonElement] 
     public moduleType ModuleType { get; set; }
 
     /// <summary>
     /// The module's id, for easy lookup. This lookup is used by derivative and roll
     /// modules for their logic.
     /// </summary>
+    [BsonElement]
     public string Id { get; set; }
 
     /// <summary>
@@ -64,6 +68,7 @@ public class ModuleData
     /// will have "position: absolute;" in its CSS to ensure that it goes right where
     /// it is supposed to go within its parent.
     /// </summary>
+    [BsonElement] 
     public int X { get; set; }
 
     /// <summary>
@@ -71,18 +76,21 @@ public class ModuleData
     /// will have "position: absolute;" in its CSS to ensure that it goes right where
     /// it is supposed to go within its parent.
     /// </summary>
+    [BsonElement] 
     public int Y { get; set; }
 
     /// <summary>
     /// The width of this module. This should match the width of its background image,
     /// if it has one, and should make the text wrap if it needs to.
     /// </summary>
+    [BsonElement] 
     public int Width { get; set; }
 
     /// <summary>
     /// The height of this module. This should match the height of its background image,
     /// if it has one, and should make the text wrap if it needs to.
     /// </summary>
+    [BsonElement] 
     public int Height { get; set; }
 
     /// <summary>
@@ -90,17 +98,20 @@ public class ModuleData
     /// that the sheet contains. This is the index to use to look up this module's image.
     /// If the module doesn't have an image, this should be -1.
     /// </summary>
+    [BsonIgnoreIfDefault]
     public int BgImageIndex { get; set; } = -1;
 
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
     /// </summary>
-    public Color TextColor { get; set; }
+    [BsonIgnoreIfDefault]
+    public Color TextColor { get; set; } = Color.Black;
 
     /// <summary>
     /// A string representation of the logic used for how this module displays. Different
     /// types of modules use different logic. For a NONE module, this will just be its text.
     /// </summary>
+    [BsonElement] 
     public string SerializedLogic { get; set; }
 
     /// <summary>
@@ -164,7 +175,7 @@ public class ModuleData
     /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
     /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
     /// <returns></returns>
-    public static string SerializeLogicTEXT(int maximumLength = int.MaxValue, int numberOfLines = 1)
+    public static string SerializeLogicTEXT(int maximumLength, int numberOfLines = 1)
     {
         if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
@@ -179,13 +190,22 @@ public class ModuleData
     /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
     /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
     /// <returns>The logic string</returns>
-    public static string SerializeLogicTEXT(uint maximumLength = uint.MaxValue, uint numberOfLines = 1)
+    public static string SerializeLogicTEXT(uint maximumLength, uint numberOfLines = 1)
     {
         if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
         if (maximumLength > int.MaxValue) throw new ArgumentException("The maximum length in TEXT ModuleData logic cannot be greater than 2147483647.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic cannot be greater than 2147483647.");
         return maximumLength + "," + numberOfLines;
+    }
+
+    /// <summary>
+    /// Creates a TEXT ModuleData's logic string.
+    /// </summary>
+    /// <returns>The logic string</returns>
+    public static string SerializeLogicTEXT()
+    {
+        return int.MaxValue + ",1";
     }
 
     /// <summary>
@@ -222,7 +242,7 @@ public class ModuleData
     /// <param name="options">The menu options.</param>
     /// <returns>The logic string</returns>
     /// <exception cref="ArgumentException">The number of options is less than 2.</exception>
-    public static string SerializeLogicMenu(params string[] options)
+    public static string SerializeLogicMENU(params string[] options)
     {
         if (options.Length < 2) throw new ArgumentException("MENU ModuleData logic must contain at least 2 menu options.");
         string logic = options[0];

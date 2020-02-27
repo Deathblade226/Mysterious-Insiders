@@ -21,13 +21,13 @@ namespace Mysterious_Insiders.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<DummySheet>> Get()
+        public ActionResult<List<ModularSheet>> Get()
         {
             return sheetService.Get();
         }
 
         [HttpGet("{id:length(24)}", Name = "GetSheet")]
-        public ActionResult<DummySheet> Get(string id)
+        public ActionResult<ModularSheet> Get(string id)
         {
             var sheet = sheetService.Get(id);
 
@@ -40,7 +40,7 @@ namespace Mysterious_Insiders.Controllers
         }
 
         [HttpPost]
-        public ActionResult<DummySheet> Create(DummySheet sheet)
+        public ActionResult<ModularSheet> Create(ModularSheet sheet)
         {
             sheetService.Create(sheet);
 
@@ -48,7 +48,7 @@ namespace Mysterious_Insiders.Controllers
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, DummySheet sheetIn)
+        public IActionResult Update(string id, ModularSheet sheetIn)
         {
             var sheet = sheetService.Get(id);
 
