@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 /// <summary>
 /// The necessary data to make a module. Each ModularSheet will have a collection
@@ -51,12 +53,15 @@ public class ModuleData
     /// <summary>
     /// The type of module that will be created by this ModuleData.
     /// </summary>
+    [BsonElement] 
     public moduleType ModuleType { get; set; }
 
     /// <summary>
     /// The module's id, for easy lookup. This lookup is used by derivative and roll
     /// modules for their logic.
     /// </summary>
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)] 
     public string Id { get; set; }
 
     /// <summary>
@@ -64,6 +69,7 @@ public class ModuleData
     /// will have "position: absolute;" in its CSS to ensure that it goes right where
     /// it is supposed to go within its parent.
     /// </summary>
+    [BsonElement] 
     public int X { get; set; }
 
     /// <summary>
@@ -71,18 +77,21 @@ public class ModuleData
     /// will have "position: absolute;" in its CSS to ensure that it goes right where
     /// it is supposed to go within its parent.
     /// </summary>
+    [BsonElement] 
     public int Y { get; set; }
 
     /// <summary>
     /// The width of this module. This should match the width of its background image,
     /// if it has one, and should make the text wrap if it needs to.
     /// </summary>
+    [BsonElement] 
     public int Width { get; set; }
 
     /// <summary>
     /// The height of this module. This should match the height of its background image,
     /// if it has one, and should make the text wrap if it needs to.
     /// </summary>
+    [BsonElement] 
     public int Height { get; set; }
 
     /// <summary>
@@ -90,17 +99,20 @@ public class ModuleData
     /// that the sheet contains. This is the index to use to look up this module's image.
     /// If the module doesn't have an image, this should be -1.
     /// </summary>
+    [BsonElement] 
     public int BgImageIndex { get; set; } = -1;
 
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
     /// </summary>
+    [BsonElement] 
     public Color TextColor { get; set; }
 
     /// <summary>
     /// A string representation of the logic used for how this module displays. Different
     /// types of modules use different logic. For a NONE module, this will just be its text.
     /// </summary>
+    [BsonElement] 
     public string SerializedLogic { get; set; }
 
     /// <summary>
@@ -222,7 +234,7 @@ public class ModuleData
     /// <param name="options">The menu options.</param>
     /// <returns>The logic string</returns>
     /// <exception cref="ArgumentException">The number of options is less than 2.</exception>
-    public static string SerializeLogicMenu(params string[] options)
+    public static string SerializeLogicMENU(params string[] options)
     {
         if (options.Length < 2) throw new ArgumentException("MENU ModuleData logic must contain at least 2 menu options.");
         string logic = options[0];
