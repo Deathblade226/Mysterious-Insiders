@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -44,8 +45,6 @@ namespace Mysterious_Insiders.Controllers
         UserMessage message = new UserMessage() { Name = "Command", Message = roll };
         LibraryDB.AddMessage(message);
         return ChatTest();
-        public IActionResult DiceRoll(int total = 1, int sides = 20, int mod = 0, bool allRolls = true) {
-            return View(Dice.RollDice(total, sides, mod, allRolls));
         }
         [Route("/Chattest")]
         public IActionResult ChatTest(string name = "") {
@@ -118,9 +117,9 @@ namespace Mysterious_Insiders.Controllers
             embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
             embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
             embed += "</object>";
-            TempData["Embed"] = string.Format(embed, VirtualPathUtility.ToAbsolute("~/Files/Mudassar_Khan.pdf"));
+            TempData["Embed"] = string.Format(embed, VirtualPathUtility.ToAbsolute("~/public/DNDCharacterSheet.pdf"));
 
-            return RedirectToAction("Index");
+            return RedirectToAction("CharacterCreator");
         }
     }
 }
