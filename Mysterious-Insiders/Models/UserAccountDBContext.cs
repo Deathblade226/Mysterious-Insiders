@@ -12,7 +12,7 @@ namespace Mysterious_Insiders.Models
 		public DbSet<UserAccount> UserAccounts { get; set; }
 		public UserAccountDBContext(DbContextOptions<UserAccountDBContext> options) : base(options)
 		{
-
+			Database.EnsureCreated();
 		}
 	}
 

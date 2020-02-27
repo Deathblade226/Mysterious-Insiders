@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using Mysterious_Insiders.Logic;
 using Mysterious_Insiders.Models;
 using Mysterious_Insiders.Services;
+using Microsoft.AspNetCore.Http;
+
 
 namespace Mysterious_Insiders.Controllers
 {
@@ -97,7 +99,9 @@ namespace Mysterious_Insiders.Controllers
             ua.Password = password;
             //var redirect = RedirectToAction("Create", "UserAccount", ua);
             _service.Create(ua);
-            TempData["username"] = username;
+            //TempData["username"] = username;
+            HttpContext.Session.SetString("username", username);
+
             return View();
 
         }
