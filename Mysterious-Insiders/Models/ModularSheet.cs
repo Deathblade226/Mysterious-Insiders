@@ -21,11 +21,13 @@ namespace Mysterious_Insiders.Models
         [BsonElement]
         private List<string> imageUrls;
 
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string DatabaseId { get; set; }
+
         /// <summary>
         /// The Name of this ModularSheet. This can be used to distinguish it from other ModularSheets.
         /// </summary>
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)] 
         public string Name { get; set; }
 
         /// <summary>

@@ -60,8 +60,7 @@ public class ModuleData
     /// The module's id, for easy lookup. This lookup is used by derivative and roll
     /// modules for their logic.
     /// </summary>
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)] 
+    [BsonElement]
     public string Id { get; set; }
 
     /// <summary>
@@ -99,14 +98,14 @@ public class ModuleData
     /// that the sheet contains. This is the index to use to look up this module's image.
     /// If the module doesn't have an image, this should be -1.
     /// </summary>
-    [BsonElement] 
+    [BsonIgnoreIfDefault]
     public int BgImageIndex { get; set; } = -1;
 
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
     /// </summary>
-    [BsonElement] 
-    public Color TextColor { get; set; }
+    [BsonIgnoreIfDefault]
+    public Color TextColor { get; set; } = Color.Black;
 
     /// <summary>
     /// A string representation of the logic used for how this module displays. Different
@@ -176,7 +175,7 @@ public class ModuleData
     /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
     /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
     /// <returns></returns>
-    public static string SerializeLogicTEXT(int maximumLength = int.MaxValue, int numberOfLines = 1)
+    public static string SerializeLogicTEXT(int maximumLength, int numberOfLines = 1)
     {
         if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
@@ -191,13 +190,22 @@ public class ModuleData
     /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
     /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
     /// <returns>The logic string</returns>
-    public static string SerializeLogicTEXT(uint maximumLength = uint.MaxValue, uint numberOfLines = 1)
+    public static string SerializeLogicTEXT(uint maximumLength, uint numberOfLines = 1)
     {
         if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
         if (maximumLength > int.MaxValue) throw new ArgumentException("The maximum length in TEXT ModuleData logic cannot be greater than 2147483647.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic cannot be greater than 2147483647.");
         return maximumLength + "," + numberOfLines;
+    }
+
+    /// <summary>
+    /// Creates a TEXT ModuleData's logic string.
+    /// </summary>
+    /// <returns>The logic string</returns>
+    public static string SerializeLogicTEXT()
+    {
+        return int.MaxValue + ",1";
     }
 
     /// <summary>

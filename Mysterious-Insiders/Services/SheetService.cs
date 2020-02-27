@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Driver;
@@ -9,32 +10,64 @@ namespace Mysterious_Insiders.Services
 {
 	public class SheetService
 	{
-		private readonly IMongoCollection<DummySheet> sheets;
+		private readonly IMongoCollection<ModularSheet> sheets;
 
 		public SheetService(ISheetDatabaseSettings settings)
 		{
 			var client = new MongoClient(settings.ConnectionString);
 			var database = client.GetDatabase(settings.DatabaseName);
 
-			sheets = database.GetCollection<DummySheet>(settings.SheetCollectionName);
+			sheets = database.GetCollection<ModularSheet>(settings.SheetCollectionName);
+
+			ModularSheet sampleSheet = new ModularSheet();
+			ModuleData module = new ModuleData(ModuleData.moduleType.NONE);
+			module.X = 5;
+			module.Y = 5;
+			module.Width = 200;
+			module.Height = 50;
+			module.TextColor = Color.Blue;
+			module.SerializedLogic = "Character Name:";
+			sampleSheet.AddModuleData(module);
+			module = new ModuleData(ModuleData.moduleType.TEXT);
+			module.X = 210;
+			module.Y = 5;
+			module.Width = 500;
+			module.Height = 50;
+			module.SerializedLogic = ModuleData.SerializeLogicTEXT(50);
+			sampleSheet.AddModuleData(module);
+			module = new ModuleData(ModuleData.moduleType.NONE);
+			module.X = 5;
+			module.Y = 60;
+			module.Width = 150;
+			module.Height = 30;
+			module.SerializedLogic = "Backstory";
+			sampleSheet.AddModuleData(module);
+			module = new ModuleData(ModuleData.moduleType.TEXT);
+			module.X = 5;
+			module.Y = 100;
+			module.Width = 500;
+			module.Height = 500;
+			module.SerializedLogic = ModuleData.SerializeLogicTEXT(int.MaxValue, 10);
+			sampleSheet.AddModuleData(module);
+			Create(sampleSheet);
 		}
 
-		public List<DummySheet> Get() { return sheets.Find(sheet => true).ToList(); }
+		public List<ModularSheet> Get() { return sheets.Find(sheet => true).ToList(); }
 
-		public DummySheet Get(string id) { return sheets.Find<DummySheet>(sheet => sheet.DatabaseId == id).FirstOrDefault(); }
+		public ModularSheet Get(string id) { return sheets.Find<ModularSheet>(sheet => sheet.DatabaseId == id).FirstOrDefault(); }
 
-		public DummySheet Create(DummySheet sheet)
+		public ModularSheet Create(ModularSheet sheet)
 		{
 			sheets.InsertOne(sheet);
 			return sheet;
 		}
 
-		public void Update(string id, DummySheet sheet)
+		public void Update(string id, ModularSheet sheet)
 		{
 			sheets.ReplaceOne(s => s.DatabaseId == id, sheet);
 		}
 
-		public void Remove(DummySheet sheet)
+		public void Remove(ModularSheet sheet)
 		{
 			sheets.DeleteOne(s => s.DatabaseId == sheet.DatabaseId);
 		}
