@@ -5,6 +5,16 @@
 }
 
 <div class="">
+<style>
+    #window {
+        display: block;
+        background: #c4c4c4;
+        border: 1px solid black;
+        width: 400px;
+        height: 800px;
+        padding: 5px;
+        overflow: scroll;
+    }
 
     <div id="window">
 
@@ -22,3 +32,9 @@
         <input type="submit" value="Add Message" />
     </form>
 </div>
+
+<form method="post">
+    <input type="text" name="msg" /> <br />
+    @*<input type="text" value="@ViewBag.name" name="name" placeholder=@ViewBag.name />*@
+    <input type="submit" value="Add Message" />
+</form>

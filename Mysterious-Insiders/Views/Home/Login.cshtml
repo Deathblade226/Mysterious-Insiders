@@ -1,25 +1,24 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc;
 @{
     ViewData["Title"] = "Login";
 }
 
 <h1>Login to Mysterious Insiders!</h1>
 
-<div>
-    @if (TempData["username"] == null || TempData["username"].ToString().Length == 0)
-    {
-        <form asp-action="Login" method="post">
-            <input type="text" name="username" />
-            <input type="text" name="password" />
-            <div class="">
-                <button type="submit"class="primBtn">Login</button>
-                <button type="submit" class="primBtn">Sign Up</button>
-            </div>
-        </form>
-    }
-    else
-    {
-        <p>Welcome, @TempData["username"]</p>
-    }
-</div>
+@if (Context.Session.GetString("username") == null || Context.Session.GetString("username").Length == 0)
+{
+    <form asp-action="Login" method="post">
+        <input type="text" name="username" />
+        <input type="text" name="password" />
+        <div class="">
+            <button type="submit" class="primBtn">Login</button>
+            <button type="submit" class="primBtn">Sign Up</button>
+        </div>
+    </form>
+}
+else
+{
+    <p>Welcome, @Context.Session.GetString("username")</p>
+}
 

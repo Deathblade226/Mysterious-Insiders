@@ -32,7 +32,7 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The number that is stored in this module.
         /// </summary>
-        public double Number { get => number; 
+        public virtual double Number { get => number; 
             set
             {
                 if (kind == KindOfNumber.INTEGER)
@@ -106,7 +106,7 @@ namespace Mysterious_Insiders.Models
         /// <param name="data">The ModuleData to use to make this module.</param>
         /// <param name="character">The ModularCharacter that this module is for.</param>
         /// <exception cref="ArgumentNullException">data or character is null.</exception>
-        /// <exception cref="ArgumentException">data's type property isn't NUMERIC.</exception>
+        /// <exception cref="ArgumentException">data's type property isn't NUMERIC, or the logic string is invalid.</exception>
         public ModuleNumeric(ModuleData data, ModularCharacter character) : base(data, character, "")
         {
             if (data.ModuleType != ModuleData.moduleType.NUMERIC) throw new ArgumentException("Cannot create a ModuleNumeric object with ModuleData that has a type other than NUMERIC.");
@@ -127,6 +127,16 @@ namespace Mysterious_Insiders.Models
             }
             if (logic.Length > 1) double.TryParse(logic[1], out min);
             if (logic.Length > 2) double.TryParse(logic[2], out max);
+        }
+
+        /// <summary>
+        /// For internal use only, to let subclasses bypass the deserialization.
+        /// </summary>
+        protected ModuleNumeric(ModuleData data, ModularCharacter character, KindOfNumber kind, double min, double max) : base(data, character, "")
+        {
+            this.kind = kind;
+            this.min = min;
+            this.max = max;
         }
     }
 }

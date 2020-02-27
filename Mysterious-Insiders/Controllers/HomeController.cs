@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 using Mysterious_Insiders.Logic;
 using Mysterious_Insiders.Models;
 using Mysterious_Insiders.Services;
+using Microsoft.AspNetCore.Http;
+
 
 namespace Mysterious_Insiders.Controllers
 {
@@ -47,13 +49,17 @@ namespace Mysterious_Insiders.Controllers
         return ChatTest();
         }
         [Route("/Chattest")]
-        public IActionResult ChatTest(string name = "") {
+        public IActionResult ChatTest() {
+            string name = _service.Get().First().UserName;
+            if (TempData["username"] != null) name = TempData["username"].ToString();
             if (name == "" || name == null) name = "User";
             ViewBag.Name = name;
             return View(LibraryDB.GetMessages());
         }
         [HttpPost][Route("/Chattest")]
-        public IActionResult ChatTest(string name, string msg) {
+        public IActionResult ChatTest(string msg) {
+            string name = _service.Get().First().UserName;
+            if (TempData["username"] != null) name = TempData["username"].ToString();
             if (name == "" || name == null) name = "User";
             ViewBag.Name = name;
 
@@ -94,7 +100,9 @@ namespace Mysterious_Insiders.Controllers
             ua.Password = password;
             //var redirect = RedirectToAction("Create", "UserAccount", ua);
             _service.Create(ua);
-            TempData["username"] = username;
+            //TempData["username"] = username;
+            HttpContext.Session.SetString("username", username);
+
             return View();
 
         }
