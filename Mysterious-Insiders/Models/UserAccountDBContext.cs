@@ -12,6 +12,7 @@ namespace Mysterious_Insiders.Models
 		public DbSet<UserAccount> UserAccounts { get; set; }
 		public UserAccountDBContext(DbContextOptions<UserAccountDBContext> options) : base(options)
 		{
+			//Database.EnsureDeleted();
 			Database.EnsureCreated();
 		}
 	}
@@ -21,7 +22,13 @@ namespace Mysterious_Insiders.Models
 
 
 		public long UserAccountID { get; set; }
+
+		[Required(AllowEmptyStrings = false, ErrorMessage = "You must enter a username")]
+		[MinLength(5, ErrorMessage = "Username must be at least 5 characters")]
 		public string UserName { get; set; }
+
+		[Required(AllowEmptyStrings = false, ErrorMessage = "You must enter a password")]
+		[MinLength(6, ErrorMessage = "Your password must be at least 6 characters")]
 		public string Password { get; set; }
 
 		public static bool operator ==(UserAccount ua1, UserAccount ua2)
@@ -30,7 +37,17 @@ namespace Mysterious_Insiders.Models
 		}
 		public static bool operator !=(UserAccount ua1, UserAccount ua2)
 		{
-			return (ua1 != ua2);
+			return !(ua1 == ua2);
+		}
+
+		public override bool Equals(object obj)
+		{
+			return this == (UserAccount)obj;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
 		}
 
 
