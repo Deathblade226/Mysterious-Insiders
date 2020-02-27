@@ -30,6 +30,7 @@ namespace Mysterious_Insiders
             services.AddTransient<UserAccountService>();
             services.AddControllersWithViews();
             services.AddTransient(typeof(IMessageDAL), typeof(ChatWindow)); //The chat data holder
+            services.AddSession();
             //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -37,7 +38,7 @@ namespace Mysterious_Insiders
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
 
 }
