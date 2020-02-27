@@ -56,6 +56,15 @@ table {
   height: 200px;
   overflow: scroll; }
 
+#window {
+  display: block;
+  background: #c4c4c4;
+  border: 1px solid black;
+  width: 400px;
+  height: 800px;
+  padding: 5px;
+  overflow: scroll; }
+
 /* Provide sufficient contrast against white background */
 .topContainer {
   padding-top: 100px; }
@@ -152,15 +161,6 @@ table {
 
 option {
   border-radius: 5px; }
-
-#window {
-  display: block;
-  background: #c4c4c4;
-  border: 1px solid black;
-  width: 20%;
-  height: 800px;
-  padding: 5px;
-  overflow: scroll; }
 
 .left {
   text-align: left; }

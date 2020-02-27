@@ -16,7 +16,7 @@
     @* This is where the the field for the pdf will go, along with the logic for selection *@
     @using (Html.BeginForm("ViewPDF", "Home", FormMethod.Post))
     {
-        <a href="javascript:;" onclick="document.forms[0].submit();">View PDF</a>
+        @*<a href="javascript:;" onclick="document.forms[0].submit();">View PDF</a>*@
         <hr />
         @Html.Raw(TempData["Embed"])
     }
