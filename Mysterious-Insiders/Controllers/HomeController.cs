@@ -96,7 +96,7 @@ namespace Mysterious_Insiders.Controllers
             ua.UserName = username;
             ua.Password = password;
             //var redirect = RedirectToAction("Create", "UserAccount", ua);
-            if (_service.Get().Where(u => u.UserName == username).Count() == 0) _service.Create(ua);
+            _service.Create(ua);
             TempData["username"] = username;
             return View();
 
