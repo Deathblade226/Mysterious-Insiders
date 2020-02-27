@@ -17,13 +17,13 @@ namespace Mysterious_Insiders.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private UserAccountService _service;
-        private readonly IMessageDAL LibraryDB;
+        private readonly IMessageDAL MessageDB;
 
         public HomeController(ILogger<HomeController> logger, UserAccountService service, IMessageDAL input)
         {
             _logger = logger;
             _service = service;
-            LibraryDB = input;
+            MessageDB = input;
         }
 
         public IActionResult Index()
@@ -39,36 +39,34 @@ namespace Mysterious_Insiders.Controllers
         /// <param name="mod">Mod on rolls</param>
         /// <param name="allRolls">Is the mod added to all rolls</param>
         /// <returns></returns>
-        [HttpPost]
-        public IActionResult DiceRoll(int total, int sides, int mod, int allRolls) {
-        string roll = (allRolls == 1) ? $"/r ({total}d{sides})+{mod}" : $"/r {total}d{sides}+{mod}";
-        roll = ChatCommands.CheckForCommand(roll);
-        UserMessage message = new UserMessage() { Name = "Command", Message = roll };
-        LibraryDB.AddMessage(message);
-        return ChatTest();
-        }
+        //[HttpPost]
+        //public IActionResult DiceRoll(int total, int sides, int mod, int allRolls) {
+        //string roll = (allRolls == 1) ? $"/r ({total}d{sides})+{mod}" : $"/r {total}d{sides}+{mod}";
+        //roll = ChatCommands.CheckForCommand(roll, "Commands");
+        //UserMessage message = new UserMessage() { Name = "Command", Message = roll };
+        //MessageDB.AddMessage(message);
+        //return ChatTest();
+        //}
         [Route("/Chattest")]
         public IActionResult ChatTest() {
-            string name = _service.Get().First().UserName;
+            string name = HttpContext.Session.GetString("username");
             if (TempData["username"] != null) name = TempData["username"].ToString();
             if (name == "" || name == null) name = "User";
             ViewBag.Name = name;
-            return View(LibraryDB.GetMessages());
+            return View(MessageDB.GetMessages());
         }
         [HttpPost][Route("/Chattest")]
         public IActionResult ChatTest(string msg) {
-            string name = _service.Get().First().UserName;
+            string name = HttpContext.Session.GetString("username");
             if (TempData["username"] != null) name = TempData["username"].ToString();
             if (name == "" || name == null) name = "User";
             ViewBag.Name = name;
 
-        if (msg != null) { 
-                
-            msg = ChatCommands.CheckForCommand(msg);
+        if (msg != null && !ChatCommands.CheckForCommand(msg, name)) { 
 
             UserMessage message = new UserMessage() { Name = name, Message = msg };
 
-            LibraryDB.AddMessage(message);
+            MessageDB.AddMessage(message);
 
             } 
             return RedirectToAction(actionName:"ChatTest", routeValues:name);
@@ -101,7 +99,6 @@ namespace Mysterious_Insiders.Controllers
             _service.Create(ua);
             //TempData["username"] = username;
             HttpContext.Session.SetString("username", username);
-
             return View();
 
         }
