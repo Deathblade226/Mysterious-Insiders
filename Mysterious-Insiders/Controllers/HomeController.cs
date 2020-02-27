@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using Mysterious_Insiders.Logic;
 using Mysterious_Insiders.Models;
 using Mysterious_Insiders.Services;
+using Microsoft.AspNetCore.Http;
+
 
 namespace Mysterious_Insiders.Controllers
 {
@@ -85,22 +87,43 @@ namespace Mysterious_Insiders.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string username, string password)
+        public IActionResult Login(UserAccount ua)
         {
-            //UserAccount ua = new UserAccount(username, password);
-            UserAccount ua = new UserAccount();
-            ua.UserName = username;
-            ua.Password = password;
-            //var redirect = RedirectToAction("Create", "UserAccount", ua);
-            _service.Create(ua);
-            TempData["username"] = username;
+            if(ModelState.IsValid)
+            {
+                if (_service.Contains(ua))
+                {
+                    //check password
+                    if (_service.Get(ua.UserName).Password == ua.Password)
+                    {
+                        HttpContext.Session.SetString("username", ua.UserName);
+                    }
+                    ModelState.AddModelError("Password", "Incorrect password");
+                }
+                else
+                {
+                    ModelState.AddModelError("UserName", "Username does not exist");
+                }
+            }
+            
+
             return View();
 
         }
 
-        public IActionResult SignUp()
+        //public IActionResult SignUp(string username, string password)
+        public IActionResult SignUp(UserAccount ua)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                if (_service.Create(ua))
+                {
+                    HttpContext.Session.SetString("username", ua.UserName);
+                }
+                ModelState.AddModelError("UserName", "Username already taken!");
+            }
+            
+            return View("Login");
         }
     }
 }
