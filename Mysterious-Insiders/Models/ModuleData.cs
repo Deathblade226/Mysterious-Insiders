@@ -101,11 +101,26 @@ public class ModuleData
     [BsonIgnoreIfDefault]
     public int BgImageIndex { get; set; } = -1;
 
+    [BsonElement]
+    private int r;
+    [BsonElement]
+    private int g;
+    [BsonElement]
+    private int b;
+
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
     /// </summary>
-    [BsonIgnoreIfDefault]
-    public Color TextColor { get; set; } = Color.Black;
+    [BsonIgnore]
+    public Color TextColor { 
+        get { return Color.FromArgb(r, g, b); } 
+        set 
+        {
+            r = value.R;
+            g = value.G;
+            b = value.B;
+        } 
+    }
 
     /// <summary>
     /// A string representation of the logic used for how this module displays. Different
