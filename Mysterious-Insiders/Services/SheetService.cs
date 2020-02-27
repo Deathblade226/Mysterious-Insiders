@@ -21,6 +21,7 @@ namespace Mysterious_Insiders.Services
 
 			ModularSheet sampleSheet = new ModularSheet();
 			ModuleData module = new ModuleData(ModuleData.moduleType.NONE);
+			module.Id = "charnameLabel";
 			module.X = 5;
 			module.Y = 5;
 			module.Width = 200;
@@ -29,6 +30,7 @@ namespace Mysterious_Insiders.Services
 			module.SerializedLogic = "Character Name:";
 			sampleSheet.AddModuleData(module);
 			module = new ModuleData(ModuleData.moduleType.TEXT);
+			module.Id = "charname";
 			module.X = 210;
 			module.Y = 5;
 			module.Width = 500;
@@ -36,6 +38,7 @@ namespace Mysterious_Insiders.Services
 			module.SerializedLogic = ModuleData.SerializeLogicTEXT(50);
 			sampleSheet.AddModuleData(module);
 			module = new ModuleData(ModuleData.moduleType.NONE);
+			module.Id = "storyLabel";
 			module.X = 5;
 			module.Y = 60;
 			module.Width = 150;
@@ -43,6 +46,7 @@ namespace Mysterious_Insiders.Services
 			module.SerializedLogic = "Backstory";
 			sampleSheet.AddModuleData(module);
 			module = new ModuleData(ModuleData.moduleType.TEXT);
+			module.Id = "story";
 			module.X = 5;
 			module.Y = 100;
 			module.Width = 500;
