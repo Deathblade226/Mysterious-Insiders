@@ -41,6 +41,8 @@ namespace Mysterious_Insiders.Models
                     if (number < min) number++;
                 }
                 else number = Math.Clamp(value, min, max);
+                FieldChanged("Number");
+                FieldChanged("Text");
             }
         }
 
@@ -92,6 +94,8 @@ namespace Mysterious_Insiders.Models
                 {
                     Number = result;
                 }
+                FieldChanged("Number");
+                FieldChanged("Text");
             }
         }
 

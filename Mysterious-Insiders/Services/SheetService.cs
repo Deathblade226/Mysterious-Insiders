@@ -19,6 +19,7 @@ namespace Mysterious_Insiders.Services
 
 			sheets = database.GetCollection<ModularSheet>(settings.SheetCollectionName);
 
+			/* This was used to create the example ModularSheet in the database. If you need to re-create it, uncomment this and run.
 			ModularSheet sampleSheet = new ModularSheet();
 			ModuleData module = new ModuleData(ModuleData.moduleType.NONE);
 			module.Id = "charnameLabel";
@@ -54,6 +55,7 @@ namespace Mysterious_Insiders.Services
 			module.SerializedLogic = ModuleData.SerializeLogicTEXT(int.MaxValue, 10);
 			sampleSheet.AddModuleData(module);
 			Create(sampleSheet);
+			*/
 		}
 
 		public List<ModularSheet> Get() { return sheets.Find(sheet => true).ToList(); }
