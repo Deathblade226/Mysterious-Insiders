@@ -268,6 +268,39 @@ public class ModuleData
         return logic;
     }
 
+    /// <summary>
+    /// Creates a DERIVATIVE ModuleData's logic string from a kind of number, a starting value, and
+    /// a series of DerivativeOperations. The logic for a DerivativeOperation is in the ModuleDerivative
+    /// class, and they can be constructed in a wide variety of ways. Most of its constructors take a
+    /// subclass of ModuleBase and whatever operators or doubles are needed to build that subclass's logic.
+    /// </summary>
+    /// <param name="kind">The kind of number that the module will contain (INTEGER, PERCENT, or DECIMAL.)</param>
+    /// <param name="startingValue">The value that the module uses to start its calculations.</param>
+    /// <param name="operations">The derivative operations, used one by one to derive the module's number.</param>
+    /// <returns>The logic string.</returns>
+    public static string SerializeLogicDERIVATIVE(ModuleNumeric.KindOfNumber kind, double startingValue, params ModuleDerivative.DerivativeOperation[] operations)
+    {
+        string logic;
+        switch (kind)
+        {
+            case ModuleNumeric.KindOfNumber.INTEGER:
+                logic = "I";
+                break;
+            case ModuleNumeric.KindOfNumber.PERCENT:
+                logic = "P";
+                break;
+            default:
+                logic = "D";
+                break;
+        }
+        logic += startingValue;
+        for (int i = 0; i < operations.Length; i++)
+        {
+            logic += ";" + operations[i].ToString();
+        }
+        return logic;
+    }
+
     /*
     /// <summary>
     /// Fix this later, once there's an actual CheckModule class.
