@@ -22,8 +22,8 @@ namespace Mysterious_Insiders
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+			services.AddDbContext<UserAccountDBContext>(opt => opt.UseSqlServer("Server=tcp:mysteriousinsiders.database.windows.net,1433;Database=useraccounts;User ID=ajen5174;Password=BbA8uCm1HSrAfP1A;Encrypt=true;Connection Timeout=30;"));
             services.AddMvc(option => option.EnableEndpointRouting = false);
-            services.AddDbContext<UserAccountDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
             services.Configure<SheetDatabaseSettings>(Configuration.GetSection(nameof(SheetDatabaseSettings)));
             services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
             services.AddSingleton<SheetService>();
