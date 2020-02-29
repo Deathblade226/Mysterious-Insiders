@@ -9,7 +9,7 @@ connection.on("ReceiveMessage", function (user, message, fullList) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var encodedMsg = user + ": " + msg;
     var li = document.createElement("li");
-    li.textContent = message;
+    li.textContent = encodedMsg;
     document.getElementById("messagesList").appendChild(li);
 });
 
