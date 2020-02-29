@@ -23,21 +23,6 @@ public IActionResult Index() {
     ViewBag.Name = name;
     return View(MessageDB.GetMessages());
 }
-    
-[HttpPost][Route("chat/Chattest")]
-public IActionResult Index(string msg) {
-    string name = HttpContext.Session.GetString("username");
-    if (name == "" || name == null) name = "User";
-    ViewBag.Name = name;
-
-    if (msg != null && !ChatCommands.CheckForCommand(msg, name)) { 
-
-    UserMessage message = new UserMessage() { Name = name, Message = msg };
-
-    MessageDB.AddMessage(message);
-
-    } 
-return RedirectToAction(actionName:"ChatTest", routeValues:name); }
 
 }
 
