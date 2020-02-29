@@ -41,6 +41,8 @@ namespace Mysterious_Insiders.Models
                     if (number < min) number++;
                 }
                 else number = Math.Clamp(value, min, max);
+                FieldChanged("Number");
+                FieldChanged("Text");
             }
         }
 
@@ -92,6 +94,8 @@ namespace Mysterious_Insiders.Models
                 {
                     Number = result;
                 }
+                FieldChanged("Number");
+                FieldChanged("Text");
             }
         }
 
@@ -111,20 +115,7 @@ namespace Mysterious_Insiders.Models
         {
             if (data.ModuleType != ModuleData.moduleType.NUMERIC) throw new ArgumentException("Cannot create a ModuleNumeric object with ModuleData that has a type other than NUMERIC.");
             string[] logic = data.SerializedLogic.Split(',');
-            switch (logic[0][0])
-            {
-                case 'I':
-                    kind = KindOfNumber.INTEGER;
-                    break;
-                case 'P':
-                    kind = KindOfNumber.PERCENT;
-                    break;
-                case 'D':
-                    kind = KindOfNumber.DECIMAL;
-                    break;
-                default:
-                    throw new ArgumentException("Cannot create a ModuleNumeric object with an invalid logic string.");
-            }
+            kind = KindByChar(logic[0][0]);
             if (logic.Length > 1) double.TryParse(logic[1], out min);
             if (logic.Length > 2) double.TryParse(logic[2], out max);
         }
@@ -137,6 +128,21 @@ namespace Mysterious_Insiders.Models
             this.kind = kind;
             this.min = min;
             this.max = max;
+        }
+
+        protected static KindOfNumber KindByChar(char c)
+        {
+            switch (c)
+            {
+                case 'I':
+                    return KindOfNumber.INTEGER;
+                case 'P':
+                    return KindOfNumber.PERCENT;
+                case 'D':
+                    return KindOfNumber.DECIMAL;
+                default:
+                    throw new ArgumentException("Cannot create a ModuleNumeric object with an invalid logic string.");
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Mysterious_Insiders.Models
                     base.Text = value.Substring(0, MaximumLength);
                 }
                 else base.Text = value;
+                FieldChanged();
             }
         }
 

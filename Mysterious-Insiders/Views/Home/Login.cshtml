@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http;
 @using Microsoft.AspNetCore.Mvc;
+@model UserAccount
 @{
     ViewData["Title"] = "Login";
 }
@@ -8,14 +9,21 @@
 
 @if (Context.Session.GetString("username") == null || Context.Session.GetString("username").Length == 0)
 {
-    <form asp-action="Login" method="post">
-        <input type="text" name="username" />
-        <input type="text" name="password" />
-        <div class="">
-            <button type="submit" class="primBtn">Login</button>
-            <button type="submit" class="primBtn">Sign Up</button>
-        </div>
-    </form>
+<form method="post">
+    <p>
+        <input asp-for="UserName" type="text" name="username" />
+        <span asp-validation-for="UserName"></span>
+    </p>
+    <p>
+        <input asp-for="Password" type="password" name="password" />
+        <span asp-validation-for="Password"></span>
+    </p>
+    
+    <div class="">
+        <button asp-action="Login" type="submit" class="primBtn">Login</button>
+        <button asp-action="SignUp" type="submit" class="primBtn">Sign Up</button>
+    </div>
+</form>
 }
 else
 {

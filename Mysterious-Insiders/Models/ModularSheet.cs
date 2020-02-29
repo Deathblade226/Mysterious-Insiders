@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Mysterious_Insiders.Models
 {
@@ -14,8 +16,14 @@ namespace Mysterious_Insiders.Models
     /// </summary>
     public class ModularSheet
     {
+        [BsonElement]
         private List<ModuleData> modules;
+        [BsonElement]
         private List<string> imageUrls;
+
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string DatabaseId { get; set; }
 
         /// <summary>
         /// The Name of this ModularSheet. This can be used to distinguish it from other ModularSheets.
@@ -26,6 +34,7 @@ namespace Mysterious_Insiders.Models
         /// The Date that this ModularSheet was created. It should set itself by default, but it can be
         /// modified directly if need be.
         /// </summary>
+        [BsonElement] 
         public DateTime Date { get; set; }
 
         /// <summary>
@@ -33,6 +42,7 @@ namespace Mysterious_Insiders.Models
         /// must be stored by its Id, it can't be modified directly. Use the AddModuleData and
         /// RemoveModuleData methods instead.
         /// </summary>
+        [BsonIgnore]
         public IReadOnlyDictionary<string, ModuleData> Modules { 
             get {
                 Dictionary<string, ModuleData> mods = new Dictionary<string, ModuleData>();
@@ -49,6 +59,7 @@ namespace Mysterious_Insiders.Models
         /// in this list is relevant for the sheet's ModuleData objects, it can't be modified directly.
         /// Use the AddImageUrl and RemoveImageUrl methods instead.
         /// </summary>
+        [BsonIgnore]
         public IReadOnlyList<string> ImageUrls { get => imageUrls; }
 
         /// <summary>
