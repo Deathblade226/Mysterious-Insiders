@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 using Mysterious_Insiders.Models;
 using Mysterious_Insiders.Services;
 using Microsoft.EntityFrameworkCore;
-
+using Mysterious_Insiders.Hubs;
 
 namespace Mysterious_Insiders
 {
@@ -31,6 +31,7 @@ namespace Mysterious_Insiders
             services.AddControllersWithViews();
             services.AddTransient(typeof(IMessageDAL), typeof(ChatWindow)); //The chat data holder
             services.AddSession();
+            services.AddSignalR();
             //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,7 +41,11 @@ namespace Mysterious_Insiders
             app.UseStaticFiles();
             app.UseSession();
             app.UseMvcWithDefaultRoute();
-
+           
+            app.UseEndpoints(endpoints => {
+            
+            endpoints.MapHub<ChatHub>("/chatHub");
+            });
 }
 
 }
