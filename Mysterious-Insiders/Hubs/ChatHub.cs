@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Mysterious_Insiders.Hubs {
 public class ChatHub : Hub {
 
-public async Task SendMessage(string user, string message) {
-    await Clients.All.SendAsync("ReceiveMessage", user, message);
+public async Task SendMessage(string name, string message) {
+    await Clients.All.SendAsync("ReceiveMessage", name, message);
 }
 
 }

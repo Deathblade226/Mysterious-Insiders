@@ -22,8 +22,8 @@ namespace Mysterious_Insiders
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-			services.AddDbContext<UserAccountDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
             services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddDbContext<UserAccountDBContext>(opt => opt.UseSqlServer(Configuration["ConnectionStrings:cdb_conn"]));
             services.Configure<SheetDatabaseSettings>(Configuration.GetSection(nameof(SheetDatabaseSettings)));
             services.AddSingleton<ISheetDatabaseSettings>(s => s.GetRequiredService<IOptions<SheetDatabaseSettings>>().Value);
             services.AddSingleton<SheetService>();
@@ -31,7 +31,9 @@ namespace Mysterious_Insiders
             services.AddControllersWithViews();
             services.AddTransient(typeof(IMessageDAL), typeof(ChatWindow)); //The chat data holder
             services.AddSession();
+            services.AddMvc();
             services.AddSignalR();
+            
             //services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,8 +42,19 @@ namespace Mysterious_Insiders
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
-            app.UseMvcWithDefaultRoute();
-           
+
+            app.UseRouting();
+
+            app.UseMvc(routes =>
+            {
+
+                routes.MapRoute( //Default Page
+                name: "default",
+                template: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index" });
+
+            });
+
             app.UseEndpoints(endpoints => {
             
             endpoints.MapHub<ChatHub>("/chatHub");
