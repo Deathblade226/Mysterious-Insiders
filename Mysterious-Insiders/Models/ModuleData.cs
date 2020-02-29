@@ -5,13 +5,15 @@ using System.Drawing;
 using System.Linq;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// The necessary data to make a module. Each ModularSheet will have a collection
 /// of these. When a ModularCharacter is created, it will use its ModularSheet's
 /// collection to know what modules to put where, so that they can be filled in.
 /// </summary>
-public class ModuleData
+public class ModuleData : INotifyPropertyChanged
 {
     /// <summary>
     /// Represents what type of module this is. Here's a summary:
@@ -50,6 +52,11 @@ public class ModuleData
         ROLL
     }
 
+    private int x, y, width, height, bgdex = -1;
+    private string logic;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
     /// <summary>
     /// The type of module that will be created by this ModuleData.
     /// </summary>
@@ -69,7 +76,13 @@ public class ModuleData
     /// it is supposed to go within its parent.
     /// </summary>
     [BsonElement] 
-    public int X { get; set; }
+    public int X { get => x;
+        set
+        {
+            x = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// The Y coordinate of where this module goes on the ModularSheet. Every module
@@ -77,21 +90,45 @@ public class ModuleData
     /// it is supposed to go within its parent.
     /// </summary>
     [BsonElement] 
-    public int Y { get; set; }
+    public int Y
+    {
+        get => y;
+        set
+        {
+            y = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// The width of this module. This should match the width of its background image,
     /// if it has one, and should make the text wrap if it needs to.
     /// </summary>
     [BsonElement] 
-    public int Width { get; set; }
+    public int Width
+    {
+        get => width;
+        set
+        {
+            width = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// The height of this module. This should match the height of its background image,
     /// if it has one, and should make the text wrap if it needs to.
     /// </summary>
     [BsonElement] 
-    public int Height { get; set; }
+    public int Height
+    {
+        get => height;
+        set
+        {
+            height = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// Each sheet should have an indexed collection of images that are used for modules
@@ -99,7 +136,15 @@ public class ModuleData
     /// If the module doesn't have an image, this should be -1.
     /// </summary>
     [BsonIgnoreIfDefault]
-    public int BgImageIndex { get; set; } = -1;
+    public int BgImageIndex
+    {
+        get => bgdex;
+        set
+        {
+            bgdex = value;
+            FieldChanged();
+        }
+    }
 
     [BsonElement]
     private int r;
@@ -119,6 +164,7 @@ public class ModuleData
             r = value.R;
             g = value.G;
             b = value.B;
+            FieldChanged();
         } 
     }
 
@@ -127,7 +173,15 @@ public class ModuleData
     /// types of modules use different logic. For a NONE module, this will just be its text.
     /// </summary>
     [BsonElement] 
-    public string SerializedLogic { get; set; }
+    public string SerializedLogic
+    {
+        get => logic;
+        set
+        {
+            logic = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// Empty ModuleData. Use serialization to fill in its properties.
@@ -141,6 +195,11 @@ public class ModuleData
     public ModuleData(moduleType ModuleType)
     {
         this.ModuleType = ModuleType;
+    }
+
+    protected void FieldChanged([CallerMemberName] string field = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(field));
     }
 
     /// <summary>
