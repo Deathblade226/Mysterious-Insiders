@@ -19,7 +19,7 @@ namespace Mysterious_Insiders.Models
 		public string Password { get; set; }
 
 		//[RegularExpression("^([A-Za-z0-9_\\-\\.]+)@([A-Za-z0-9_\\-\\.]+)\\.([A-Za-z]{2-5}$")] maybe works
-		public string Email { get; set; }
+		//public string Email { get; set; }
 
 
 
