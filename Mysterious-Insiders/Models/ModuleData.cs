@@ -360,6 +360,29 @@ public class ModuleData : INotifyPropertyChanged
         return logic;
     }
 
+    /// <summary>
+    /// Creates a ROLL ModuleData's logic string from three NUMERIC ModuleData objects whose kinds
+    /// are INTEGER. The first one will be the source of the number of dice, the second will be the
+    /// source of the sides each die will have, and the third will be the source of the bonus. The
+    /// bonus can also be flagged to apply to each die, instead of to the total.
+    /// </summary>
+    /// <param name="diceCountSource">The source of the number of dice.</param>
+    /// <param name="diceSidesSource">The source of the number of sides each die has.</param>
+    /// <param name="bonusSource">The source of the bonus.</param>
+    /// <param name="bonusPerDie">True if the bonus should apply to each die.</param>
+    /// <returns>The logic string.</returns>
+    /// <exception cref="ArgumentNullException">Any of the sources are null.</exception>
+    /// <exception cref="ArgumentException">Any of the sources aren't NUMERIC or don't have the INTEGER kind.</exception>
+    public static string SerializeLogicROLL(ModuleData diceCountSource, ModuleData diceSidesSource, ModuleData bonusSource, bool bonusPerDie = false)
+    {
+        if (diceCountSource == null || diceSidesSource == null || bonusSource == null) throw new ArgumentNullException("Cannot serialize ROLL ModuleData logic with null sources.");
+        if (diceCountSource.ModuleType != moduleType.NUMERIC || diceSidesSource.ModuleType != moduleType.NUMERIC || bonusSource.ModuleType != moduleType.NUMERIC)
+            throw new ArgumentException("Cannot serialize ROLL ModuleData logic with non-NUMERIC sources.");
+        if (diceCountSource.SerializedLogic[0] != 'I' || diceSidesSource.SerializedLogic[0] != 'I' || bonusSource.SerializedLogic[0] != 'I')
+            throw new ArgumentException("Cannot serialize ROLL ModuleData logic with NUMERIC sources whose kinds aren't INTEGER.");
+        return diceCountSource.Id + "," + diceSidesSource.Id + "," + bonusSource.Id + "," + (bonusPerDie ? "per" : "flat");
+    }
+
     /*
     /// <summary>
     /// Fix this later, once there's an actual CheckModule class.
