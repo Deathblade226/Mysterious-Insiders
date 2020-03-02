@@ -11,40 +11,37 @@
         background: #c4c4c4;
         border: 1px solid black;
         width: 400px;
-        height: 800px;
+        height: 700px;
         padding: 5px;
         overflow: scroll;
     }
 </style>
 
-<div class="container">
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-4"><input type="hidden" id="userInput" value="@ViewBag.Name"/></div>
-    </div>
-    <div class="row">
-        <div class="col-2">Message</div>
-        <div class="col-4"><input type="text" id="messageInput" /></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="sendButton" value="Send Message" />
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <ul class="col-6">
+<div>
+<div id="window">
+    <ul>
 
         @if (Model.Count() > 0) { foreach(UserMessage message in Model) { <li>@message.Name: @message.Message</li> } }
         <li id="messagesList">Welcome to Chat</li>
 
     </ul>
 </div>
+
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-4"><input type="hidden" id="userInput" value="@ViewBag.Name"/></div>
+    </div>
+    <div class="row">
+        <div class="col-4"><input type="text" id="messageInput" onfocus="this.value=''"/></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">
+            <input type="button" id="sendButton" value="Send Message"/>
+        </div>
+    </div>
+
+</div>
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
