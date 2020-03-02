@@ -10,10 +10,19 @@ namespace Mysterious_Insiders.Hubs {
 public class ChatHub : Hub {
 
 public async Task SendMessage(string name, string message) {
-
+    int msgCountB = ChatWindow.Messages.Count();
     if (message != null && !ChatCommands.CheckForCommand(message, name)) { ChatWindow.Messages.Add(new UserMessage() { Name = name, Message = message }); }
-   
+    
+    int msgDiff = ChatWindow.Messages.Count() - msgCountB;
+    
+    if (msgCountB == 0 && message != "/?" && message != "/help") { 
     await Clients.All.SendAsync("ReceiveMessage", ChatWindow.Messages.Last().Name, ChatWindow.Messages.Last().Message, ChatWindow.MessageString());
+    } else { 
+    for (int i = 0; i < msgDiff; i++) { 
+    await Clients.All.SendAsync("ReceiveMessage", ChatWindow.Messages.ElementAt((msgCountB) + i).Name, ChatWindow.Messages.ElementAt((msgCountB) + i).Message, ChatWindow.MessageString());
+    }
+    }
+
 }
 
 }
