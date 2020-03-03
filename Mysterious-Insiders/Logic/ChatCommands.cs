@@ -10,7 +10,7 @@ public class ChatCommands {
 
 //To add a command, Create a new command and set its format to how you want the command to be entered. Numbers will be changed into one x. Ex, 123 = x.
 //The method is an int that is passed through a switch to do the logic for the command. This makes it so the command is modular and we dont need an item for each method.
-private static List<Command> Commands = new List<Command>() { 
+private static readonly List<Command> Commands = new List<Command>() { 
     new Command() {Format = "/help",            Method = 0},
     new Command() {Format = "/?",               Method = 0},
     new Command() {Format = "/r xdx",           Method = 1},
@@ -34,9 +34,9 @@ private static string username = "User";
 
 public static bool CheckForCommand(string message, string name) { //Change this to a bool. Make it so if the person passes in a command return false then have this print out the message.
     username = name;
-return checkCommands(message.ToLower()); }
+return CheckCommands(message.ToLower()); }
 
-private static bool checkCommands(string message) { 
+private static bool CheckCommands(string message) { 
     string altered = Regex.Replace(message, "[0-9]{1,6}", "x");
     if (message.Contains("/wr ") && altered.Length > 4 && altered.Length < 11) altered = "/wr";
     
@@ -75,8 +75,7 @@ private static void RollDiceCommand(string command) {
 
     foreach(string number in numbers) {
     if (number != "") { 
-    int num = 0;
-    int.TryParse(number, out num);
+    int.TryParse(number, out int num);
     ints.Add(num);
     }
     }
@@ -99,8 +98,7 @@ private static void RollDiceCommandNegMod(string command) {
 
     foreach(string number in numbers) {
     if (number != "") { 
-    int num = 0;
-    int.TryParse(number, out num);
+    int.TryParse(number, out int num);
     ints.Add(num);
     }
     }

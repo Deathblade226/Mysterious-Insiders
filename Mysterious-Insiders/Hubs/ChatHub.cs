@@ -24,6 +24,9 @@ public async Task SendMessage(string name, string message) {
     }
 
 }
+//public static async Task StaticSendMessage(string name, string message) {
+
+//}
 
 }
 
