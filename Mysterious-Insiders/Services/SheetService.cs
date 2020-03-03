@@ -83,5 +83,20 @@ namespace Mysterious_Insiders.Services
 			sheets.DeleteOne(sheet => sheet.DatabaseId == id);
 		}
 
+		public List<ModularSheet> FilterByUser(string username)
+		{
+			List<ModularSheet> allSheets = Get();
+			allSheets = allSheets.Where(s => s.UserOwner == username).ToList();
+
+			return allSheets;
+		}
+
+		public List<ModularSheet> FilterBySheetName(string searchString)
+		{
+			List<ModularSheet> allSheets = Get().Where(s => s.Name.Contains(searchString)).ToList();
+
+			return allSheets;
+		}
+
 	}
 }
