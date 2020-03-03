@@ -3,13 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 /// <summary>
 /// The necessary data to make a module. Each ModularSheet will have a collection
 /// of these. When a ModularCharacter is created, it will use its ModularSheet's
 /// collection to know what modules to put where, so that they can be filled in.
 /// </summary>
-public class ModuleData
+public class ModuleData : INotifyPropertyChanged
 {
     /// <summary>
     /// Represents what type of module this is. Here's a summary:
@@ -48,15 +52,22 @@ public class ModuleData
         ROLL
     }
 
+    private int x, y, width, height, bgdex = -1;
+    private string logic;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
     /// <summary>
     /// The type of module that will be created by this ModuleData.
     /// </summary>
+    [BsonElement] 
     public moduleType ModuleType { get; set; }
 
     /// <summary>
     /// The module's id, for easy lookup. This lookup is used by derivative and roll
     /// modules for their logic.
     /// </summary>
+    [BsonElement]
     public string Id { get; set; }
 
     /// <summary>
@@ -64,44 +75,113 @@ public class ModuleData
     /// will have "position: absolute;" in its CSS to ensure that it goes right where
     /// it is supposed to go within its parent.
     /// </summary>
-    public int X { get; set; }
+    [BsonElement] 
+    public int X { get => x;
+        set
+        {
+            x = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// The Y coordinate of where this module goes on the ModularSheet. Every module
     /// will have "position: absolute;" in its CSS to ensure that it goes right where
     /// it is supposed to go within its parent.
     /// </summary>
-    public int Y { get; set; }
+    [BsonElement] 
+    public int Y
+    {
+        get => y;
+        set
+        {
+            y = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// The width of this module. This should match the width of its background image,
     /// if it has one, and should make the text wrap if it needs to.
     /// </summary>
-    public int Width { get; set; }
+    [BsonElement] 
+    public int Width
+    {
+        get => width;
+        set
+        {
+            width = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// The height of this module. This should match the height of its background image,
     /// if it has one, and should make the text wrap if it needs to.
     /// </summary>
-    public int Height { get; set; }
+    [BsonElement] 
+    public int Height
+    {
+        get => height;
+        set
+        {
+            height = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// Each sheet should have an indexed collection of images that are used for modules
     /// that the sheet contains. This is the index to use to look up this module's image.
     /// If the module doesn't have an image, this should be -1.
     /// </summary>
-    public int BgImageIndex { get; set; } = -1;
+    [BsonIgnoreIfDefault]
+    public int BgImageIndex
+    {
+        get => bgdex;
+        set
+        {
+            bgdex = value;
+            FieldChanged();
+        }
+    }
+
+    [BsonElement]
+    private int r;
+    [BsonElement]
+    private int g;
+    [BsonElement]
+    private int b;
 
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
     /// </summary>
-    public Color TextColor { get; set; }
+    [BsonIgnore]
+    public Color TextColor { 
+        get { return Color.FromArgb(r, g, b); } 
+        set 
+        {
+            r = value.R;
+            g = value.G;
+            b = value.B;
+            FieldChanged();
+        } 
+    }
 
     /// <summary>
     /// A string representation of the logic used for how this module displays. Different
     /// types of modules use different logic. For a NONE module, this will just be its text.
     /// </summary>
-    public string SerializedLogic { get; set; }
+    [BsonElement] 
+    public string SerializedLogic
+    {
+        get => logic;
+        set
+        {
+            logic = value;
+            FieldChanged();
+        }
+    }
 
     /// <summary>
     /// Empty ModuleData. Use serialization to fill in its properties.
@@ -115,6 +195,11 @@ public class ModuleData
     public ModuleData(moduleType ModuleType)
     {
         this.ModuleType = ModuleType;
+    }
+
+    protected void FieldChanged([CallerMemberName] string field = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(field));
     }
 
     /// <summary>
@@ -164,7 +249,7 @@ public class ModuleData
     /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
     /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
     /// <returns></returns>
-    public static string SerializeLogicTEXT(int maximumLength = int.MaxValue, int numberOfLines = 1)
+    public static string SerializeLogicTEXT(int maximumLength, int numberOfLines = 1)
     {
         if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
@@ -179,13 +264,22 @@ public class ModuleData
     /// <param name="numberOfLines">The number of lines the text can wrap across.</param>
     /// <exception cref="ArgumentException">The maximum length or number of lines is less than 1.</exception>
     /// <returns>The logic string</returns>
-    public static string SerializeLogicTEXT(uint maximumLength = uint.MaxValue, uint numberOfLines = 1)
+    public static string SerializeLogicTEXT(uint maximumLength, uint numberOfLines = 1)
     {
         if (maximumLength < 1) throw new ArgumentException("The maximum length in TEXT ModuleData logic must be a positive integer.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic must be a positive integer.");
         if (maximumLength > int.MaxValue) throw new ArgumentException("The maximum length in TEXT ModuleData logic cannot be greater than 2147483647.");
         if (numberOfLines < 1) throw new ArgumentException("The number of lines in TEXT ModuleData logic cannot be greater than 2147483647.");
         return maximumLength + "," + numberOfLines;
+    }
+
+    /// <summary>
+    /// Creates a TEXT ModuleData's logic string.
+    /// </summary>
+    /// <returns>The logic string</returns>
+    public static string SerializeLogicTEXT()
+    {
+        return int.MaxValue + ",1";
     }
 
     /// <summary>
@@ -222,7 +316,7 @@ public class ModuleData
     /// <param name="options">The menu options.</param>
     /// <returns>The logic string</returns>
     /// <exception cref="ArgumentException">The number of options is less than 2.</exception>
-    public static string SerializeLogicMenu(params string[] options)
+    public static string SerializeLogicMENU(params string[] options)
     {
         if (options.Length < 2) throw new ArgumentException("MENU ModuleData logic must contain at least 2 menu options.");
         string logic = options[0];
@@ -231,6 +325,62 @@ public class ModuleData
             logic += "," + options[i];
         }
         return logic;
+    }
+
+    /// <summary>
+    /// Creates a DERIVATIVE ModuleData's logic string from a kind of number, a starting value, and
+    /// a series of DerivativeOperations. The logic for a DerivativeOperation is in the ModuleDerivative
+    /// class, and they can be constructed in a wide variety of ways. Most of its constructors take a
+    /// subclass of ModuleBase and whatever operators or doubles are needed to build that subclass's logic.
+    /// </summary>
+    /// <param name="kind">The kind of number that the module will contain (INTEGER, PERCENT, or DECIMAL.)</param>
+    /// <param name="startingValue">The value that the module uses to start its calculations.</param>
+    /// <param name="operations">The derivative operations, used one by one to derive the module's number.</param>
+    /// <returns>The logic string.</returns>
+    public static string SerializeLogicDERIVATIVE(ModuleNumeric.KindOfNumber kind, double startingValue, params ModuleDerivative.DerivativeOperation[] operations)
+    {
+        string logic;
+        switch (kind)
+        {
+            case ModuleNumeric.KindOfNumber.INTEGER:
+                logic = "I";
+                break;
+            case ModuleNumeric.KindOfNumber.PERCENT:
+                logic = "P";
+                break;
+            default:
+                logic = "D";
+                break;
+        }
+        logic += startingValue;
+        for (int i = 0; i < operations.Length; i++)
+        {
+            logic += ";" + operations[i].ToString();
+        }
+        return logic;
+    }
+
+    /// <summary>
+    /// Creates a ROLL ModuleData's logic string from three NUMERIC ModuleData objects whose kinds
+    /// are INTEGER. The first one will be the source of the number of dice, the second will be the
+    /// source of the sides each die will have, and the third will be the source of the bonus. The
+    /// bonus can also be flagged to apply to each die, instead of to the total.
+    /// </summary>
+    /// <param name="diceCountSource">The source of the number of dice.</param>
+    /// <param name="diceSidesSource">The source of the number of sides each die has.</param>
+    /// <param name="bonusSource">The source of the bonus.</param>
+    /// <param name="bonusPerDie">True if the bonus should apply to each die.</param>
+    /// <returns>The logic string.</returns>
+    /// <exception cref="ArgumentNullException">Any of the sources are null.</exception>
+    /// <exception cref="ArgumentException">Any of the sources aren't NUMERIC or don't have the INTEGER kind.</exception>
+    public static string SerializeLogicROLL(ModuleData diceCountSource, ModuleData diceSidesSource, ModuleData bonusSource, bool bonusPerDie = false)
+    {
+        if (diceCountSource == null || diceSidesSource == null || bonusSource == null) throw new ArgumentNullException("Cannot serialize ROLL ModuleData logic with null sources.");
+        if (diceCountSource.ModuleType != moduleType.NUMERIC || diceSidesSource.ModuleType != moduleType.NUMERIC || bonusSource.ModuleType != moduleType.NUMERIC)
+            throw new ArgumentException("Cannot serialize ROLL ModuleData logic with non-NUMERIC sources.");
+        if (diceCountSource.SerializedLogic[0] != 'I' || diceSidesSource.SerializedLogic[0] != 'I' || bonusSource.SerializedLogic[0] != 'I')
+            throw new ArgumentException("Cannot serialize ROLL ModuleData logic with NUMERIC sources whose kinds aren't INTEGER.");
+        return diceCountSource.Id + "," + diceSidesSource.Id + "," + bonusSource.Id + "," + (bonusPerDie ? "per" : "flat");
     }
 
     /*

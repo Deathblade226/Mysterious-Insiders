@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Mysterious_Insiders.Models
@@ -13,12 +15,15 @@ namespace Mysterious_Insiders.Models
     /// still be objects of this class. Most of a module's properties will be
     /// directly determined by its ModuleData.
     /// </summary>
-    public class ModuleBase
+    public class ModuleBase : INotifyPropertyChanged
     {
         protected ModuleData mdata;
         private ModularCharacter character;
         private string imageUrl;
+        private string text;
         private string id;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// The type of module.
@@ -60,7 +65,14 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The text to display in this module.
         /// </summary>
-        public virtual string Text { get; set; }
+        public virtual string Text {
+            get => text;
+            set
+            {
+                text = value;
+                FieldChanged();
+            }
+        }
 
         /// <summary>
         /// The color to display this module's text and numbers, if it has either of those.
@@ -111,6 +123,11 @@ namespace Mysterious_Insiders.Models
         /// <param name="character">The ModularCharacter to look up the id in.</param>
         /// <exception cref="ArgumentNullException">id doesn't map to ModuleData, or character is null.</exception>
         /// <exception cref="ArgumentException">The ModuleData's type property isn't NONE.</exception>
-        public ModuleBase(string id, ModularCharacter character) : this(character.Sheet.Modules[id], character) {}
+        public ModuleBase(string id, ModularCharacter character) : this(character.Sheet.Modules[id], character) { }
+
+        protected void FieldChanged([CallerMemberName] string field = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(field));
+        }
     }
 }

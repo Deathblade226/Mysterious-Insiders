@@ -34,6 +34,7 @@ namespace Mysterious_Insiders.Models
                         }
                     }
                 }
+                FieldChanged();
             }
         }
 

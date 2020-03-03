@@ -43,6 +43,9 @@ namespace Mysterious_Insiders.Models
                         return;
                     }
                 }
+                FieldChanged("Number");
+                FieldChanged("Text");
+                FieldChanged("MenuIndex");
             } 
         }
 
@@ -50,12 +53,28 @@ namespace Mysterious_Insiders.Models
         /// The number that is stored in this module. Since this is a menu, the number is the index of which menu option
         /// is currently selected.
         /// </summary>
-        public override double Number { get => menuIndex; set => menuIndex = Math.Clamp((int)value, 1, menuOptions.Length); }
+        public override double Number { get => menuIndex; 
+            set 
+            {
+                menuIndex = Math.Clamp((int)value, 1, menuOptions.Length);
+                FieldChanged("Number");
+                FieldChanged("Text");
+                FieldChanged("MenuIndex");
+            }  
+}
 
         /// <summary>
         /// The index of the menu option that the user has selected. Basically the same thing as Number, except as an int.
         /// </summary>
-        public int MenuIndex { get => menuIndex; set => menuIndex = Math.Clamp((int)value, 1, menuOptions.Length); }
+        public int MenuIndex { get => menuIndex; 
+            set 
+            {
+                menuIndex = Math.Clamp((int)value, 1, menuOptions.Length);
+                FieldChanged("Number");
+                FieldChanged("Text");
+                FieldChanged("MenuIndex");
+            }  
+        }
 
         /// <summary>
         /// Creates a new module using a ModuleData and the ModularCharacter that it's for.
