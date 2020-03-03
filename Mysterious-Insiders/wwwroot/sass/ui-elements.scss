@@ -38,8 +38,11 @@
 }
 
 .primBtn {
-	background: $vanilla;
-	border: 1px solid $vanilla;
+    background: $vanilla;
+    border: 1px solid $vanilla;
+    border-radius: 5px;
+    /*margin: 10px;*/
+    padding: 5px;
 }
 
 .primBtn:hover {
@@ -48,13 +51,17 @@
 }
 
 .primBtn:active {
-	background: $vanilla;
-	border: 1px solid $vanilla;
+    background: $vanilla;
+    border: 1px solid $vanilla;
+    box-shadow: 5px 5px #ddd;
 }
 
 .secBtn {
-  background: $subGrey;
-  border: 1px solid $subGrey;
+    background: $subGrey;
+    border: 1px solid $subGrey;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
 }
 
 .secBtn:hover {
@@ -63,13 +70,17 @@
 }
 
 .secBtn:active {
-  background: $subGrey;
-  border: 1px solid $subGrey;
+    background: $subGrey;
+    border: 1px solid $subGrey;
+    box-shadow: 5px 5px #ddd;
 }
 
 .terBtn {
-  background: $mainGrey;
-  border: 1px solid $mainGrey;
+    background: $mainGrey;
+    border: 1px solid $mainGrey;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
 }
 
 .terBtn:hover {
@@ -78,8 +89,9 @@
 }
 
 .terBtn:active {
-  background: $mainGrey;
-  border: 1px solid $mainGrey;
+    background: $mainGrey;
+    border: 1px solid $mainGrey;
+    box-shadow: 5px 5px #ddd;
 }
 
 .warningBorder {

@@ -109,7 +109,10 @@ table {
 
 .primBtn {
   background: #D0C8B0;
-  border: 1px solid #D0C8B0; }
+  border: 1px solid #D0C8B0;
+  border-radius: 5px;
+  /*margin: 10px;*/
+  padding: 5px; }
 
 .primBtn:hover {
   background: #bdb290;
@@ -117,11 +120,15 @@ table {
 
 .primBtn:active {
   background: #D0C8B0;
-  border: 1px solid #D0C8B0; }
+  border: 1px solid #D0C8B0;
+  box-shadow: 5px 5px #ddd; }
 
 .secBtn {
   background: #565E85;
-  border: 1px solid #565E85; }
+  border: 1px solid #565E85;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px; }
 
 .secBtn:hover {
   background: #2e3247;
@@ -129,11 +136,15 @@ table {
 
 .secBtn:active {
   background: #565E85;
-  border: 1px solid #565E85; }
+  border: 1px solid #565E85;
+  box-shadow: 5px 5px #ddd; }
 
 .terBtn {
   background: #454545;
-  border: 1px solid #454545; }
+  border: 1px solid #454545;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px; }
 
 .terBtn:hover {
   background: #2c2c2c;
@@ -141,7 +152,8 @@ table {
 
 .terBtn:active {
   background: #454545;
-  border: 1px solid #454545; }
+  border: 1px solid #454545;
+  box-shadow: 5px 5px #ddd; }
 
 .warningBorder {
   border: 1px dashed #DD353D; }
@@ -265,6 +277,10 @@ h5 {
 h6 {
   font-size: 18px; }
 
+a {
+  text-decoration: none;
+  color: inherit; }
+
 p {
   margin: 10px 0px; }
 
@@ -320,6 +336,17 @@ form input[type=text] {
   -o-transition: border-bottom 0.5s;
   transition: border-bottom 0.5s; }
 form input[type=text]:focus {
+  outline: none;
+  border-bottom: 2px #565E85 solid; }
+form input[type=password] {
+  border: none;
+  border-bottom: 1px #D0C8B0 solid;
+  -webkit-transition: border-bottom 0.5s;
+  -moz-transition: border-bottom 0.5s;
+  -ms-transition: border-bottom 0.5s;
+  -o-transition: border-bottom 0.5s;
+  transition: border-bottom 0.5s; }
+form input[type=password]:focus {
   outline: none;
   border-bottom: 2px #565E85 solid; }
 
