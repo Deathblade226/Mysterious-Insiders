@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using  Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,11 +16,16 @@
                 <a class="navItem" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/public/MysteriousInsidersCC.png" class="navIcon" /></a>
                 <a class="navItem" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <a class="navItem" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                @if (Context.Session.IsAvailable)
+                {
+                    if (Context.Session.GetString("username") != null)
+                    {<a class="navItem" asp-area="" asp-controller="Chat" asp-action="Index">Chat</a>}
+                }
             </div>
         </nav>
         @* <main role="main" class="">
-            @RenderBody()
-        </main> *@
+                @RenderBody()
+            </main> *@
         <div class='topContainer'>
             @RenderBody()
         </div>
