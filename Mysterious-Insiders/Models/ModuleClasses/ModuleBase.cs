@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -28,12 +29,14 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The type of module.
         /// </summary>
+        [BsonElement] 
         public ModuleData.moduleType ModuleType { get => mdata.ModuleType; }
 
         /// <summary>
         /// The module's id, for easy lookup. This lookup is used by derivative and roll
         /// modules for their logic, and it should be serialized.
         /// </summary>
+        [BsonElement] 
         public string Id { get => id; }
 
         /// <summary>
@@ -41,6 +44,7 @@ namespace Mysterious_Insiders.Models
         /// will have "position: absolute;" in its CSS to ensure that it goes right where
         /// it is supposed to go within its parent.
         /// </summary>
+        [BsonIgnore]
         public int X { get => mdata.X; }
 
         /// <summary>
@@ -48,23 +52,27 @@ namespace Mysterious_Insiders.Models
         /// will have "position: absolute;" in its CSS to ensure that it goes right where
         /// it is supposed to go within its parent.
         /// </summary>
+        [BsonIgnore] 
         public int Y { get => mdata.Y; }
 
         /// <summary>
         /// The width of this module. This should match the width of its background image,
         /// if it has one, and should make the text wrap if it needs to.
         /// </summary>
+        [BsonIgnore] 
         public int Width { get => mdata.Width; }
 
         /// <summary>
         /// The height of this module. This should match the height of its background image,
         /// if it has one, and should make the text wrap if it needs to.
         /// </summary>
+        [BsonIgnore] 
         public int Height { get => mdata.Height; }
 
         /// <summary>
         /// The text to display in this module.
         /// </summary>
+        [BsonElement]
         public virtual string Text {
             get => text;
             set
@@ -77,16 +85,19 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The color to display this module's text and numbers, if it has either of those.
         /// </summary>
+        [BsonIgnore] 
         public Color TextColor { get => mdata.TextColor; }
 
         /// <summary>
         /// The url of this module's background image.
         /// </summary>
+        [BsonElement] 
         public string BgImageUrl { get => imageUrl; }
 
         /// <summary>
         /// The character that this is a module for.
         /// </summary>
+        [BsonIgnore] 
         public ModularCharacter Character { get => character; }
 
         /// <summary>

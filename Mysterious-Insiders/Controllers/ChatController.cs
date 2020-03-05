@@ -16,7 +16,7 @@ public ChatController(IMessageDAL input) : base() {
     MessageDB = input;
 }
 
-[Route("chat/Chattest")] 
+//[Route("chat/Chattest")] 
 public IActionResult Index() {
     string name = HttpContext.Session.GetString("username");
     if (name == "" || name == null) name = "User";

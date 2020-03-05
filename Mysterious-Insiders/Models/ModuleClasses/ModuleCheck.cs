@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Mysterious_Insiders.Models
         /// Whether this module is checked or not. If this module is a radio button, setting this
         /// to true will set the other radio button's it's grouped with to false.
         /// </summary>
+        [BsonElement]
         public bool IsChecked { get => isChecked; 
             set
             {
@@ -41,6 +43,7 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// Whether any other ModuleCheck objects should uncheck themselves when this one is checked.
         /// </summary>
+        [BsonIgnore] 
         public bool IsRadioButton { get => exclusives.Count > 0; }
 
         /// <summary>
