@@ -1,0 +1,18 @@
+﻿@model ModuleData
+<head>
+	<style>
+		ModuleData{
+			position: absolute;
+			left: @Model.X;
+			top: @Model.Y;
+			width: @Model.Width;
+			height: @Model.Height;
+		}
+	</style>
+</head>
+
+<div class="ModuleData">
+	@Model.Id;
+	This is a Module
+
+</div>
