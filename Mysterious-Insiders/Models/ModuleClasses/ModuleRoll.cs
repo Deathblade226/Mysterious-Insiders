@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -19,11 +20,19 @@ namespace Mysterious_Insiders.Models.ModuleClasses
     public class ModuleRoll : ModuleBase
     {
         private ModuleNumeric diceCountSource, diceSidesSource, bonusSource;
+        [BsonElement]
         private bool bonusPerDie;
+        [BsonElement]
+        private string diceCountSourceId;
+        [BsonElement]
+        private string diceSidesSourceId;
+        [BsonElement]
+        private string bonusSourceId;
 
         /// <summary>
         /// The text to display in this module. Represents the roll that will occur.
         /// </summary>
+        [BsonElement]
         public override string Text { 
             get 
             {
@@ -49,9 +58,12 @@ namespace Mysterious_Insiders.Models.ModuleClasses
             if (data.ModuleType != ModuleData.moduleType.ROLL) throw new ArgumentException("Cannot create a ModuleRoll object with ModuleData that has a type other than ROLL.");
             string[] logic = data.SerializedLogic.Split(',');
             if (logic.Length != 4) throw new ArgumentException("Cannot create a ModuleRoll object with invalid logic.");
-            diceCountSource = character.GetModules<ModuleNumeric>().Where(m => m.Key == logic[0]).First().Value;
-            diceSidesSource = character.GetModules<ModuleNumeric>().Where(m => m.Key == logic[1]).First().Value;
-            bonusSource = character.GetModules<ModuleNumeric>().Where(m => m.Key == logic[2]).First().Value;
+            diceCountSourceId = logic[0];
+            diceSidesSourceId = logic[1];
+            bonusSourceId = logic[2];
+            diceCountSource = character.GetModules<ModuleNumeric>().Where(m => m.Key == diceCountSourceId).First().Value;
+            diceSidesSource = character.GetModules<ModuleNumeric>().Where(m => m.Key == diceSidesSourceId).First().Value;
+            bonusSource = character.GetModules<ModuleNumeric>().Where(m => m.Key == bonusSourceId).First().Value;
             if (diceCountSource == null || diceSidesSource == null || bonusSource == null) throw new ArgumentException("Cannot create a ModuleRoll object with nonexistent sources.");
             if (diceCountSource.Kind != ModuleNumeric.KindOfNumber.INTEGER || diceSidesSource.Kind != ModuleNumeric.KindOfNumber.INTEGER || bonusSource.Kind != ModuleNumeric.KindOfNumber.INTEGER) 
                 throw new ArgumentException("Cannot create a ModuleRoll object with non-Integer sources.");
