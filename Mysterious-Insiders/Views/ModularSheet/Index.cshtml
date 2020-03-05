@@ -1,7 +1,9 @@
-﻿
+﻿@model ModularSheet
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
+@foreach (var v in Model.Modules) {
+    <div style="position:fixed; width:@v.Value.Width; height:@v.Value.Height; top:@v.Value.Y; left:@v.Value.X">Test</div>
+}
