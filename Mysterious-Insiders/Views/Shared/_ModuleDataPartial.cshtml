@@ -1,19 +1,14 @@
 ﻿@model ModuleData
+<link type="text/css" href="~/css/moduledata.css"/>
 
-<head>
-	<style>
-		.ModuleData{
-			position: absolute;
-			left: @(@Model.X + "px") ;
-			top: @(@Model.Y + "px");
-			width: @Model.Width;
-			height: @Model.Height;
-		}
-	</style>
-</head>
+<p class="ModuleData" style="left: @(Model.X + "px");
+			top: @(Model.Y)px;
+			width: @(Model.Width)px;
+			height: @(Model.Height)px;">
+	@Model.X
+	@Model.Y
 
-<div class="ModuleData">
 	@Model.Id;
 	This is a Module
 
-</div>
+</p>
