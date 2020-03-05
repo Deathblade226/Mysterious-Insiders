@@ -17,14 +17,16 @@
                 <a class="navItem" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <a class="navItem" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 
-                <a class="navItem" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                @if (Context.Session.GetString("username") == null || Context.Session.GetString("username") == "") {<a class="navItem" asp-area="" asp-controller="Home" asp-action="Login">Login</a> }
                 @*Add if statement for users that are logged in*@
-                <a class="navItem" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                 @if (Context.Session.IsAvailable)
                 {
-                    if (Context.Session.GetString("username") != null)
-                    {<a class="navItem" asp-area="" asp-controller="Chat" asp-action="Index">Chat</a>}
-                }
+                    if (Context.Session.GetString("username") != null && Context.Session.GetString("username") != "")
+                    {
+                        <a class="navItem" asp-area="" asp-controller="Chat" asp-action="Index">Chat</a>
+                        <a class="navItem" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+					}
+				}
             </div>
         </nav>
         @* <main role="main" class="">
