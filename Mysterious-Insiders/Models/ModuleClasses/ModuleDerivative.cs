@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -24,7 +25,9 @@ namespace Mysterious_Insiders.Models
         /// </summary>
         public class DerivativeOperation
         {
+            [BsonElement]
             private ModuleBase reference;
+            [BsonElement]
             private string logic;
 
             /// <summary>
@@ -206,13 +209,16 @@ namespace Mysterious_Insiders.Models
             }
         }
 
+        [BsonElement]
         private List<DerivativeOperation> operations = new List<DerivativeOperation>();
+        [BsonElement]
         private double startingValue;
         private double currentValue;
 
         /// <summary>
         /// The number that is calculated by this module. It can't be modified directly.
         /// </summary>
+        [BsonElement] 
         public override double Number { get => currentValue; }
 
         /// <summary>
