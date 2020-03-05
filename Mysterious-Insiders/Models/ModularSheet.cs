@@ -26,6 +26,17 @@ namespace Mysterious_Insiders.Models
         public string DatabaseId { get; set; }
 
         /// <summary>
+        /// If true, this sheet can be searched by users other than its creator. Other users can't edit
+        /// it, though. Only the user has editing priveleges.
+        /// </summary>
+        public bool Public { get; set; }
+
+        /// <summary>
+        /// The name of the user that created this ModularSheet (and can edit it.)
+        /// </summary>
+        public string UserOwner { get; set; }
+
+        /// <summary>
         /// The Name of this ModularSheet. This can be used to distinguish it from other ModularSheets.
         /// </summary>
         public string Name { get; set; }
