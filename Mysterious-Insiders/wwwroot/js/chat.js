@@ -15,6 +15,10 @@ connection.on("ReceiveMessage", function (user, message, reload) {
     document.getElementById("messageInput").value = "";
 });
 
+connection.on("Reload", function () {
+    location.reload();
+});
+
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {

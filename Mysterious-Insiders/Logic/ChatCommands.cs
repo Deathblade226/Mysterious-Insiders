@@ -60,18 +60,19 @@ private static bool CheckCommands(string message) {
 return (method != -1);}
 
 private static void HelpCommand() { 
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/r xdx", Message = "This rolls x number of dice with x number of sides. (Max:999999)" });
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll xdx", Message = "This rolls x number of dice with x number of sides. (Max:999999)"});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/r xdx+x", Message = "This rolls x number of dice with x number of sides and adds x to the sum of all the rolls. (Max:999999)" });
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll xdx+x", Message = "This rolls x number of dice with x number of sides and adds x to the sum of all the rolls. (Max:999999)" });
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/r (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls. (Max:999999)" });
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls. (Max:999999)" });
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/rollstats", Message = "Rolls 6 sets of 4d6 an gives you the sum of the 3 highes rolls from each set."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/basestats", Message = "Returns the default set of stats."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/wr", Message = "Lets you hide your rolls."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/w [Name] [Message]", Message = "Sends a hidden message to another user. Surround their username in []."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/help", Message = "Shows all function commands."});
-    ChatWindow.Messages.Add(new UserMessage() { Name = "/?", Message = "Shows all function commands."});
+    List<string> cansee = new List<string>() { username.ToLower() };
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/r xdx", Message = "This rolls x number of dice with x number of sides. (Max:999999)", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll xdx", Message = "This rolls x number of dice with x number of sides. (Max:999999)", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/r xdx+x", Message = "This rolls x number of dice with x number of sides and adds x to the sum of all the rolls. (Max:999999)", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll xdx+x", Message = "This rolls x number of dice with x number of sides and adds x to the sum of all the rolls. (Max:999999)", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/r (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls. (Max:999999)", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/roll (xdx)+x", Message = "This rolls x number of dice with x number of sides and adds x to each of the rolls. (Max:999999)", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/rollstats", Message = "Rolls 6 sets of 4d6 an gives you the sum of the 3 highes rolls from each set.", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/basestats", Message = "Returns the default set of stats.", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/wr", Message = "Lets you hide your rolls.", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/w [Name] [Message]", Message = "Sends a hidden message to another user. Surround their username in [].", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/help", Message = "Shows all function commands.", CanSee = cansee });
+    ChatWindow.Messages.Add(new UserMessage() { Name = "/?", Message = "Shows all function commands.", CanSee = cansee});
 }
 private static void RollDiceCommand(string command, List<string> cansee = null) {
     if (cansee == null) { cansee = new List<string>(); }
