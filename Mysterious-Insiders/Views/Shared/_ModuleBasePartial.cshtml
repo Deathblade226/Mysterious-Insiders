@@ -1,8 +1,9 @@
-﻿@model ModuleData
+﻿@model ModuleBase
+
 
 <head>
 	<style>
-		.ModuleData {
+		.ModuleBase {
 			position: absolute;
 			border: 1px solid black;
 			border-radius: 3px;
@@ -10,13 +11,14 @@
 	</style>
 </head>
 
-<div class="ModuleData" style="left: @(Model.X + "px");
+<div class="ModuleBase" style="left: @(Model.X + "px");
 			top: @(Model.Y)px;
 			width: @(Model.Width)px;
 			height: @(Model.Height)px;
 			color: @("#" + Model.TextColor.Name);
 			">
-	This is a module to display the @Model.Id;
-	
+	@*This is a module to display the @Model.Id;*@
+	@Model.Text
+
 
 </div>
