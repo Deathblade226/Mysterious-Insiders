@@ -21,7 +21,6 @@ public async Task SendMessage(string name, string message) {
     for (int i = 0; i < msgDiff; i++) { 
     await Clients.All.SendAsync("ReceiveMessage", ChatWindow.Messages.ElementAt((msgCountB) + i).Name, ChatWindow.Messages.ElementAt((msgCountB) + i).Message, ChatWindow.MessageString());
     }
-    //await Clients.All.SendAsync("reload");
     }
 
 }
