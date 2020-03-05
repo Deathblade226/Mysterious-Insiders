@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +25,9 @@ namespace Mysterious_Insiders.Models
             DECIMAL
         }
 
+        [BsonElement] 
         private double min = double.MinValue;
+        [BsonElement] 
         private double max = double.MaxValue;
         private double number;
         private KindOfNumber kind = KindOfNumber.DECIMAL;
@@ -32,6 +35,7 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The number that is stored in this module.
         /// </summary>
+        [BsonElement]
         public virtual double Number { get => number; 
             set
             {
@@ -50,6 +54,7 @@ namespace Mysterious_Insiders.Models
         /// The text to display in this module. This can be edited by the user, and it
         /// converts to the number on its own, where possible.
         /// </summary>
+        [BsonIgnore]
         public override string Text
         {
             get 
@@ -102,6 +107,7 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The kind of number that can be stored in this module.
         /// </summary>
+        [BsonElement] 
         public KindOfNumber Kind { get => kind; }
 
         /// <summary>
