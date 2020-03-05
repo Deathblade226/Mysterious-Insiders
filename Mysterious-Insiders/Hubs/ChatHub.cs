@@ -16,7 +16,7 @@ public async Task SendMessage(string name, string message) {
     int msgDiff = ChatWindow.Messages.Count() - msgCountB;
     
     if (msgCountB == 0 && message != "/?" && message != "/help") { 
-    await Clients.All.SendAsync("ReceiveMessage", ChatWindow.Messages.Last().Name, ChatWindow.Messages.Last().Message, ChatWindow.MessageString());
+    await Clients.All.SendAsync("ReceiveMessage", ChatWindow.Messages.Last().Name, ChatWindow.Messages.Last().Message, ChatWindow.MessageString(), (message.Contains("/wr")));
     } else { 
     for (int i = 0; i < msgDiff; i++) { 
     await Clients.All.SendAsync("ReceiveMessage", ChatWindow.Messages.ElementAt((msgCountB) + i).Name, ChatWindow.Messages.ElementAt((msgCountB) + i).Message, ChatWindow.MessageString());
