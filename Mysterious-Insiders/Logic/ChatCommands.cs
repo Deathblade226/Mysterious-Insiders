@@ -144,7 +144,7 @@ private static void Cake(string command) {
 }
 private static void WhisperRoll(string input) { 
     string altered = Regex.Replace(input, "[0-9]{1,6}", "x");
-    List<string> cansee = new List<string>() { username };
+    List<string> cansee = new List<string>() { username.ToLower() };
 
     string newCommand = altered.Remove(1, 1);
 
@@ -158,7 +158,7 @@ private static void WhisperRoll(string input) {
     }
 }
 private static void Whisper(string input) { 
-    List<string> cansee = new List<string>() { username };
+    List<string> cansee = new List<string>() { username.ToLower() };
     string holder = input.Remove(0, 4);
     string whisper = "";
     string message = "";
