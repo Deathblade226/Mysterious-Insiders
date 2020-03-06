@@ -3,11 +3,8 @@
     ViewData["Title"] = "Index";
 }
 
-<body>
-<div>
+<div style="position:relative;">
 @foreach (var v in Model.Modules) {
     <partial name="_ModuleDataPartial" model="v.Value"/>
 }
-
 </div>
-</body>

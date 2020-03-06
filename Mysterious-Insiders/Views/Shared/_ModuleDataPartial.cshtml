@@ -1,7 +1,15 @@
 ﻿@model ModuleData
-<link type="text/css" href="~/css/moduledata.css"/>
 
-<div class="ModuleData" style="position:absolute; left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px;">
-<img style="position:absolute; width: @(Model.Width + "px"); height: @(Model.Height + "px");" src="@Model.BGImage"/>
+<head>
+	<style>
+		.ModuleData {
+			position: absolute;
+			border: 1px solid black;
+			border-radius: 3px;
+		}
+	</style>
+</head>
 
+<div class="ModuleData" style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; color: @("#" + Model.TextColor.Name); ">
+	<img style="position:absolute; width: @(Model.Width + "px"); height: @(Model.Height + "px");" src="@Model.BGImage"/>
 </div>
