@@ -101,101 +101,198 @@ namespace Mysterious_Insiders.Services
 
 		public void CreateDnDSheet() { 
 		ModularSheet sampleSheet = new ModularSheet();
-		sampleSheet.AddImageUrl("~/Img/armor-class.svg");
-		sampleSheet.AddImageUrl("~/Img/initiative.svg");
-		sampleSheet.AddImageUrl("~/Img/inspiration.svg");
-		sampleSheet.AddImageUrl("~/Img/proficiency-bonus.svg");
-		sampleSheet.AddImageUrl("~/Img/speed.svg");
-		sampleSheet.AddImageUrl("~/Img/stats.svg");
+
 		ModuleData module = new ModuleData(ModuleData.moduleType.NONE);
 		//Armor
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Armor";
-		module.X = 500;
-		module.Y = 100;
-		module.Width = 50;
-		module.Height = 50;
-		module.BgImageIndex = 0;
+		module.X = 250;
+		module.Y = 520;
+		module.Width = 70;
+		module.Height = 70;
+		module.BGImage = "../Img/armor-class.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 		//Speed
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Speed";
-		module.X = 555;
-		module.Y = 100;
-		module.Width = 50;
-		module.Height = 50;
-		module.BgImageIndex = 4;
+		module.X = 335;
+		module.Y = 520;
+		module.Width = 75;
+		module.Height = 75;
+		module.BGImage = "../Img/initiative.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+		//Speed
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "init";
+		module.X = 430;
+		module.Y = 520;
+		module.Width = 75;
+		module.Height = 75;
+		module.BGImage = "../Img/initiative.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Proficiency";
+		module.X = 20;
+		module.Y = 815;
+		module.Width = 200;
+		module.Height = 65;
+		module.BGImage = "../Img/proficiency-bonus.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Perception";
+		module.X = 20;
+		module.Y = 915;
+		module.Width = 300;
+		module.Height = 70;
+		module.BGImage = "../Img/perception.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 
 		module = new ModuleData(ModuleData.moduleType.CHECK);
 		module.Id = "Inspiration";
-		module.X = 150;
-		module.Y = 5;
-		module.Width = 150;
-		module.Height = 30;
+		module.X = 20;
+		module.Y = 720;
+		module.Width = 200;
+		module.Height = 65;
+		module.BGImage = "../Img/inspiration.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicCHECK();
 		sampleSheet.AddModuleData(module);
 
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat1";
 		module.X = 20;
-		module.Y = 50;
-		module.Width = 50;
-		module.Height = 70;
-		module.BgImageIndex = 5;
+		module.Y = 270;
+		module.Width = 100;
+		module.Height = 175;
+		module.BGImage = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
-			
+						
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat2";
-		module.X = 20;
-		module.Y = 120;
-		module.Width = 50;
-		module.Height = 70;
-		module.BgImageIndex = 5;
+		module.X = 130;
+		module.Y = 270;
+		module.Width = 100;
+		module.Height = 175;
+		module.BGImage = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat3";
 		module.X = 20;
-		module.Y = 190;
-		module.Width = 50;
-		module.Height = 70;
-		module.BgImageIndex = 5;
+		module.Y = 404;
+		module.Width = 100;
+		module.Height = 175;
+		module.BGImage = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat4";
-		module.X = 20;
-		module.Y = 260;
-		module.Width = 50;
-		module.Height = 70;
-		module.BgImageIndex = 5;
+		module.X = 130;
+		module.Y = 404;
+		module.Width = 100;
+		module.Height = 175;
+		module.BGImage = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat5";
 		module.X = 20;
-		module.Y = 330;
-		module.Width = 50;
-		module.Height = 70;
-		module.BgImageIndex = 5;
+		module.Y = 538;
+		module.Width = 100;
+		module.Height = 175;
+		module.BGImage = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat6";
-		module.X = 20;
-		module.Y = 400;
-		module.Width = 50;
-		module.Height = 70;
-		module.BgImageIndex = 5;
+		module.X = 130;
+		module.Y = 538;
+		module.Width = 100;
+		module.Height = 175;
+		module.BGImage = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "health";
+		module.X = 260;
+		module.Y = 285;
+		module.Width = 250;
+		module.Height = 125;
+		module.BGImage = "../Img/health.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "temphealth";
+		module.X = 260;
+		module.Y = 400;
+		module.Width = 250;
+		module.Height = 125;
+		module.BGImage = "../Img/Temphealth.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "hiddie";
+		module.X = 260;
+		module.Y = 600;
+		module.Width = 120;
+		module.Height = 90;
+		module.BGImage = "../Img/HitDie.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+
+		module = new ModuleData(ModuleData.moduleType.NONE);
+		module.Id = "deathsave";
+		module.X = 390;
+		module.Y = 600;
+		module.Width = 120;
+		module.Height = 90;
+		module.BGImage = "../Img/DeathSave.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
+		module.Id = "saves";
+		module.X = 260;
+		module.Y = 680;
+		module.Width = 260;
+		module.Height = 250;
+		module.BGImage = "../Img/SavingThrows.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+
+		//Character Name	
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "characterName";
+		module.X = 20;
+		module.Y = 157;
+		module.Width = 300;
+		module.Height = 100;
+		module.BGImage = "../Img/charactername.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+		//Character Info	
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "characterInfo";
+		module.X = 297;
+		module.Y = 100;
+		module.Width = 700;
+		module.Height = 150;
+		module.BGImage = "../Img/characterinfo.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 
 		Update("5e572d68083f8b4924a2411f", sampleSheet);

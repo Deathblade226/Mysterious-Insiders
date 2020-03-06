@@ -146,6 +146,8 @@ public class ModuleData : INotifyPropertyChanged
         }
     }
 
+    public string BGImage { get; set; }
+
     [BsonElement]
     private int r;
     [BsonElement]
