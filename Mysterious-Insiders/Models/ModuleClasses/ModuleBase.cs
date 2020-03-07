@@ -88,6 +88,12 @@ namespace Mysterious_Insiders.Models
         public Color TextColor { get => mdata.TextColor; }
 
         /// <summary>
+        /// The size of this module's text, if it has any.
+        /// </summary>
+        [BsonIgnore]
+        public int FontSize { get => mdata.FontSize; }
+
+        /// <summary>
         /// The url of this module's background image.
         /// </summary>
         public string BgImageUrl { get => mdata.BgImageUrl; }
