@@ -276,30 +276,30 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "skills";
-		module.X = 800;
-		module.Y = 100;
-		module.Width = 50;
-		module.Height = 50;
+		module.X = 820;
+		module.Y = 179;
+		module.Width = 350;
+		module.Height = 687;
 		module.BgImageUrl = "../Img/skills.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 		
 		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "traits";
-		module.X = 840;
-		module.Y = 179;
-		module.Width = 350;
-		module.Height = 700;
+		module.X = 1500;
+		module.Y = 20;
+		module.Width = 400;
+		module.Height = 850;
 		module.BgImageUrl = "../Img/features&traits.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "languages";
-		module.X = 800;
-		module.Y = 100;
-		module.Width = 50;
-		module.Height = 50;
+		module.X = 1170;
+		module.Y = 250;
+		module.Width = 300;
+		module.Height = 300;
 		module.BgImageUrl = "../Img/languages.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
@@ -316,10 +316,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "actions";
-		module.X = 800;
-		module.Y = 100;
-		module.Width = 50;
-		module.Height = 50;
+		module.X = 1170;
+		module.Y = 530;
+		module.Width = 300;
+		module.Height = 350;
 		module.BgImageUrl = "../Img/attacks.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
