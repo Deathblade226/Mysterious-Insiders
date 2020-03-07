@@ -52,7 +52,8 @@ public class ModuleData : INotifyPropertyChanged
         ROLL
     }
 
-    private int x, y, width, height, bgdex = -1;
+    private int x, y, width, height;
+    private string imageUrl;
     private string logic;
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -131,17 +132,15 @@ public class ModuleData : INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Each sheet should have an indexed collection of images that are used for modules
-    /// that the sheet contains. This is the index to use to look up this module's image.
-    /// If the module doesn't have an image, this should be -1.
+    /// The url of this module's background image.
     /// </summary>
     [BsonIgnoreIfDefault]
-    public int BgImageIndex
+    public string BgImageUrl
     {
-        get => bgdex;
+        get => imageUrl;
         set
         {
-            bgdex = value;
+            imageUrl = value;
             FieldChanged();
         }
     }

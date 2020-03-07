@@ -9,17 +9,12 @@ namespace Mysterious_Insiders.Models
 {
     /// <summary>
     /// The data used to lay out a character sheet. Contains a Dictionary of ModuleData objects,
-    /// which are stored by their Ids for easy lookup. Also contains a collection of strings
-    /// that are the URLs of images used by the sheet (for the backgrounds of modules) which should
-    /// not be modified directly. Instead, use the AddImage and RemoveImage methods, which adjust
-    /// the BgImageIndex properties of the contained ModuleData objects automatically.
+    /// which are stored by their Ids for easy lookup. 
     /// </summary>
     public class ModularSheet
     {
         [BsonElement]
         private List<ModuleData> modules;
-        [BsonElement]
-        private List<string> imageUrls;
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -66,20 +61,11 @@ namespace Mysterious_Insiders.Models
         }
 
         /// <summary>
-        /// The List of string urls of images that this ModularSheet will use. Since a url's index
-        /// in this list is relevant for the sheet's ModuleData objects, it can't be modified directly.
-        /// Use the AddImageUrl and RemoveImageUrl methods instead.
-        /// </summary>
-        [BsonIgnore]
-        public IReadOnlyList<string> ImageUrls { get => imageUrls; }
-
-        /// <summary>
-        /// Creates a ModularSheet with an empty Dictionary of ModuleData and an empty List of ImageUrls.
+        /// Creates a ModularSheet with an empty Dictionary of ModuleData.
         /// </summary>
         public ModularSheet()
         {
             modules = new List<ModuleData>();
-            imageUrls = new List<string>();
             Date = DateTime.Now;
         }
 
@@ -155,74 +141,6 @@ namespace Mysterious_Insiders.Models
                 throw new ArgumentException("Cannot remove a ModuleData with a blank Id from a ModularSheet.");
             }
             RemoveModuleData(module.Id);
-        }
-
-        /// <summary>
-        /// Adds the given string to this ModularSheet's list of image urls.
-        /// </summary>
-        /// <param name="url">The url string to add.</param>
-        /// <exception cref="ArgumentNullException">url is null.</exception>
-        /// <exception cref="ArgumentException">url is blank.</exception>
-        public void AddImageUrl(string url)
-        {
-            if (url == null)
-            {
-                throw new ArgumentNullException("Cannot add a null string to a ModularSheet's list of image urls.");
-            }
-            if (url.Trim().Length == 0)
-            {
-                throw new ArgumentException("Cannot add a blank string to a ModularSheet's list of image urls.");
-            }
-            imageUrls.Add(url);
-        }
-
-        /// <summary>
-        /// Removes the image url from the given index of this ModularSheet's list of image urls.
-        /// </summary>
-        /// <param name="index">The index of the url to remove.</param>
-        /// <exception cref="ArgumentOutOfRangeException">index is negative or too high.</exception>
-        public void RemoveImageUrl(int index)
-        {
-            if (index < 0)
-            {
-                throw new ArgumentOutOfRangeException("Cannot remove a ModularSheet's image url with a negative index.");
-            }
-            if (index >= imageUrls.Count())
-            {
-                throw new ArgumentOutOfRangeException("This ModularSheet only has " + imageUrls.Count() + " image urls in its list. Cannot remove index " + index + ".");
-            }
-            foreach (var mod in modules)
-            {
-                if (mod.BgImageIndex == index)
-                {
-                    mod.BgImageIndex = -1;
-                }
-            }
-            imageUrls.RemoveAt(index);
-        }
-
-        /// <summary>
-        /// Removes the given string from this ModularSheet's list of image urls.
-        /// </summary>
-        /// <param name="url">The url to remove.</param>
-        /// <exception cref="ArgumentNullException">url is null.</exception>
-        /// <exception cref="ArgumentException">url is blank, or not found in the list.</exception>
-        public void RemoveImageUrl(string url)
-        {
-            if (url == null)
-            {
-                throw new ArgumentNullException("Cannot remove a null string from a ModularSheet's list of image urls.");
-            }
-            if (url.Trim().Length == 0)
-            {
-                throw new ArgumentException("Cannot remove a blank string from a ModularSheet's list of image urls.");
-            }
-            int index = imageUrls.IndexOf(url);
-            if (index == -1)
-            {
-                throw new ArgumentException("Url not found in this ModularSheet's list of image urls.");
-            }
-            RemoveImageUrl(index);
         }
     }
 }
