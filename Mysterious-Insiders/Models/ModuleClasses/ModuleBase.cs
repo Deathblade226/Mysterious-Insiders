@@ -20,7 +20,6 @@ namespace Mysterious_Insiders.Models
     {
         protected ModuleData mdata;
         private ModularCharacter character;
-        private string imageUrl;
         private string text;
         private string id;
 
@@ -91,8 +90,7 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The url of this module's background image.
         /// </summary>
-        [BsonElement] 
-        public string BgImageUrl { get => imageUrl; }
+        public string BgImageUrl { get => mdata.BgImageUrl; }
 
         /// <summary>
         /// The character that this is a module for.
@@ -110,7 +108,6 @@ namespace Mysterious_Insiders.Models
             mdata = data;
             this.character = character;
             id = data.Id;
-            imageUrl = character.Sheet.ImageUrls[data.BgImageIndex];
             Text = text;
         }
 
