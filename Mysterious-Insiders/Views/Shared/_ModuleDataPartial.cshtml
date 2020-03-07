@@ -1,18 +1,15 @@
 ﻿@model ModuleData
+
 <head>
 	<style>
-		ModuleData{
+		.ModuleData {
 			position: absolute;
-			left: @Model.X;
-			top: @Model.Y;
-			width: @Model.Width;
-			height: @Model.Height;
+			border: 1px solid black;
+			border-radius: 3px;
 		}
 	</style>
 </head>
 
-<div class="ModuleData">
-	@Model.Id;
-	This is a Module
-
+<div class="ModuleData" style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; color: @("#" + Model.TextColor.Name); ">
+	<img style="position:absolute; width: @(Model.Width + "px"); height: @(Model.Height + "px");" src="@Model.BGImage"/>
 </div>

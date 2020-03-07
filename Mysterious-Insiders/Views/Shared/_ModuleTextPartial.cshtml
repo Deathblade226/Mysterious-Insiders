@@ -1,0 +1,23 @@
+﻿@model ModuleText
+
+<head>
+    <style>
+        .ModuleText {
+            position: absolute;
+            border: 1px solid black;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<div class="ModuleText" style="left: @(Model.X + "px");
+			top: @(Model.Y)px;
+			width: @(Model.Width)px;
+			height: @(Model.Height)px;
+			color: @("#" + Model.TextColor.Name);
+			">
+    @*This is a module to display the @Model.Id;*@
+    @Model.Text
+    <input type="text" />
+
+</div>
