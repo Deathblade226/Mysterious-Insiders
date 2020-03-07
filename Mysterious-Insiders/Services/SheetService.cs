@@ -110,7 +110,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 400;
 		module.Width = 70;
 		module.Height = 70;
-		module.BGImage = "../Img/armor-class.svg";
+		module.BgImageUrl = "../Img/armor-class.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 		//Speed
@@ -120,7 +120,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 400;
 		module.Width = 75;
 		module.Height = 75;
-		module.BGImage = "../Img/initiative.svg";
+		module.BgImageUrl = "../Img/initiative.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 		//Speed
@@ -130,7 +130,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 400;
 		module.Width = 75;
 		module.Height = 75;
-		module.BGImage = "../Img/initiative.svg";
+		module.BgImageUrl = "../Img/initiative.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -140,7 +140,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 695;
 		module.Width = 200;
 		module.Height = 65;
-		module.BGImage = "../Img/proficiency-bonus.svg";
+		module.BgImageUrl = "../Img/proficiency-bonus.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -150,7 +150,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 795;
 		module.Width = 300;
 		module.Height = 70;
-		module.BGImage = "../Img/perception.svg";
+		module.BgImageUrl = "../Img/perception.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 
@@ -160,7 +160,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 600;
 		module.Width = 200;
 		module.Height = 65;
-		module.BGImage = "../Img/inspiration.svg";
+		module.BgImageUrl = "../Img/inspiration.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicCHECK();
 		sampleSheet.AddModuleData(module);
 
@@ -170,7 +170,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 150;
 		module.Width = 100;
 		module.Height = 175;
-		module.BGImage = "../Img/stats.svg";
+		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 						
@@ -180,7 +180,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 150;
 		module.Width = 100;
 		module.Height = 175;
-		module.BGImage = "../Img/stats.svg";
+		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -190,7 +190,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 284;
 		module.Width = 100;
 		module.Height = 175;
-		module.BGImage = "../Img/stats.svg";
+		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -200,7 +200,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 284;
 		module.Width = 100;
 		module.Height = 175;
-		module.BGImage = "../Img/stats.svg";
+		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -210,7 +210,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 418;
 		module.Width = 100;
 		module.Height = 175;
-		module.BGImage = "../Img/stats.svg";
+		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -220,7 +220,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 418;
 		module.Width = 100;
 		module.Height = 175;
-		module.BGImage = "../Img/stats.svg";
+		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -230,7 +230,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 165;
 		module.Width = 250;
 		module.Height = 125;
-		module.BGImage = "../Img/health.svg";
+		module.BgImageUrl = "../Img/health.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -240,7 +240,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 280;
 		module.Width = 250;
 		module.Height = 125;
-		module.BGImage = "../Img/Temphealth.svg";
+		module.BgImageUrl = "../Img/Temphealth.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
@@ -250,7 +250,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 480;
 		module.Width = 120;
 		module.Height = 90;
-		module.BGImage = "../Img/HitDie.svg";
+		module.BgImageUrl = "../Img/HitDie.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 
@@ -260,7 +260,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 480;
 		module.Width = 120;
 		module.Height = 90;
-		module.BGImage = "../Img/DeathSave.svg";
+		module.BgImageUrl = "../Img/DeathSave.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -270,7 +270,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 560;
 		module.Width = 256;
 		module.Height = 250;
-		module.BGImage = "../Img/SavingThrows.svg";
+		module.BgImageUrl = "../Img/SavingThrows.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -278,19 +278,19 @@ namespace Mysterious_Insiders.Services
 		module.Id = "skills";
 		module.X = 800;
 		module.Y = 100;
-		module.Width = 250;
-		module.Height = 500;
-		module.BGImage = "../Img/skills.svg";
+		module.Width = 50;
+		module.Height = 50;
+		module.BgImageUrl = "../Img/skills.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 		
 		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "traits";
-		module.X = 800;
-		module.Y = 100;
-		module.Width = 250;
-		module.Height = 500;
-		module.BGImage = "../Img/features&traits.svg";
+		module.X = 840;
+		module.Y = 179;
+		module.Width = 350;
+		module.Height = 700;
+		module.BgImageUrl = "../Img/features&traits.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -298,19 +298,19 @@ namespace Mysterious_Insiders.Services
 		module.Id = "languages";
 		module.X = 800;
 		module.Y = 100;
-		module.Width = 500;
-		module.Height = 400;
-		module.BGImage = "../Img/languages.svg";
+		module.Width = 50;
+		module.Height = 50;
+		module.BgImageUrl = "../Img/languages.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "equipment";
-		module.X = 800;
-		module.Y = 100;
-		module.Width = 400;
-		module.Height = 500;
-		module.BGImage = "../Img/equipment.svg";
+		module.X = 530;
+		module.Y = 565;
+		module.Width = 300;
+		module.Height = 300;
+		module.BgImageUrl = "../Img/equipment.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -318,9 +318,9 @@ namespace Mysterious_Insiders.Services
 		module.Id = "actions";
 		module.X = 800;
 		module.Y = 100;
-		module.Width = 500;
-		module.Height = 400;
-		module.BGImage = "../Img/attacks.svg";
+		module.Width = 50;
+		module.Height = 50;
+		module.BgImageUrl = "../Img/attacks.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 
@@ -331,7 +331,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 57;
 		module.Width = 300;
 		module.Height = 100;
-		module.BGImage = "../Img/charactername.svg";
+		module.BgImageUrl = "../Img/charactername.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 		//Character Info	
@@ -341,7 +341,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 0;
 		module.Width = 700;
 		module.Height = 150;
-		module.BGImage = "../Img/characterinfo.svg";
+		module.BgImageUrl = "../Img/characterinfo.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -351,7 +351,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 165;
 		module.Width = 250;
 		module.Height = 125;
-		module.BGImage = "../Img/personality-traits.svg";
+		module.BgImageUrl = "../Img/personality-traits.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -361,7 +361,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 260;
 		module.Width = 250;
 		module.Height = 125;
-		module.BGImage = "../Img/ideals.svg";
+		module.BgImageUrl = "../Img/ideals.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -371,7 +371,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 345;
 		module.Width = 250;
 		module.Height = 125;
-		module.BGImage = "../Img/bonds.svg";
+		module.BgImageUrl = "../Img/bonds.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -381,7 +381,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 443;
 		module.Width = 250;
 		module.Height = 125;
-		module.BGImage = "../Img/flaws.svg";
+		module.BgImageUrl = "../Img/flaws.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 
