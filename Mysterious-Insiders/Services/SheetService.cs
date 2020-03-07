@@ -102,6 +102,9 @@ namespace Mysterious_Insiders.Services
 		public void CreateDnDSheet() { 
 		ModularSheet sampleSheet = new ModularSheet();
 
+			sampleSheet.UserOwner = "andrew";
+			sampleSheet.Name = "Dungeons and Dragons 5th Edition";
+
 		ModuleData module = new ModuleData(ModuleData.moduleType.NONE);
 		//Armor
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);

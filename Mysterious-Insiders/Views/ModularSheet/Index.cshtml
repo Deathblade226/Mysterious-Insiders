@@ -1,12 +1,21 @@
-﻿@model ModularSheet
+﻿@model List<ModularSheet>
+@using  Microsoft.AspNetCore.Http;
+
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
 
-<body>
-<div style="position:relative;">
-@foreach (var v in Model.Modules) {
-    <partial name="_ModuleDataPartial" model="v.Value"/>
-}
-</div>
+<body class="middleGrid">
+	<p>
+		Here are all your Sheets, @Context.Session.GetString("username")
+	</p>
+
+	<p>
+	@foreach (var sheet in @Model)
+	{
+		<a asp-action="DisplaySheet" asp-route-id="@sheet.DatabaseId" class="primBtn">
+			Sheet Name: @sheet.Name
+		</a>
+	}
+	</p>
 </body>
