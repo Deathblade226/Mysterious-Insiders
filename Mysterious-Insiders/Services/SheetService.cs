@@ -268,7 +268,7 @@ namespace Mysterious_Insiders.Services
 		module.Id = "saves";
 		module.X = 260;
 		module.Y = 560;
-		module.Width = 260;
+		module.Width = 256;
 		module.Height = 250;
 		module.BGImage = "../Img/SavingThrows.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -310,7 +310,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 100;
 		module.Width = 400;
 		module.Height = 500;
-		module.BGImage = "../Img/languages.svg";
+		module.BGImage = "../Img/equipment.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -347,8 +347,8 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "personalityTraits";
-		module.X = 800;
-		module.Y = 100;
+		module.X = 540;
+		module.Y = 165;
 		module.Width = 250;
 		module.Height = 125;
 		module.BGImage = "../Img/personality-traits.svg";
@@ -357,8 +357,8 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "ideals";
-		module.X = 800;
-		module.Y = 100;
+		module.X = 540;
+		module.Y = 260;
 		module.Width = 250;
 		module.Height = 125;
 		module.BGImage = "../Img/ideals.svg";
@@ -367,8 +367,8 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "bonds";
-		module.X = 800;
-		module.Y = 100;
+		module.X = 540;
+		module.Y = 345;
 		module.Width = 250;
 		module.Height = 125;
 		module.BGImage = "../Img/bonds.svg";
@@ -377,8 +377,8 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "flaws";
-		module.X = 800;
-		module.Y = 100;
+		module.X = 540;
+		module.Y = 443;
 		module.Width = 250;
 		module.Height = 125;
 		module.BGImage = "../Img/flaws.svg";
