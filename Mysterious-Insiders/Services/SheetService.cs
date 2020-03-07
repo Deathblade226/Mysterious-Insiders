@@ -344,6 +344,46 @@ namespace Mysterious_Insiders.Services
 		module.BGImage = "../Img/characterinfo.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "personalityTraits";
+		module.X = 800;
+		module.Y = 100;
+		module.Width = 250;
+		module.Height = 125;
+		module.BGImage = "../Img/personality-traits.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "ideals";
+		module.X = 800;
+		module.Y = 100;
+		module.Width = 250;
+		module.Height = 125;
+		module.BGImage = "../Img/ideals.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "bonds";
+		module.X = 800;
+		module.Y = 100;
+		module.Width = 250;
+		module.Height = 125;
+		module.BGImage = "../Img/bonds.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "flaws";
+		module.X = 800;
+		module.Y = 100;
+		module.Width = 250;
+		module.Height = 125;
+		module.BGImage = "../Img/flaws.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
 
 		Update("5e572d68083f8b4924a2411f", sampleSheet);
 
