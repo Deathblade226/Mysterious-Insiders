@@ -52,7 +52,7 @@ public class ModuleData : INotifyPropertyChanged
         ROLL
     }
 
-    private int x, y, width, height;
+    private int x, y, width, height, fontsize = 12;
     private string imageUrl;
     private string logic;
 
@@ -145,8 +145,6 @@ public class ModuleData : INotifyPropertyChanged
         }
     }
 
-    public string BGImage { get; set; }
-
     [BsonElement]
     private int r;
     [BsonElement]
@@ -167,6 +165,20 @@ public class ModuleData : INotifyPropertyChanged
             b = value.B;
             FieldChanged();
         } 
+    }
+
+    /// <summary>
+    /// The size of this module's text, if it has any.
+    /// </summary>
+    [BsonIgnoreIfDefault]
+    public int FontSize
+    {
+        get => fontsize;
+        set
+        {
+            fontsize = value;
+            FieldChanged();
+        }
     }
 
     /// <summary>
