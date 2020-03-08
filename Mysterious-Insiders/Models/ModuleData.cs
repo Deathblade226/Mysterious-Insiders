@@ -62,7 +62,7 @@ public class ModuleData : INotifyPropertyChanged
     /// The type of module that will be created by this ModuleData.
     /// </summary>
     [BsonElement] 
-    public moduleType ModuleType { get; set; }
+    public moduleType ModuleType { get; set; }    
 
     /// <summary>
     /// The module's id, for easy lookup. This lookup is used by derivative and roll

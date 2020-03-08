@@ -21,7 +21,6 @@ namespace Mysterious_Insiders.Controllers
 
 		public IActionResult DisplaySheet(string id)
 		{
-			sheetService.CreateDnDSheet();
 			return View(sheetService.Get(id));
 		}
 
@@ -36,9 +35,18 @@ namespace Mysterious_Insiders.Controllers
 			return RedirectToAction("Login", "Home");
 
 		}
+		public IActionResult AddSheet()
+		{
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+				
+			sheetService.CreateDnDSheet(username, "Test");
+			return RedirectToAction("Index", "ModularSheet");
+			}
 
+			return RedirectToAction("Login", "Home");			
+
+		}
 	}
-
-	
-
 }
