@@ -70,7 +70,10 @@ public class ModuleData : INotifyPropertyChanged
     /// </summary>
     [BsonElement]
     public string Id { get; set; }
-
+    
+    [BsonElement]
+    public string Data { get; set; }
+    
     /// <summary>
     /// The X coordinate of where this module goes on the ModularSheet. Every module
     /// will have "position: absolute;" in its CSS to ensure that it goes right where

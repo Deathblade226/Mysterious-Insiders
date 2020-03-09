@@ -11,15 +11,5 @@
 <div class="ModuleData" style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; color: @("#" + Model.TextColor.Name); ">
 	<img style="position:absolute; width: @(Model.Width + "px"); height: @(Model.Height + "px");" src="@Model.BgImageUrl"/>
 
-	@switch (Model.ModuleType.ToString()) {
-
-	case "NONE": break;
-	case "TEXT":
-	//<input type="text" name="@Model.Id"/>
-	break;
-	case "CHECK": break;
-	case "NUMERIC": break;
-    }
-	
-
+	<text style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; Padding: 5px">  This is just a test. </text>
 </div>
