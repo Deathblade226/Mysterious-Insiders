@@ -185,7 +185,7 @@ namespace Mysterious_Insiders.Services
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
-		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "ProficiencyText";
 		module.X = 44;
 		module.Y = 690;
@@ -218,7 +218,7 @@ namespace Mysterious_Insiders.Services
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
-		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "PerceptionText";
 		module.X = 50;
 		module.Y = 798;
@@ -251,7 +251,7 @@ namespace Mysterious_Insiders.Services
 		module.SerializedLogic = ModuleData.SerializeLogicCHECK();
 		sampleSheet.AddModuleData(module);
 			
-		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "InspirationText";
 		module.X = 20;
 		module.Y = 624;
@@ -515,7 +515,7 @@ namespace Mysterious_Insiders.Services
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
-		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "hiddieData";
 		module.X = 260;
 		module.Y = 490;
@@ -659,7 +659,7 @@ namespace Mysterious_Insiders.Services
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
-		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "characterNameData";
 		module.X = 40;
 		module.Y = 90;
