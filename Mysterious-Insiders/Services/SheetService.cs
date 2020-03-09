@@ -99,11 +99,11 @@ namespace Mysterious_Insiders.Services
 			return allSheets;
 		}
 
-		public void CreateDnDSheet() { 
+		public void CreateDnDSheet(string user, string name) { 
 		ModularSheet sampleSheet = new ModularSheet();
 
-			sampleSheet.UserOwner = "andrew";
-			sampleSheet.Name = "Dungeons and Dragons 5th Edition";
+		sampleSheet.UserOwner = user;
+		sampleSheet.Name = name;
 
 		ModuleData module = new ModuleData(ModuleData.moduleType.NONE);
 		//Armor
@@ -388,10 +388,7 @@ namespace Mysterious_Insiders.Services
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 
-		Update("5e572d68083f8b4924a2411f", sampleSheet);
-
-		//sampleSheet.AddModuleData(module);
-		//Create(sampleSheet);
+		Create(sampleSheet);
 		}
 
 	}
