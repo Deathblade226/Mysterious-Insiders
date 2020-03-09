@@ -19,9 +19,17 @@ namespace Mysterious_Insiders.Controllers
 
 		public ModularSheetController(SheetService service) { sheetService = service; }
 
-		public IActionResult DisplaySheet(string id)
+		public IActionResult DisplaySheetWithID(string id)
 		{
-			return View(sheetService.Get(id));
+			sheetService.CreateDnDSheet();
+			ModularSheet sheet = sheetService.Get(id);
+			return View("DisplaySheet", sheet);
+		}
+
+		public IActionResult DisplaySheet(ModularSheet sheet)
+		{
+			sheetService.CreateDnDSheet();
+			return View(sheet);
 		}
 
 		public IActionResult Index()
