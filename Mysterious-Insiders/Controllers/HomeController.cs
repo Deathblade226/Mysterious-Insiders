@@ -10,6 +10,7 @@ using Mysterious_Insiders.Logic;
 using Mysterious_Insiders.Models;
 using Mysterious_Insiders.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore;
 
 
 namespace Mysterious_Insiders.Controllers
@@ -91,17 +92,25 @@ namespace Mysterious_Insiders.Controllers
             return View();
         }
 
-        //This is testing code for embedding a pdf file into the cshtml
-        [HttpPost]
-        public ActionResult ViewPDF()
+        //This is testing code for PDF
+        //Method 1
+        public FileResult DisplayPDF()
         {
-            string embed = "<object data=\"{0}\" type=\"application/pdf\" width=\"500px\" height=\"300px\">";
-            embed += "If you are unable to view file, you can download from <a href = \"{0}\">here</a>";
-            embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
-            embed += "</object>";
-            TempData["Embed"] = string.Format(embed, VirtualPathUtility.ToAbsolute("~/public/DNDCharacterSheet.pdf"));
+            return File("~/public/DNDCharacterSheet.pdf", "application/pdf");
+        }
 
-            return RedirectToAction("CharacterCreator");
+        //Method 2
+        //public FileResult PDFDisplay()
+        //{
+        //    string filepath = Server.MapPath("/Temp.pdf");
+        //    byte[] pdfByte = Helper.GetBytesFromFile(filepath);
+        //    return File(pdfByte, "application/pdf");
+        //}
+
+        //Method 4
+        public PartialViewResult PDFPartialView()
+        {
+            return PartialView();
         }
     }
 }

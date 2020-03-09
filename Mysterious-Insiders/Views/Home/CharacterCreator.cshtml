@@ -16,11 +16,25 @@
 
 <div>
     @* This is where the the field for the pdf will go, along with the logic for selection *@
-    @using (Html.BeginForm("ViewPDF", "Home", FormMethod.Post))
-    {
-        @*<a href="javascript:;" onclick="document.forms[0].submit();">View PDF</a>*@
-        <hr />
-        @Html.Raw(TempData["Embed"])
-    }
+    @*@using (Html.BeginForm("ViewPDF", "Home", FormMethod.Post))
+        {
+            <a href="javascript:;" onclick="document.forms[0].submit();">View PDF</a>
+            <hr />
+            @Html.Raw(TempData["Embed"])
+        }*@
+
+    @*<object data="@Url.Action("GetPDF")" type="application/pdf" width="300" height="200">
+            alt : <a href="~/public/DNDCharacterSheet.pdf">test.pdf</a>
+        </object>*@
+
+    <h1>Method 1</h1>
+    <li>@Html.ActionLink("PDF Method1", "DisplayPDF")</li>
+
+    <h2>Method 2</h2>
+
+
+    <h2>Method 4</h2>
+    <li>@Ajax.ActionLink("PDF Method4", "PDFPartialView", new AjaxOptions { UpdateTargetId = "pdfContainer" })</li>
+    <h4>Partial View That display PDF....</h4><br /><embed src="~/public/DNDCharacterSheet.pdf" type="application/pdf"></embed>
 </div>
 </div>
