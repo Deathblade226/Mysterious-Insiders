@@ -21,15 +21,27 @@ namespace Mysterious_Insiders.Controllers
 
 		public IActionResult DisplaySheetWithID(string id)
 		{
-			sheetService.CreateDnDSheet();
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+			//sheetService.CreateDnDSheet(username, "PlaceHolder");
 			ModularSheet sheet = sheetService.Get(id);
 			return View("DisplaySheet", sheet);
+			}
+			return RedirectToAction("Login", "Home");
 		}
 
 		public IActionResult DisplaySheet(ModularSheet sheet)
 		{
-			sheetService.CreateDnDSheet();
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+			//sheetService.CreateDnDSheet(username, "PlaceHolder");
 			return View(sheet);
+			}
+
+			return RedirectToAction("Login", "Home");
+
 		}
 
 		public IActionResult Index()

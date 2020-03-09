@@ -149,11 +149,11 @@ public class ModuleData : INotifyPropertyChanged
     }
 
     [BsonElement]
-    private int r;
+    private int r = 255;
     [BsonElement]
-    private int g;
+    private int g = 255;
     [BsonElement]
-    private int b;
+    private int b = 255;
 
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
@@ -167,7 +167,7 @@ public class ModuleData : INotifyPropertyChanged
             g = value.G;
             b = value.B;
             FieldChanged();
-        } 
+        }
     }
 
     /// <summary>

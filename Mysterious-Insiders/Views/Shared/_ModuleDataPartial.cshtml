@@ -8,8 +8,10 @@
 	</style>
 </head>
 
-<div class="ModuleData" style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; color: @("#" + Model.TextColor.Name); ">
+<div class="ModuleData" style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px;">
+	@if (Model.Data != null) { 
+	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center;" >@Model.Data</div>
+    } else { 
 	<img style="position:absolute; width: @(Model.Width + "px"); height: @(Model.Height + "px");" src="@Model.BgImageUrl"/>
-
-	<text style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; Padding: 5px">  This is just a test. </text>
+	}
 </div>

@@ -107,53 +107,136 @@ namespace Mysterious_Insiders.Services
 
 		ModuleData module = new ModuleData(ModuleData.moduleType.NONE);
 		//Armor
-		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Armor";
 		module.X = 250;
 		module.Y = 400;
 		module.Width = 70;
 		module.Height = 70;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/armor-class.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
-		//Speed
+			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "ArmorData";
+		module.X = 250;
+		module.Y = 400;
+		module.Width = 30;
+		module.Height = 30;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+
+		//Speed
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Speed";
 		module.X = 335;
 		module.Y = 400;
 		module.Width = 75;
 		module.Height = 75;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/initiative.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
-		//Speed
+
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "SpeedData";
+		module.X = 335;
+		module.Y = 400;
+		module.Width = 30;
+		module.Height = 30;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "init";
 		module.X = 430;
 		module.Y = 400;
 		module.Width = 75;
 		module.Height = 75;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/initiative.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "initData";
+		module.X = 430;
+		module.Y = 400;
+		module.Width = 75;
+		module.Height = 75;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Proficiency";
 		module.X = 20;
 		module.Y = 695;
 		module.Width = 200;
 		module.Height = 65;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/proficiency-bonus.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "ProficiencyText";
+		module.X = 20;
+		module.Y = 695;
+		module.Width = 200;
+		module.Height = 65;
+		module.Data = "PASSIVE WISDOM (PERCEPTION)";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "ProficiencyData";
+		module.X = 20;
+		module.Y = 695;
+		module.Width = 200;
+		module.Height = 65;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Perception";
 		module.X = 20;
 		module.Y = 795;
 		module.Width = 300;
 		module.Height = 70;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/perception.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "PerceptionText";
+		module.X = 20;
+		module.Y = 795;
+		module.Width = 300;
+		module.Height = 70;
+		module.Data = "PROFICIENCY BONUS";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "PerceptionData";
+		module.X = 20;
+		module.Y = 795;
+		module.Width = 300;
+		module.Height = 70;
+		module.Data = "0";
+		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 
@@ -163,97 +246,283 @@ namespace Mysterious_Insiders.Services
 		module.Y = 600;
 		module.Width = 200;
 		module.Height = 65;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/inspiration.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicCHECK();
 		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "InspirationText";
+		module.X = 20;
+		module.Y = 600;
+		module.Width = 200;
+		module.Height = 65;
+		module.Data = "INSPIRATION";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicCHECK();
+		sampleSheet.AddModuleData(module);
 
-		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Stat1";
 		module.X = 20;
 		module.Y = 150;
 		module.Width = 100;
 		module.Height = 175;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
-						
+			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat1Data";
+		module.X = 20;
+		module.Y = 150;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "10";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat1Mod";
+		module.X = 20;
+		module.Y = 150;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+						
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Stat2";
 		module.X = 130;
 		module.Y = 150;
 		module.Width = 100;
 		module.Height = 175;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat2Data";
+		module.X = 130;
+		module.Y = 150;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "10";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat2Mod";
+		module.X = 130;
+		module.Y = 150;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Stat3";
 		module.X = 20;
 		module.Y = 284;
 		module.Width = 100;
 		module.Height = 175;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat3Data";
+		module.X = 20;
+		module.Y = 284;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "10";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat3Mod";
+		module.X = 20;
+		module.Y = 284;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Stat4";
 		module.X = 130;
 		module.Y = 284;
 		module.Width = 100;
 		module.Height = 175;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat4Data";
+		module.X = 130;
+		module.Y = 284;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "10";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat4Mod";
+		module.X = 130;
+		module.Y = 284;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Stat5";
 		module.X = 20;
 		module.Y = 418;
 		module.Width = 100;
 		module.Height = 175;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/stats.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat5Data";
+		module.X = 20;
+		module.Y = 418;
+		module.Width = 100;
+		module.Height = 175;
+		module.TextColor = Color.Black;
+		module.Data = "10";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat5Mod";
+		module.X = 20;
+		module.Y = 418;
+		module.Width = 100;
+		module.Height = 175;
+		module.TextColor = Color.Black;
+		module.Data = "0";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "Stat6";
 		module.X = 130;
 		module.Y = 418;
 		module.Width = 100;
 		module.Height = 175;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/stats.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+		
+		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat6Data";
+		module.X = 130;
+		module.Y = 418;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "10";
+		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "Stat6Mod";
+		module.X = 130;
+		module.Y = 418;
+		module.Width = 100;
+		module.Height = 175;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "health";
 		module.X = 260;
 		module.Y = 165;
 		module.Width = 250;
 		module.Height = 125;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/health.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "healthData";
+		module.X = 260;
+		module.Y = 165;
+		module.Width = 250;
+		module.Height = 125;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "temphealth";
 		module.X = 260;
 		module.Y = 280;
 		module.Width = 250;
 		module.Height = 125;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/Temphealth.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
+		module.Id = "temphealthData";
+		module.X = 260;
+		module.Y = 280;
+		module.Width = 250;
+		module.Height = 125;
+		module.Data = "0";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "hiddie";
 		module.X = 260;
 		module.Y = 480;
 		module.Width = 120;
 		module.Height = 90;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/HitDie.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "hiddieData";
+		module.X = 260;
+		module.Y = 480;
+		module.Width = 120;
+		module.Height = 90;
+		module.Data = "0";
+		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
 
@@ -263,6 +532,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 480;
 		module.Width = 120;
 		module.Height = 90;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/DeathSave.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
@@ -273,6 +543,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 560;
 		module.Width = 256;
 		module.Height = 250;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/SavingThrows.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
@@ -283,6 +554,7 @@ namespace Mysterious_Insiders.Services
 		module.Y = 179;
 		module.Width = 350;
 		module.Height = 687;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/skills.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
@@ -293,7 +565,19 @@ namespace Mysterious_Insiders.Services
 		module.Y = 20;
 		module.Width = 400;
 		module.Height = 850;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/features&traits.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "traitsData";
+		module.X = 1500;
+		module.Y = 20;
+		module.Width = 400;
+		module.Height = 850;
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -303,7 +587,19 @@ namespace Mysterious_Insiders.Services
 		module.Y = 250;
 		module.Width = 300;
 		module.Height = 300;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/languages.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "languagesData";
+		module.X = 1170;
+		module.Y = 250;
+		module.Width = 300;
+		module.Height = 300;
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -313,7 +609,19 @@ namespace Mysterious_Insiders.Services
 		module.Y = 565;
 		module.Width = 300;
 		module.Height = 300;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/equipment.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "equipmentData";
+		module.X = 530;
+		module.Y = 565;
+		module.Width = 300;
+		module.Height = 300;
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
@@ -323,68 +631,148 @@ namespace Mysterious_Insiders.Services
 		module.Y = 530;
 		module.Width = 300;
 		module.Height = 350;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/attacks.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "actionsData";
+		module.X = 1170;
+		module.Y = 530;
+		module.Width = 300;
+		module.Height = 350;
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 
 		//Character Name	
+		module = new ModuleData(ModuleData.moduleType.NONE);
+		module.Id = "characterName";
+		module.X = 20;
+		module.Y = 57;
+		module.Width = 300;
+		module.Height = 100;
+		module.TextColor = Color.Black;
+		module.BgImageUrl = "../Img/charactername.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "characterName";
 		module.X = 20;
 		module.Y = 57;
 		module.Width = 300;
 		module.Height = 100;
-		module.BgImageUrl = "../Img/charactername.svg";
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 		//Character Info	
-		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "characterInfo";
 		module.X = 297;
 		module.Y = 0;
 		module.Width = 700;
 		module.Height = 150;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/characterinfo.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
-		module = new ModuleData(ModuleData.moduleType.TEXT);
+		///
+		///
+		///
+		///
+		///
+		///
+
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "personalityTraits";
 		module.X = 540;
 		module.Y = 165;
 		module.Width = 250;
 		module.Height = 125;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/personality-traits.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "personalityTraitsData";
+		module.X = 540;
+		module.Y = 165;
+		module.Width = 250;
+		module.Height = 125;
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "ideals";
 		module.X = 540;
 		module.Y = 260;
 		module.Width = 250;
 		module.Height = 125;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/ideals.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "idealsData";
+		module.X = 540;
+		module.Y = 260;
+		module.Width = 250;
+		module.Height = 125;
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "bonds";
 		module.X = 540;
 		module.Y = 345;
 		module.Width = 250;
 		module.Height = 125;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/bonds.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "bondsData";
+		module.X = 540;
+		module.Y = 345;
+		module.Width = 250;
+		module.Height = 125;
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+			
+		module = new ModuleData(ModuleData.moduleType.NONE);
 		module.Id = "flaws";
 		module.X = 540;
 		module.Y = 443;
 		module.Width = 250;
+		module.TextColor = Color.Black;
 		module.Height = 125;
 		module.BgImageUrl = "../Img/flaws.svg";
+		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
+		sampleSheet.AddModuleData(module);
+
+		module = new ModuleData(ModuleData.moduleType.TEXT);
+		module.Id = "flawsData";
+		module.X = 540;
+		module.Y = 443;
+		module.Width = 250;
+		module.Data = "Placeholder";
+		module.TextColor = Color.Black;
+		module.Height = 125;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 
