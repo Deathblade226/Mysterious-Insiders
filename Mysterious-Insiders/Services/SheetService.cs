@@ -121,8 +121,8 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "ArmorData";
 		module.X = 250;
-		module.Y = 400;
-		module.Width = 30;
+		module.Y = 423;
+		module.Width = 50;
 		module.Height = 30;
 		module.Data = "0";
 		module.TextColor = Color.Black;
@@ -143,9 +143,9 @@ namespace Mysterious_Insiders.Services
 
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "SpeedData";
-		module.X = 335;
-		module.Y = 400;
-		module.Width = 30;
+		module.X = 336;
+		module.Y = 428;
+		module.Width = 50;
 		module.Height = 30;
 		module.Data = "0";
 		module.TextColor = Color.Black;
@@ -166,9 +166,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "initData";
 		module.X = 430;
-		module.Y = 400;
+		module.Y = 428;
 		module.Width = 75;
-		module.Height = 75;
+		module.Height = 30;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -187,11 +187,11 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "ProficiencyText";
-		module.X = 20;
-		module.Y = 695;
+		module.X = 44;
+		module.Y = 690;
 		module.Width = 200;
 		module.Height = 65;
-		module.Data = "PASSIVE WISDOM (PERCEPTION)";
+		module.Data = "PROFICIENCY BONUS";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
@@ -199,9 +199,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "ProficiencyData";
 		module.X = 20;
-		module.Y = 695;
-		module.Width = 200;
-		module.Height = 65;
+		module.Y = 720;
+		module.Width = 55;
+		module.Height = 35;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -220,11 +220,11 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "PerceptionText";
-		module.X = 20;
-		module.Y = 795;
-		module.Width = 300;
+		module.X = 50;
+		module.Y = 798;
+		module.Width = 290;
 		module.Height = 70;
-		module.Data = "PROFICIENCY BONUS";
+		module.Data = "PASSIVE WISDOM (PERCEPTION)";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
 		sampleSheet.AddModuleData(module);
@@ -232,8 +232,8 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "PerceptionData";
 		module.X = 20;
-		module.Y = 795;
-		module.Width = 300;
+		module.Y = 822;
+		module.Width = 70;
 		module.Height = 70;
 		module.Data = "0";
 		module.TextColor = Color.Black;
@@ -254,7 +254,7 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "InspirationText";
 		module.X = 20;
-		module.Y = 600;
+		module.Y = 624;
 		module.Width = 200;
 		module.Height = 65;
 		module.Data = "INSPIRATION";
@@ -276,9 +276,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat1Data";
 		module.X = 20;
-		module.Y = 150;
+		module.Y = 210;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "10";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -287,9 +287,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat1Mod";
 		module.X = 20;
-		module.Y = 150;
+		module.Y = 270;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -309,9 +309,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat2Data";
 		module.X = 130;
-		module.Y = 150;
+		module.Y = 210;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "10";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -320,9 +320,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat2Mod";
 		module.X = 130;
-		module.Y = 150;
+		module.Y = 270;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -342,9 +342,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat3Data";
 		module.X = 20;
-		module.Y = 284;
+		module.Y = 344;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "10";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -353,9 +353,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat3Mod";
 		module.X = 20;
-		module.Y = 284;
+		module.Y = 404;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -375,9 +375,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat4Data";
 		module.X = 130;
-		module.Y = 284;
+		module.Y = 344;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "10";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -386,9 +386,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat4Mod";
 		module.X = 130;
-		module.Y = 284;
+		module.Y = 404;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -408,9 +408,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat5Data";
 		module.X = 20;
-		module.Y = 418;
+		module.Y = 478;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.TextColor = Color.Black;
 		module.Data = "10";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -419,9 +419,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat5Mod";
 		module.X = 20;
-		module.Y = 418;
+		module.Y = 538;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.TextColor = Color.Black;
 		module.Data = "0";
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -441,9 +441,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat6Data";
 		module.X = 130;
-		module.Y = 418;
+		module.Y = 478;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "10";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -452,9 +452,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "Stat6Mod";
 		module.X = 130;
-		module.Y = 418;
+		module.Y = 538;
 		module.Width = 100;
-		module.Height = 175;
+		module.Height = 50;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -473,10 +473,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "healthData";
-		module.X = 260;
-		module.Y = 165;
-		module.Width = 250;
-		module.Height = 125;
+		module.X = 270;
+		module.Y = 185;
+		module.Width = 230;
+		module.Height = 85;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -495,10 +495,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.NUMERIC);
 		module.Id = "temphealthData";
-		module.X = 260;
-		module.Y = 280;
-		module.Width = 250;
-		module.Height = 125;
+		module.X = 270;
+		module.Y = 300;
+		module.Width = 230;
+		module.Height = 85;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -518,9 +518,9 @@ namespace Mysterious_Insiders.Services
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "hiddieData";
 		module.X = 260;
-		module.Y = 480;
+		module.Y = 490;
 		module.Width = 120;
-		module.Height = 90;
+		module.Height = 30;
 		module.Data = "0";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicNUMERIC(ModuleNumeric.KindOfNumber.INTEGER);
@@ -572,10 +572,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "traitsData";
-		module.X = 1500;
-		module.Y = 20;
-		module.Width = 400;
-		module.Height = 850;
+		module.X = 1515;
+		module.Y = 35;
+		module.Width = 370;
+		module.Height = 812;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -594,10 +594,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "languagesData";
-		module.X = 1170;
-		module.Y = 250;
-		module.Width = 300;
-		module.Height = 300;
+		module.X = 1177;
+		module.Y = 282;
+		module.Width = 287;
+		module.Height = 220;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -616,10 +616,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "equipmentData";
-		module.X = 530;
-		module.Y = 565;
-		module.Width = 300;
-		module.Height = 300;
+		module.X = 620;
+		module.Y = 574;
+		module.Width = 200;
+		module.Height = 270;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -638,10 +638,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "actionsData";
-		module.X = 1170;
-		module.Y = 530;
-		module.Width = 300;
-		module.Height = 350;
+		module.X = 1185;
+		module.Y = 548;
+		module.Width = 270;
+		module.Height = 305;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -660,11 +660,11 @@ namespace Mysterious_Insiders.Services
 		sampleSheet.AddModuleData(module);
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
-		module.Id = "characterName";
-		module.X = 20;
-		module.Y = 57;
-		module.Width = 300;
-		module.Height = 100;
+		module.Id = "characterNameData";
+		module.X = 40;
+		module.Y = 90;
+		module.Width = 255;
+		module.Height = 20;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -701,10 +701,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "personalityTraitsData";
-		module.X = 540;
-		module.Y = 165;
-		module.Width = 250;
-		module.Height = 125;
+		module.X = 550;
+		module.Y = 185;
+		module.Width = 230;
+		module.Height = 75;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -723,10 +723,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "idealsData";
-		module.X = 540;
-		module.Y = 260;
-		module.Width = 250;
-		module.Height = 125;
+		module.X = 550;
+		module.Y = 287;
+		module.Width = 230;
+		module.Height = 73;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -745,10 +745,10 @@ namespace Mysterious_Insiders.Services
 			
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "bondsData";
-		module.X = 540;
-		module.Y = 345;
-		module.Width = 250;
-		module.Height = 125;
+		module.X = 550;
+		module.Y = 372;
+		module.Width = 230;
+		module.Height = 73;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
@@ -759,20 +759,20 @@ namespace Mysterious_Insiders.Services
 		module.X = 540;
 		module.Y = 443;
 		module.Width = 250;
-		module.TextColor = Color.Black;
 		module.Height = 125;
+		module.TextColor = Color.Black;
 		module.BgImageUrl = "../Img/flaws.svg";
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 
 		module = new ModuleData(ModuleData.moduleType.TEXT);
 		module.Id = "flawsData";
-		module.X = 540;
-		module.Y = 443;
-		module.Width = 250;
+		module.X = 550;
+		module.Y = 470;
+		module.Width = 230;
+		module.Height = 75;
 		module.Data = "Placeholder";
 		module.TextColor = Color.Black;
-		module.Height = 125;
 		module.SerializedLogic = ModuleData.SerializeLogicTEXT();
 		sampleSheet.AddModuleData(module);
 
