@@ -1,12 +1,13 @@
-﻿@model ModularSheet
+﻿@model List<ModularSheet>
 @{
     ViewData["Title"] = "Index";
 }
 
 <body>
 <div style="position:relative;">
-@foreach (var v in Model.Modules) {
-    <partial name="_ModuleDataPartial" model="v.Value"/>
+@foreach (var v in Model) {
+    <div> @v.Name </div>
+    @*<partial name="_ModuleDataPartial" model="v.Value"/>*@
 }
 </div>
 </body>
