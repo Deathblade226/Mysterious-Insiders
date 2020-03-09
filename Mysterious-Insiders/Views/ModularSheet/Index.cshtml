@@ -13,7 +13,7 @@
 	<p>
 	@foreach (var sheet in @Model)
 	{
-		<a asp-action="DisplaySheet" asp-route-id="@sheet.DatabaseId" class="primBtn">
+		<a asp-action="DisplaySheetWithID" asp-route-id="@sheet.DatabaseId" class="primBtn">
 			Sheet Name: @sheet.Name
 		</a>
 	}
