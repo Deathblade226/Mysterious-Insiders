@@ -12,9 +12,9 @@
 	@if (Model.Data != null) {
 
 	if (Model.ModuleType == ModuleData.moduleType.TEXT) { 
-	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center; overflow: scroll;" >@Model.Data</div>	
+	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center; overflow: scroll;" onclick="EditModule">@Model.Data</div>	
 	} else { 
-	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center;" >@Model.Data</div>		
+	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center;" onclick="EditModule">@Model.Data</div>		
 	}
 
     } else { 
