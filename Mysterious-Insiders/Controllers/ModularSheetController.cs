@@ -68,5 +68,16 @@ namespace Mysterious_Insiders.Controllers
 			return RedirectToAction("Login", "Home");			
 
 		}
+
+		public void EditModule(ModularSheet sheet, string moduleID, string data)
+		{
+			ModuleData module = null;
+			
+
+			if(sheet.Modules.TryGetValue(moduleID, out module))
+			{
+				module.Data = data;
+			}
+		}
 	}
 }
