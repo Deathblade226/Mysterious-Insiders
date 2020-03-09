@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Mysterious_Insiders.Models
         /// This module's menu options, for the user to choose from. This
         /// returns a copy, to make sure the options aren't edited.
         /// </summary>
+        [BsonElement] 
         public string[] MenuOptions { get => (string[])menuOptions.Clone(); }
 
         /// <summary>
@@ -28,6 +30,7 @@ namespace Mysterious_Insiders.Models
         /// currently selected menu option. If you try to set it, it tries to set
         /// the menu to an option that contains what you set it to (not case-sensitive.)
         /// </summary>
+        [BsonIgnore]
         public override string Text { 
             get
             {
@@ -53,6 +56,7 @@ namespace Mysterious_Insiders.Models
         /// The number that is stored in this module. Since this is a menu, the number is the index of which menu option
         /// is currently selected.
         /// </summary>
+        [BsonIgnore]
         public override double Number { get => menuIndex; 
             set 
             {
@@ -66,6 +70,7 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The index of the menu option that the user has selected. Basically the same thing as Number, except as an int.
         /// </summary>
+        [BsonElement]
         public int MenuIndex { get => menuIndex; 
             set 
             {

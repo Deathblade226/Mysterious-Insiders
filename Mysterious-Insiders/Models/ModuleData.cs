@@ -52,7 +52,8 @@ public class ModuleData : INotifyPropertyChanged
         ROLL
     }
 
-    private int x, y, width, height, bgdex = -1;
+    private int x, y, width, height, fontsize = 12;
+    private string imageUrl;
     private string logic;
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -61,7 +62,7 @@ public class ModuleData : INotifyPropertyChanged
     /// The type of module that will be created by this ModuleData.
     /// </summary>
     [BsonElement] 
-    public moduleType ModuleType { get; set; }
+    public moduleType ModuleType { get; set; }    
 
     /// <summary>
     /// The module's id, for easy lookup. This lookup is used by derivative and roll
@@ -69,7 +70,10 @@ public class ModuleData : INotifyPropertyChanged
     /// </summary>
     [BsonElement]
     public string Id { get; set; }
-
+    
+    [BsonElement]
+    public string Data { get; set; }
+    
     /// <summary>
     /// The X coordinate of where this module goes on the ModularSheet. Every module
     /// will have "position: absolute;" in its CSS to ensure that it goes right where
@@ -131,27 +135,25 @@ public class ModuleData : INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Each sheet should have an indexed collection of images that are used for modules
-    /// that the sheet contains. This is the index to use to look up this module's image.
-    /// If the module doesn't have an image, this should be -1.
+    /// The url of this module's background image.
     /// </summary>
     [BsonIgnoreIfDefault]
-    public int BgImageIndex
+    public string BgImageUrl
     {
-        get => bgdex;
+        get => imageUrl;
         set
         {
-            bgdex = value;
+            imageUrl = value;
             FieldChanged();
         }
     }
 
     [BsonElement]
-    private int r;
+    private int r = 255;
     [BsonElement]
-    private int g;
+    private int g = 255;
     [BsonElement]
-    private int b;
+    private int b = 255;
 
     /// <summary>
     /// The color to display this module's text and numbers, if it has either of those.
@@ -165,7 +167,21 @@ public class ModuleData : INotifyPropertyChanged
             g = value.G;
             b = value.B;
             FieldChanged();
-        } 
+        }
+    }
+
+    /// <summary>
+    /// The size of this module's text, if it has any.
+    /// </summary>
+    [BsonIgnoreIfDefault]
+    public int FontSize
+    {
+        get => fontsize;
+        set
+        {
+            fontsize = value;
+            FieldChanged();
+        }
     }
 
     /// <summary>

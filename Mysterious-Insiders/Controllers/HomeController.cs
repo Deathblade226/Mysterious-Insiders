@@ -72,6 +72,15 @@ namespace Mysterious_Insiders.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.SetString("username", "");
+
+
+            return View("Login");
+        }
+
         //public IActionResult SignUp(string username, string password)
         public IActionResult SignUp(UserAccount ua)
         {

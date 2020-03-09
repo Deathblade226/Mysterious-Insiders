@@ -16,25 +16,26 @@
 
 <div>
     @* This is where the the field for the pdf will go, along with the logic for selection *@
-    @*@using (Html.BeginForm("ViewPDF", "Home", FormMethod.Post))
-        {
-            <a href="javascript:;" onclick="document.forms[0].submit();">View PDF</a>
-            <hr />
-            @Html.Raw(TempData["Embed"])
-        }*@
+    @using (Html.BeginForm("ViewPDF", "Home", FormMethod.Post))
+    {
+        @*<a href="javascript:;" onclick="document.forms[0].submit();">View PDF</a>*@
+        <hr />
+        @Html.Raw(TempData["Embed"])
+    }
 
-    @*<object data="@Url.Action("GetPDF")" type="application/pdf" width="300" height="200">
-            alt : <a href="~/public/DNDCharacterSheet.pdf">test.pdf</a>
-        </object>*@
+    @*
+        Modular sheet page needs to display the name
+        it needs to display the list of modular data, which should be position absolute and use its x and y fields
+        it also needs to display a checkbox for whether the sheet will be public or private
+        this page also needs buttons to save the sheet to the database, and download the sheet.
 
-    <h1>Method 1</h1>
-    <li>@Html.ActionLink("PDF Method1", "DisplayPDF")</li>
+        We need a page to display a user's sheets that shows them all in a table that only displays the name of the sheet and maybe an image
+        on this page the user can select which sheet they want to view, which then leads the the modular sheet page.
 
-    <h2>Method 2</h2>
+        We need a page to display a user's characters that should look almost the same as the sheets page. maybe just a drop down to swap between would be enough.
 
-
-    <h2>Method 4</h2>
-    <li>@Ajax.ActionLink("PDF Method4", "PDFPartialView", new AjaxOptions { UpdateTargetId = "pdfContainer" })</li>
-    <h4>Partial View That display PDF....</h4><br /><embed src="~/public/DNDCharacterSheet.pdf" type="application/pdf"></embed>
+        We can also have another page to let users search all sheets made by users.
+        We can use the same table as the user's sheet page, and it just filters based on the name.
+        *@
 </div>
 </div>

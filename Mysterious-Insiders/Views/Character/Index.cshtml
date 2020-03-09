@@ -1,0 +1,23 @@
+﻿@model List<ModularSheet>
+@using  Microsoft.AspNetCore.Http;
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<body>
+	<form asp-action="SelectSheet" method="post">
+		<select name="name">
+			@foreach (var option in @Model)
+			{
+			<option>@option.Name</option>
+			}
+
+		</select>
+		@*<input type="text" name="name" />*@
+		<input type="submit"/>
+	</form>
+
+	
+
+</body>

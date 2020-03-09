@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Mysterious_Insiders.Models;
+using Mysterious_Insiders.Services;
+using Microsoft.AspNetCore.Http;
+
+
+namespace Mysterious_Insiders.Controllers
+{
+
+	public class ModularSheetController : Controller
+	{
+
+		private readonly SheetService sheetService;
+
+		public ModularSheetController(SheetService service) { sheetService = service; }
+
+		public IActionResult DisplaySheetWithID(string id)
+		{
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+			//sheetService.CreateDnDSheet(username, "PlaceHolder");
+			ModularSheet sheet = sheetService.Get(id);
+			return View("DisplaySheet", sheet);
+			}
+			return RedirectToAction("Login", "Home");
+		}
+
+		public IActionResult DisplaySheet(ModularSheet sheet)
+		{
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+			//sheetService.CreateDnDSheet(username, "PlaceHolder");
+			return View(sheet);
+			}
+
+			return RedirectToAction("Login", "Home");
+
+		}
+
+		public IActionResult Index()
+		{
+			string username = HttpContext.Session.GetString("username");
+			if(username != null && username != "")
+			{
+				return View(sheetService.FilterByUser(username));
+			}
+
+			return RedirectToAction("Login", "Home");
+
+		}
+		public IActionResult AddSheet()
+		{
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+				
+			sheetService.CreateDnDSheet(username, "Test");
+			return RedirectToAction("Index", "ModularSheet");
+			}
+
+			return RedirectToAction("Login", "Home");			
+
+		}
+	}
+}

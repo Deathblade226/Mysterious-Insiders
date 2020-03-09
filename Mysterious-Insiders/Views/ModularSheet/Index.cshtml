@@ -1,0 +1,20 @@
+﻿@using  Microsoft.AspNetCore.Http;
+@model List<ModularSheet>
+@{
+	ViewData["Title"] = "Index";
+}
+
+<body class="middleGrid">
+	<p>
+		Here are all your Sheets, @Context.Session.GetString("username")
+	</p>
+
+	<p>
+		@foreach (var sheet in @Model)
+		{
+			<a asp-action="DisplaySheetWithID" asp-route-id="@sheet.DatabaseId" class="primBtn">
+				Sheet Name: @sheet.Name
+			</a>
+		}
+	</p>
+</body>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The text to display in this module. This can be edited by the user.
         /// </summary>
+        [BsonElement]
         public override string Text
         {
             get => base.Text;
@@ -35,11 +37,13 @@ namespace Mysterious_Insiders.Models
         /// <summary>
         /// The maximum character length of this module's text.
         /// </summary>
+        [BsonElement] 
         public int MaximumLength { get => maximumLength; }
 
         /// <summary>
         /// The maximum number of lines that this module's text will word wrap into.
         /// </summary>
+        [BsonElement] 
         public int NumberOfLines { get => numberOfLines; }
 
         /// <summary>
