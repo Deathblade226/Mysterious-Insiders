@@ -12,9 +12,15 @@
 	@if (Model.Data != null) {
 
 	if (Model.ModuleType == ModuleData.moduleType.TEXT) { 
-	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center; overflow: scroll;" onclick="EditModule">@Model.Data</div>	
+	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center; overflow: scroll;"> <button onclick="EditModule">@Model.Data</button> </div>	
 	} else { 
-	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center;" onclick="EditModule">@Model.Data</div>		
+	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center;"> <form action="EditModule">
+
+	<input type="hidden" name="moduleID" value="@Model.Id" /><br />
+	<input type="text" name="data"/><br />
+	<input type="submit" value="Edit Data" />
+
+	</form> </div>		
 	}
 
     } else { 
