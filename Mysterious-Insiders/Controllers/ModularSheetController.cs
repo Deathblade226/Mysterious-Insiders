@@ -71,6 +71,37 @@ namespace Mysterious_Insiders.Controllers
 
 		}
 
+		public IActionResult Update(string id) {
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+				return View(model:id);
+			}
+
+			return RedirectToAction("Login", "Home");
+		}
+
+		public IActionResult Rename(string id, string newName) { 
+
+		var holder = sheetService.Get(id);
+		holder.Name = newName;
+		sheetService.Update(id, holder);
+		return RedirectToAction("Index", "ModularSheet");
+
+		}
+
+		public IActionResult Delete(string id) { 
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+				
+			sheetService.Remove(sheetService.Get(id));
+			return RedirectToAction("Index", "ModularSheet");
+			}
+
+			return RedirectToAction("Login", "Home");	
+		}
+
 		public IActionResult EditModule(string moduleID, string data)
 		{
 			ModuleData module = null;
