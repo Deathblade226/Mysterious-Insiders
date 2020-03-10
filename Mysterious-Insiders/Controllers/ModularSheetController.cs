@@ -63,7 +63,7 @@ namespace Mysterious_Insiders.Controllers
 			if (username != null && username != "")
 			{
 				
-			sheetService.CreateDnDSheet(username, "Test");
+			sheetService.CreateDnDSheet(username, "New Sheet");
 			return RedirectToAction("Index", "ModularSheet");
 			}
 
