@@ -12,12 +12,24 @@
 	@if (Model.Data != null) {
 
 	if (Model.ModuleType == ModuleData.moduleType.TEXT) { 
-	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center; overflow: scroll;"> <button onclick="EditModule">@Model.Data</button> </div>	
-	} else { 
-	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center;"> <form action="EditModule">
+	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center; overflow: scroll;"> @Model.Data
+
+	<form action="EditModule">
 
 	<input type="hidden" name="moduleID" value="@Model.Id" /><br />
-	<input type="text" name="data"/><br />
+	<input type="text" name="data" style="width: @(Model.Width)px;"/><br />
+	<input type="submit" value="Edit Data" />
+
+	</form>
+					  
+	</div>	
+	} else { 
+	<div style="left: @(Model.X + "px"); top: @(Model.Y)px; width: @(Model.Width)px; height: @(Model.Height)px; text-align:center;"> @Model.Data
+	
+	<form action="EditModule">
+
+	<input type="hidden" name="moduleID" value="@Model.Id" /><br />
+	<input type="text" name="data" style="width: @(Model.Width)px;"/><br />
 	<input type="submit" value="Edit Data" />
 
 	</form> </div>		

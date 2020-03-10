@@ -14,7 +14,7 @@ namespace Mysterious_Insiders.Controllers
 
 	public class ModularSheetController : Controller
 	{
-		private ModularSheet currentSheet;
+		private static ModularSheet currentSheet;
 
 		private readonly SheetService sheetService;
 
@@ -33,14 +33,13 @@ namespace Mysterious_Insiders.Controllers
 			return RedirectToAction("Login", "Home");
 		}
 
-		public IActionResult DisplaySheet(ModularSheet sheet)
+		public IActionResult DisplaySheet()
 		{
 			string username = HttpContext.Session.GetString("username");
 			if (username != null && username != "")
 			{
 				//sheetService.CreateDnDSheet(username, "PlaceHolder");
-				currentSheet = sheet;
-			return View(sheet);
+			return View(currentSheet);
 			}
 
 			return RedirectToAction("Login", "Home");
@@ -72,7 +71,7 @@ namespace Mysterious_Insiders.Controllers
 
 		}
 
-		public void EditModule(string moduleID, string data)
+		public IActionResult EditModule(string moduleID, string data)
 		{
 			ModuleData module = null;
 			
@@ -80,7 +79,9 @@ namespace Mysterious_Insiders.Controllers
 			if(currentSheet.Modules.TryGetValue(moduleID, out module))
 			{
 				module.Data = data;
+				sheetService.Update(currentSheet.DatabaseId, currentSheet);
 			}
+		return RedirectToAction("DisplaySheet");
 		}
 	}
 }
