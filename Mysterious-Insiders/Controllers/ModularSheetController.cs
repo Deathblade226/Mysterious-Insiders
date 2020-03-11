@@ -14,6 +14,7 @@ namespace Mysterious_Insiders.Controllers
 
 	public class ModularSheetController : Controller
 	{
+		private static ModularSheet currentSheet;
 
 		private readonly SheetService sheetService;
 
@@ -26,18 +27,19 @@ namespace Mysterious_Insiders.Controllers
 			{
 			//sheetService.CreateDnDSheet(username, "PlaceHolder");
 			ModularSheet sheet = sheetService.Get(id);
+				currentSheet = sheet;
 			return View("DisplaySheet", sheet);
 			}
 			return RedirectToAction("Login", "Home");
 		}
 
-		public IActionResult DisplaySheet(ModularSheet sheet)
+		public IActionResult DisplaySheet()
 		{
 			string username = HttpContext.Session.GetString("username");
 			if (username != null && username != "")
 			{
-			//sheetService.CreateDnDSheet(username, "PlaceHolder");
-			return View(sheet);
+				//sheetService.CreateDnDSheet(username, "PlaceHolder");
+			return View(currentSheet);
 			}
 
 			return RedirectToAction("Login", "Home");
@@ -61,12 +63,56 @@ namespace Mysterious_Insiders.Controllers
 			if (username != null && username != "")
 			{
 				
-			sheetService.CreateDnDSheet(username, "Test");
+			sheetService.CreateDnDSheet(username, "New Sheet");
 			return RedirectToAction("Index", "ModularSheet");
 			}
 
 			return RedirectToAction("Login", "Home");			
 
+		}
+
+		public IActionResult Update(string id) {
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+				return View(model:id);
+			}
+
+			return RedirectToAction("Login", "Home");
+		}
+
+		public IActionResult Rename(string id, string newName) { 
+
+		var holder = sheetService.Get(id);
+		holder.Name = newName;
+		sheetService.Update(id, holder);
+		return RedirectToAction("Index", "ModularSheet");
+
+		}
+
+		public IActionResult Delete(string id) { 
+			string username = HttpContext.Session.GetString("username");
+			if (username != null && username != "")
+			{
+				
+			sheetService.Remove(sheetService.Get(id));
+			return RedirectToAction("Index", "ModularSheet");
+			}
+
+			return RedirectToAction("Login", "Home");	
+		}
+
+		public IActionResult EditModule(string moduleID, string data)
+		{
+			ModuleData module = null;
+			
+
+			if(currentSheet.Modules.TryGetValue(moduleID, out module))
+			{
+				module.Data = data;
+				sheetService.Update(currentSheet.DatabaseId, currentSheet);
+			}
+		return RedirectToAction("DisplaySheet");
 		}
 	}
 }

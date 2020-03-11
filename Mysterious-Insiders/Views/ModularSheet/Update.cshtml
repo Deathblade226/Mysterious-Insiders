@@ -1,0 +1,11 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Update";
+}
+
+<form action="Rename">
+    <input type="hidden" name="id" value="@Model"/>
+    <input type="text" name="newName"/>
+    <input type="submit" value="Rename"/>
+</form>
+
