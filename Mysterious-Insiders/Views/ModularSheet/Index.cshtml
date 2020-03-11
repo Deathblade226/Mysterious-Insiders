@@ -5,29 +5,26 @@
 }
 
 <body class="middleGrid">
+    <div>
+    <p>
+        Here are all your Sheets, @Context.Session.GetString("username")
+        <a asp-action="AddSheet" class="primBtn"> Create D&D 5e sheet </a>
+        </p>
+    </div>
 
-	<div>
-	<p>
-		Here are all your Sheets, @Context.Session.GetString("username")
-		<a asp-action="AddSheet" class="primBtn"> Create D&D 5e sheet </a>
-		</p>
-	</div>
-
-	<div>
-	<p>
-		@foreach (var sheet in @Model)
-		{
-			<a asp-action="DisplaySheetWithID" asp-route-id="@sheet.DatabaseId" class="primBtn sheet">
-				Sheet Name: @sheet.Name
-			</a>
-			<div>
-			<p>
-			@*<a asp-action="DisplaySheetWithID" asp-route-id="@sheet.DatabaseId" class="primBtn"> Sheet Name: @sheet.Name </a>*@
-			<a asp-action="Update" asp-route-id="@sheet.DatabaseId" class="primBtn">Rename Sheet</a>
-			<a asp-action="Delete" asp-route-id="@sheet.DatabaseId" class="primBtn">Delete Sheet</a>
-			</p>
-			</div>
-		}
-	</p>
-	</div>
+    <div style="left: 0px; top: 150px; position:absolute;">
+    <p>
+        @foreach (var sheet in @Model)
+        {
+            <div style="height:auto; padding: 30px 0px; width:auto;">
+            <a asp-action="DisplaySheetWithID" asp-route-id="@sheet.DatabaseId" class="primBtn sheet">
+                Sheet Name: @sheet.Name
+            </a>
+            @*<a asp-action="DisplaySheetWithID" asp-route-id="@sheet.DatabaseId" class="primBtn"> Sheet Name: @sheet.Name </a>*@
+            <a asp-action="Update" asp-route-id="@sheet.DatabaseId" class="primBtn">Rename Sheet</a>
+            <a asp-action="Delete" asp-route-id="@sheet.DatabaseId" class="primBtn">Delete Sheet</a>
+            </div>
+        }
+    </p>
+    </div>
 </body>
