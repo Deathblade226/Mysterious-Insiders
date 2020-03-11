@@ -5,16 +5,20 @@
 }
 
 <body class="middleGrid">
+	<div>
 	<p>
 		Here are all your Sheets, @Context.Session.GetString("username")
 	</p>
+	</div>
 
+	<div>
 	<p>
 		@foreach (var sheet in @Model)
 		{
-			<a asp-action="DisplaySheetWithID" asp-route-id="@sheet.DatabaseId" class="primBtn">
+			<a asp-action="DisplaySheetWithID" asp-route-id="@sheet.DatabaseId" class="primBtn sheet">
 				Sheet Name: @sheet.Name
 			</a>
 		}
 	</p>
+	</div>
 </body>
